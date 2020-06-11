@@ -1,6 +1,5 @@
 # dependencies
 
-/src/config/keys
 /node_modules
 /.pnp
 .pnp.js
