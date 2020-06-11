@@ -10,7 +10,7 @@ export default function Table() {
     }, []);
     
     const getCoin = async () => {
-        const response = await axios.get(`https://api.nomics.com/v1/currencies/ticker?key=e85804af64bfbeca246e5e053e7a446c&interval=1d,30d&convert=USD&ids=BTC,ETH,XRP`);
+        const response = await axios.get(``);
         setCoinData(response.data.map(coin => 
             // <li>{coin.name}</li>
             <div key={coin.id}>
