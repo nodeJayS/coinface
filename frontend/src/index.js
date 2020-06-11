@@ -1,13 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import ReactDOM from 'react-dom'
+import './css/index.css';
 import axios from 'axios'
+import Home from './Home'
 
-ReactDOM.render(
-  <div>
-    This is Coinface
-  </div>,
-  document.getElementById('root')
-);
+ReactDOM.render(<Home />, document.getElementById('root')) 
 
 window.axios = axios;
