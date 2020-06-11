@@ -1,0 +1,1 @@
+export const top4Coins = 'BTC,ETH,LTC,BAT'

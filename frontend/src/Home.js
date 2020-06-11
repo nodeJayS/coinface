@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from './components/Header'
 import Title from './components/Title'
-import Table from './components/Table'
+import CoinData from './components/CoinData'
 
 export default class Home extends Component {
     render() {
@@ -9,7 +9,7 @@ export default class Home extends Component {
             <div>
                 <Header />
                 <Title />
-                <Table />
+                <CoinData/>
             </div>
         )
     }
