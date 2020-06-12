@@ -5,7 +5,7 @@ export default class Title extends Component {
         return (
             <>
             <div className="homeTitle">
-                What Coinbase wishes it was.
+                The face of cryptocurrency.
                 <div>Just kidding! Coinface is a cryptocurrency exchange simulator. Sign in to buy, sell and manage your simulated currency! </div>
             </div>
             </>
