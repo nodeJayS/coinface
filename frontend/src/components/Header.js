@@ -5,11 +5,13 @@ import NavbarToggle from 'react-bootstrap/NavbarToggle'
 import NavLink from 'react-bootstrap/NavLink'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
+import RegistrationModal from './RegistrationModal'
 
 export default class indexHeader extends Component {
   render() {
     return (
-      <Navbar bg="light" expand="lg">
+      <>
+      <Navbar bg="light">
         <NavbarBrand>Coinface</NavbarBrand>
         <NavbarToggle />
           <Nav>
@@ -22,9 +24,10 @@ export default class indexHeader extends Component {
           </Nav>
           <Nav>
             <NavLink>Sign in</NavLink>
-            <NavLink>Get Started</NavLink>
+            <RegistrationModal />
           </Nav>
       </Navbar>
+      </>
     )
   }
 }

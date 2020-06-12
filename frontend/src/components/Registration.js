@@ -1,11 +1,29 @@
 import React, { Component } from 'react'
+import Form from 'react-bootstrap/Form'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import RegistrationModal from './RegistrationModal'
 
 export default class Registration extends Component {
     render() {
         return (
-            <div>
-                Registration.
-            </div>
+            <>
+                <Form>
+                    <Container>
+                        <Row>
+                            <Col sm={8}>
+                                <Form.Group>
+                                    <Form.Control type="email" placeholder="Email address" />
+                                </Form.Group>
+                            </Col>
+                            <Col sm={4}>
+                                <RegistrationModal />
+                            </Col>
+                        </Row>
+                    </Container>
+                </Form>
+            </>
         )
     }
 }

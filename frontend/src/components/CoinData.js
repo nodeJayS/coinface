@@ -19,7 +19,7 @@ export default function CoinData() {
             setCoinData(response.data.map(coin => 
             <tr key={coin.id}>
                 <Image src={coin.logo_url} alt={coin.name} width="36" height="36"></Image>
-                <td>{coin.symbol}</td>
+                <td >{coin.symbol}</td>
                 <td>{coin.name}</td>
                 <td>${Number(coin.price).toFixed(2)}</td>
                 <td>{(coin['1d']['price_change_pct']*100).toFixed(2)}%</td>
@@ -30,8 +30,10 @@ export default function CoinData() {
 
 
     return (
-    <Table className="HomeTable" responsive striped borderless size="sm">
-        {coinData}
-    </Table>
+    <>
+        <Table className="HomeTable" responsive striped borderless size="sm" width="100">
+                {coinData}
+        </Table>
+    </>
     )
 };
