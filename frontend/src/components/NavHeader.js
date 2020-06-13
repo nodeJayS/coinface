@@ -6,16 +6,25 @@ import NavLink from 'react-bootstrap/NavLink'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import RegistrationModal from './RegistrationModal'
+import { Link } from 'react-router-dom'
 
-export default class indexHeader extends Component {
+export default class NavHeader extends Component {
   render() {
     return (
       <>
-      <Navbar bg="light">
-        <NavbarBrand>Coinface</NavbarBrand>
+      <Navbar className="NavHeader" bg="light">
+        <NavbarBrand>
+          <Link to ="../">
+            Coinface
+          </Link>
+        </NavbarBrand>
         <NavbarToggle />
           <Nav>
-            <NavLink>Prices</NavLink>
+            <Nav>
+            <Nav.Link as={NavLink} to="../prices">             
+                Prices
+            </Nav.Link>
+            </Nav>
             <NavDropdown title="Markets">
               <NavDropdown.Item>Exchange</NavDropdown.Item>
               <NavDropdown.Item>Wallet</NavDropdown.Item>

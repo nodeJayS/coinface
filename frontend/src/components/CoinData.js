@@ -18,13 +18,13 @@ export default function CoinData() {
             .get(`https://api.nomics.com/v1/currencies/ticker?key=${nomicsKey.nomicsKey}&interval=1d,30d&convert=USD&ids=${top4Coins.top4Coins}`)
             setCoinData(response.data.map(coin => 
             <tr key={coin.id}>
-                <Image src={coin.logo_url} alt={coin.name} width="36" height="36"></Image>
-                <td >{coin.symbol}</td>
+                <td><Image src={coin.logo_url} alt={coin.name} width="24" height="24"></Image></td>
+                <td>{coin.symbol}</td>
                 <td>{coin.name}</td>
                 <td>${Number(coin.price).toFixed(2)}</td>
                 <td>{(coin['1d']['price_change_pct']*100).toFixed(2)}%</td>
             </tr>
-        ))
+            ))
     };
 
 
@@ -32,7 +32,9 @@ export default function CoinData() {
     return (
     <>
         <Table className="HomeTable" responsive striped borderless size="sm" width="100">
+            <tbody>
                 {coinData}
+            </tbody>
         </Table>
     </>
     )

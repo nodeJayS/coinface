@@ -42,6 +42,11 @@ export default function RegistrationModal() {
               <Form.Group>
                 <Form.Control type="password" placeholder="Password" />
               </Form.Group>
+
+              <Form.Group>
+                <Form.Control type="password" placeholder="Confirm password" />
+              </Form.Group>
+
             </Form>
           </Modal.Body>
 
