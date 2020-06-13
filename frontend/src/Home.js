@@ -19,7 +19,7 @@ export default class home extends Component {
                 </Container>
 
                 <Container>
-                    <CoinData />  
+                    <CoinData coinIds='bitcoin,ethereum,chainlink,basic-attention-token'/>  
                 </Container>       
             </>
         )
