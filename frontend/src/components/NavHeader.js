@@ -19,17 +19,17 @@ export default class NavHeader extends Component {
         </NavbarBrand>
         <NavbarToggle />
           <Nav>
-            <NavLink href="../Prices">             
+            <NavLink href="../prices">             
                 Prices
             </NavLink>
             <NavDropdown title="Markets">
-              <NavDropdown.Item>Exchange</NavDropdown.Item>
-              <NavDropdown.Item>Wallet</NavDropdown.Item>
+              <NavLink href="Exchange">Exchange</NavLink>
+              <NavLink href="Wallet">Wallet</NavLink>
             </NavDropdown>
-            <NavLink>About Us</NavLink>
+            <NavLink href="../about-us">About Us</NavLink>
           </Nav>
           <Nav>
-            <NavLink>Sign in</NavLink>
+            <NavLink href="../sign-in">Sign in</NavLink>
             <RegistrationModal />
           </Nav>
       </Navbar>

@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container'
 
 import Title from './components/Title'
 import CoinData from './components/CoinData'
-import Registration from './components/Registration'
+import RegistrationBar from './components/RegistrationBar'
 
 
 export default class home extends Component {
@@ -14,12 +14,6 @@ export default class home extends Component {
         }
     }
 
-    // sortBy = (key) => {
-    //     this.setState({
-    //         coinData: coinData.sort((a, b) => (a[key] > (b[key])))
-    //     })
-    // }  
-
     render() {
         return (
             <>
@@ -28,7 +22,7 @@ export default class home extends Component {
                 </Container>
 
                 <Container>
-                    <Registration/>
+                    <RegistrationBar/>
                 </Container>
 
                 <Container>

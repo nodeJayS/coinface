@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import RegistrationModal from './RegistrationModal'
 
-export default class Registration extends Component {
+export default class RegistrationBar extends Component {
     render() {
         return (
             <>
