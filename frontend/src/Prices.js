@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 
 import Container from 'react-bootstrap/Container'
-import CoinDataTable from './components/CoinDataTable'
+import CoinData from './components/CoinData'
 
 export default class Prices extends Component {
     render() {
         return (
             <>
                 <Container>
-                    <CoinDataTable />
+                    <CoinData />
                 </Container>
             </>
         )

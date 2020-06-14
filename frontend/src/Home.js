@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 
 import Title from './components/Title'
-import CoinDataTable from './components/CoinDataTable'
+import CoinData from './components/CoinData'
 import Registration from './components/Registration'
 
 
@@ -13,6 +13,12 @@ export default class home extends Component {
             coinIds: 'bitcoin,ethereum,chainlink,basic-attention-token'
         }
     }
+
+    // sortBy = (key) => {
+    //     this.setState({
+    //         coinData: coinData.sort((a, b) => (a[key] > (b[key])))
+    //     })
+    // }  
 
     render() {
         return (
@@ -26,7 +32,9 @@ export default class home extends Component {
                 </Container>
 
                 <Container>
-                    <CoinDataTable coinIds={this.state.coinIds}/>  
+                    <CoinData
+                        coinIds={this.state.coinIds}
+                    />  
                 </Container>       
             </>
         )
