@@ -1,11 +1,10 @@
-import axios from 'axios'
+import authReducer from './authReducer'
+import marketReducer from './marketReducer'
+import { combineReducers } from 'redux'
 
-const initState = {
-    coinData = []
-}
-
-const rootReducer = (state = initState, action) => {
-    return state;
-}
+const rootReducer = combineReducers({
+    auth: authReducer,
+    market: marketReducer
+})
 
 export default rootReducer
