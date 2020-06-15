@@ -5,9 +5,10 @@ import NavHeader from './components/NavHeader'
 import Home from './Home'
 import Prices from './Prices'
 import AboutUs from './AboutUs'
-import Signin from './Signin'
+import Signin from './components/auth/Signin'
 import Exchange from './components/PostLogin/Exchange'
 import Wallet from './components/PostLogin/Wallet'
+import Registration from './components/auth/Registration'
 
 export default class Main extends Component {
     render() {
@@ -21,6 +22,7 @@ export default class Main extends Component {
                     <Route path="/wallet" component={Wallet}></Route>
                     <Route path="/about-us" component={AboutUs} />
                     <Route path="/sign-in" component={Signin} />
+                    <Route path="/registration" component={Registration} />
                 </Switch>
             </Router>
         )

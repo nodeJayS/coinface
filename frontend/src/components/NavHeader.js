@@ -5,7 +5,7 @@ import NavbarToggle from 'react-bootstrap/NavbarToggle'
 import NavLink from 'react-bootstrap/NavLink'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
-import RegistrationModal from './RegistrationModal'
+import Button from 'react-bootstrap/Button'
 
 export default class NavHeader extends Component {
   render() {
@@ -30,7 +30,7 @@ export default class NavHeader extends Component {
           </Nav>
           <Nav>
             <NavLink href="../sign-in">Sign in</NavLink>
-            <RegistrationModal />
+            <Button href="../registration">Get Started</Button>
           </Nav>
       </Navbar>
       </>

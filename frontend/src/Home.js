@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container'
 
 import Title from './components/Title'
 import CoinData from './components/CoinData'
-import RegistrationBar from './components/RegistrationBar'
+import RegistrationBar from './components/auth/RegistrationBar'
 
 
 export default class home extends Component {
