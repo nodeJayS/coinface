@@ -24,7 +24,11 @@ export default class Signin extends Component {
         return (
             <>
             <Container>
-            <Col><h1>Sign in</h1></Col>
+                <Col>
+                    <h1>
+                        Sign in
+                    </h1>
+                </Col>
                 
                 <Form onSubmit={this.handleSubmit}>
                     <div className="form-group">

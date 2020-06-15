@@ -22,9 +22,9 @@ export default class NavHeader extends Component {
             <NavLink href="../prices">             
                 Prices
             </NavLink>
-            <NavDropdown title="Markets">
-              <NavLink href="Exchange">Exchange</NavLink>
-              <NavLink href="Wallet">Wallet</NavLink>
+            <NavDropdown title="Products">
+              <NavLink href="/markets">Markets</NavLink>
+              <NavLink href="/wallet">Wallet</NavLink>
             </NavDropdown>
             <NavLink href="../about-us">About Us</NavLink>
           </Nav>

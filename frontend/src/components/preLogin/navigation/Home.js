@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 
-import Title from './components/Title'
-import CoinData from './components/markets/CoinData'
-import RegHome from './components/auth/RegHome'
+import Title from '../../Title'
+import CoinData from '../../markets/CoinData'
+import RegHome from '../../auth/RegHome'
 
 
 export default class home extends Component {
