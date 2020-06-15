@@ -1,38 +1,28 @@
 import React, { Component } from 'react'
-import Navbar from 'react-bootstrap/Navbar'
-import NavbarBrand from 'react-bootstrap/NavbarBrand'
-import NavbarToggle from 'react-bootstrap/NavbarToggle'
 import NavLink from 'react-bootstrap/NavLink'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Button from 'react-bootstrap/Button'
 
-export default class NavHeader extends Component {
+export default class SignedOutNav extends Component {
   render() {
     return (
       <>
-      <Navbar className="NavHeader" bg="light">
-        <NavbarBrand>
-          <NavLink href="/">
-            Coinface
-          </NavLink>
-        </NavbarBrand>
-        <NavbarToggle />
-          <Nav>
+        <Nav>
             <NavLink href="../prices">             
                 Prices
             </NavLink>
             <NavDropdown title="Products">
-              <NavLink href="/markets">Markets</NavLink>
-              <NavLink href="/wallet">Wallet</NavLink>
+                <NavLink href="/markets">Markets</NavLink>
+                <NavLink href="/wallet">Wallet</NavLink>
             </NavDropdown>
             <NavLink href="../about-us">About Us</NavLink>
-          </Nav>
-          <Nav>
+        </Nav>
+        
+        <Nav>
             <NavLink href="../sign-in">Sign in</NavLink>
             <Button href="../registration">Get Started</Button>
-          </Nav>
-      </Navbar>
+        </Nav>
       </>
     )
   }

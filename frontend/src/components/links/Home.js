@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 
-import Title from '../../Title'
-import CoinData from '../../markets/CoinData'
-import RegHome from '../../auth/RegHome'
+import CoinData from '../markets/CoinData'
+import RegHome from '../auth/RegHome'
 
 
 export default class home extends Component {
@@ -18,7 +17,15 @@ export default class home extends Component {
         return (
             <>
                 <Container>
-                    <Title /> 
+                    <div className="homeTitle">
+                        The face of cryptocurrency.
+                    </div>
+                </Container>
+
+                <Container>
+                    <div>
+                        Just kidding! Coinface is a cryptocurrency exchange simulator. Sign in to buy, sell and manage your simulated currency!
+                    </div>
                 </Container>
 
                 <Container>
