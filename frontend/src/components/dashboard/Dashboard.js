@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
-
 import Container from 'react-bootstrap/Container'
 
-export default class Dashboard extends Component {
+import Balance from '../portfolio/Balance'
+
+class Dashboard extends Component {
     render() {
         return (
             <>
                 <Container>
-                    Dashboard
+                    Dashboard with: 
+                    <Balance />
                 </Container>
             </>
         )
     }
 }
+
+export default Dashboard

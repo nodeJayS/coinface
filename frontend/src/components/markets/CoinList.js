@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table';
 import Image from 'react-bootstrap/Image';
 import { Sparklines, SparklinesLine } from 'react-sparklines'
 
-export default function CoinTable({coinData}) {
+export default function CoinList({coinData}) {
     let coinNum = 1;
     return (
         <Table responsive striped borderless size="sm" width="100">

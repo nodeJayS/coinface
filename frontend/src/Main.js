@@ -9,7 +9,9 @@ import Signin from './components/auth/Signin'
 import Markets from './components/links/products/Markets'
 import Wallet from './components/links/products/Wallet'
 import Registration from './components/auth/Registration'
+
 import Dashboard from './components/dashboard/Dashboard'
+import Portfolio from './components/portfolio/Portfolio'
 
 export default class Main extends Component {
     render() {
@@ -26,6 +28,7 @@ export default class Main extends Component {
                     <Route path="/registration" component={Registration} />
 
                     <Route path="/dashboard" component={Dashboard} />
+                    <Route path="/portfolio" component={Portfolio} />
                 </Switch>
             </Router>
         )

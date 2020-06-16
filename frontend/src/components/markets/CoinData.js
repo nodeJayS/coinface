@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import CoinTable from './CoinTable'
+import CoinList from './CoinList'
 
 export default class CoinData extends Component {
     constructor(props) {
@@ -30,7 +30,7 @@ export default class CoinData extends Component {
     render() {
         return (
             <>
-                <CoinTable coinData={this.state.coinData}/>
+                <CoinList coinData={this.state.coinData}/>
             </>
         )
     }
