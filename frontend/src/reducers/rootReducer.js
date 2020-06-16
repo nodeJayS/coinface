@@ -1,10 +1,12 @@
 import authReducer from './authReducer'
-import marketReducer from './marketReducer'
+import assetReducer from './assetReducer'
+// import marketReducer from './marketReducer'
 import { combineReducers } from 'redux'
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    market: marketReducer
+    asset: assetReducer,
+    // market: marketReducer
 })
 
 export default rootReducer

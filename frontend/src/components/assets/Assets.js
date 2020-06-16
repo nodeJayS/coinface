@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import BuyCoin from '../markets/BuyCoin'
+import BuyCoin from './BuyCoin'
 import AssetsList from './AssetsList'
 
 class Assets extends Component {
@@ -18,7 +18,7 @@ class Assets extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        assets: state.market.coins //assets is a prop of this class, market.props is rootReducer's initialState label of coins
+        assets: state.asset.coin //assets is a prop of this class, market.props is rootReducer's initialState label of coins
     }
 }
 

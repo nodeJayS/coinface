@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import Balance from './Balance'
-import Assets from './Assets'
+import Assets from '../assets/Assets'
 import Transactions from './Transactions'
 
 export default class Portfolio extends Component {

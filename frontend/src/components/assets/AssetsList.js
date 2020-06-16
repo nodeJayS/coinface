@@ -5,7 +5,7 @@ const AssetsList = ({assets}) => {
         <>
         {assets && assets.map(asset => {
             return (
-                <div>{asset.coinName}</div>
+                <div key={asset.coinName}>{asset.coinName}</div>
             )
         })}
         </>
