@@ -3,30 +3,20 @@ const Schema = mongoose.Schema;
 
 const AssetSchema = new Schema({
     
-    // user: {
-    // type: Schema.Types.ObjectId,
-    // ref: 'users'
-    // },
+    user: {
+    type: Schema.Types.ObjectId,
+    ref: 'users'
+    },
 
-    assetName: {
+    name: {
         type: String,
         required: true
     },
-
-    assetPrice: {
+    
+    price: {
         type: Number,
         required: true
     },
-
-    assetAmount: {
-        type: Number,
-        required: true
-    },
-
-    date: {
-        type: Date,
-        default: Date.now
-    }
 })
 
 module.exports = Asset = mongoose.model('Asset', AssetSchema);

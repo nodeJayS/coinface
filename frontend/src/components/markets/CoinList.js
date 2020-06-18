@@ -27,8 +27,8 @@ export default function CoinList({coinData}) {
                     <td>{coin.name} - {coin.symbol.toUpperCase()}</td>
                     <td>${Number(coin['current_price']).toFixed(2).toLocaleString('en')}</td>
                     <td>${coin['market_cap'].toLocaleString('en')}</td>
-                    <td>{(coin['price_change_percentage_24h_in_currency']).toFixed(2)}%</td>
-                    <td>{(coin['price_change_percentage_7d_in_currency']).toFixed(2)}%</td>
+                    <td>{Number(coin['price_change_percentage_24h_in_currency']).toFixed(2)}%</td>
+                    <td>{Number(coin['price_change_percentage_7d_in_currency']).toFixed(2)}%</td>
                     <td width="48" height="36"><Sparklines data={(coin['sparkline_in_7d']['price'])}><SparklinesLine/></Sparklines></td>
                 </tr>)
                 }
