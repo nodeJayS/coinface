@@ -15,7 +15,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
 
 
 // Login existing user
-router.post("/login", (req, res) => {
+router.post("/signin", (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
   
     if (!isValid) {
@@ -27,25 +27,25 @@ router.post("/login", (req, res) => {
   
     User.findOne({ email }).then(user => {
       if (!user) {
-        errors.email = "User not found.";
-        return res.status(400).json(errors);
+        return res.status(400).json({ msg: "Email does not exist."});
       }
   
-      bcrypt.compare(password, user.password).then(isMatch => {
-        if (isMatch) {
-          const payload = { id: user.id, email: user.email };
+      bcrypt.compare(password, user.password)
+        .then(isMatch => {
+          if (isMatch) {
+            const payload = { id: user.id, email: user.email };
   
-          jwt.sign(payload, keys.secretOrKey, { expiresIn: 7200 }, (err, token) => {
-            res.json({
-              success: true,
-              token: "Bearer " + token
+            jwt.sign(payload, keys.secretOrKey, { expiresIn: 7200 }, (err, token) => {
+              res.json({
+                success: true,
+                token: "Bearer " + token
+              });
             });
-          });
-        } else {
-          errors.password = "Incorrect password.";
-          return res.status(400).json(errors);
-        }
-      });
+          } 
+          else {
+            return res.status(400).json({ msg: "Invalid password."});
+          }
+        });
     });
 });
 
@@ -58,17 +58,18 @@ router.post("/register", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  User.findOne({ email: req.body.email }).then(user => {
-    if (user) {
-      errors.email = "User already exists.";
-      return res.status(400).json(errors);
-    } else {
-      const newUser = new User({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password
-      });
+  User.findOne({ email: req.body.email })
+      .then(user => {
+        if (user) {
+          return res.status(400).json({ msg: "Email already registered."});
+        } 
+        else {
+          const newUser = new User({
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          password: req.body.password
+        });
       
       // Secure password with salt and hash
       bcrypt.genSalt(12, (err, salt) => {
@@ -78,14 +79,18 @@ router.post("/register", (req, res) => {
           newUser
             .save()
             .then(user => {
-              const payload = { id: user.id, handle: user.handle };
+
+              const payload = { id: user.id, email: user.email };
 
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 7200 }, (err, token) => {
+                if(err) throw err;
+
                 res.json({
                   success: true,
                   token: "Bearer " + token
                 });
               });
+
             })
             .catch(err => console.log(err));
         });

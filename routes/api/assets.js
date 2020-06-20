@@ -19,8 +19,8 @@ router.get('/:assetId', (req, res) => {
 // Generate new asset
 router.post('/', (req, res) => {
     const asset = new Asset({
-        assetName: req.body.assetName,
-        assetAmount: req.body.assetAmount
+        name: req.body.name,
+        price: req.body.price
     });
 
     asset.save()

@@ -24,25 +24,22 @@ export const logoutUser = () => ({
     type: RECEIVE_USER_LOGOUT
 });
 
-export const signup = user => dispatch => (
-    APIUtil.signup(user).then(() => (
-        dispatch(receiveUserSignIn())
-    ), err => (
-        dispatch(receiveErrors(err.response.data))
-    ))
+export const register = (user) => dispatch => (
+    APIUtil.register(user)
+        .then(() => dispatch(receiveUserSignIn()))
+        .catch(err => dispatch(receiveErrors(err.response.data)))
 );
 
-export const login = user => dispatch => (
-    APIUtil.login(user).then(res => {
-        const { token } = res.data;
-        localStorage.setItem('jwtToken', token);
-        APIUtil.setAuthToken(token);
-        const decoded = jwt_decode(token);
-        dispatch(receiveCurrentUser(decoded))
-    })
-    .catch(err => {
-        dispatch(receiveErrors(err.response.data));
-    })
+export const signin = (user) => dispatch => (
+    APIUtil.signin(user)
+        .then(res => {
+            const { token } = res.data;
+            localStorage.setItem('jwtToken', token);
+            APIUtil.setAuthToken(token);
+            const decoded = jwt_decode(token);
+            dispatch(receiveCurrentUser(decoded))
+            })
+        .catch(err => dispatch(receiveErrors(err.response.data)))
 )
 
 export const logout = () => dispatch => {

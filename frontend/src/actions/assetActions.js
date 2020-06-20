@@ -1,8 +1,6 @@
-export const buyCoin = (coin) => {
-    return (dispatch, getState) => {
-        dispatch({ 
-            type: 'BUY_COIN',
-            coin
-        })
-    }
-}
+export const BUY_COIN = 'BUY_COIN'
+
+export const buyCoin = (coin) => ({
+    type: BUY_COIN,
+        coin
+})

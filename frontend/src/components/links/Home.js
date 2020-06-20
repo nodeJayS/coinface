@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 
 import CoinData from '../markets/CoinData'
-import RegHome from '../auth/RegHome'
+import RegHome from '../session/RegHome'
 
 
 export default class home extends Component {
