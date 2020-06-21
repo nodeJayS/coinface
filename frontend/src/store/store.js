@@ -5,12 +5,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from '../reducers/rootReducer'
 
-const store = (preloadedState = {}) => (createStore(
+const configureStore = (preloadedState = {}) => (createStore(
     rootReducer,
     preloadedState, 
     composeWithDevTools(
     applyMiddleware(thunk, logger))
     ));
 
-export default store
+export default configureStore
 

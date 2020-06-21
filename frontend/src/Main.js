@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import React, { Component } from 'react'
 
-import NavBar from './components/nav/NavBar'
+import { AuthRoute, ProtectedRoute } from './util/route_util'
+import NavBar from './components/nav/NavBarContainer'
 import Home from './components/links/Home'
 import Prices from './components/links/Prices'
 import AboutUs from './components/links/AboutUs'
@@ -19,16 +20,16 @@ export default class Main extends Component {
             <Router>
                 <NavBar />
                 <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/prices" component={Prices} />
-                    <Route path="/markets" component={Markets} />
-                    <Route path="/wallet" component={Wallet} />
-                    <Route path="/about-us" component={AboutUs} />
-                    <Route path="/sign-in" component={Signin} />
-                    <Route path="/registration" component={Registration} />
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/prices" component={Prices} />
+                    <Route exact path="/markets" component={Markets} />
+                    <Route exact path="/wallet" component={Wallet} />
+                    <Route exact path="/about-us" component={AboutUs} />
+                    <AuthRoute exact path="/sign-in" component={Signin} />
+                    <AuthRoute exact path="/registration" component={Registration} />
 
-                    <Route path="/dashboard" component={Dashboard} />
-                    <Route path="/portfolio" component={Portfolio} />
+                    <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+                    <ProtectedRoute exact path="/portfolio" component={Portfolio} />
                 </Switch>
             </Router>
         )

@@ -17,12 +17,12 @@ class Signin extends Component {
         // this.renderErrors = this.renderErrors.bind(this);
     }
 
-    UNSAFE_componentWillReceiveProps(nextProps) {
-        if (nextProps.signedIn === true) {
-          this.props.history.push('/portfolio');
-        }
-        this.setState({errors: nextProps.errors})
-    }
+    // UNSAFE_componentWillReceiveProps(nextProps) {
+    //     if (nextProps.signedIn === true) {
+    //       this.props.history.push('/portfolio');
+    //     }
+    //     this.setState({errors: nextProps.errors})
+    // }
     
     handleChange = (e) => {
         this.setState({
@@ -37,20 +37,21 @@ class Signin extends Component {
             password: this.state.password
     };
 
-        this.props.signin(user); 
+        this.props.signin(user)
+            .then(() => this.props.history.push('/dashboard'))
     }
 
-    // renderErrors() {
-    //     return(
-    //         <ul>
-    //             {Object.keys(this.state.errors).map((error, i) => (
-    //                 <li key={`error-${i}`}>
-    //                     {this.state.errors[error]}
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //     );
-    // }
+    renderErrors() {
+        return(
+            <ul>
+                {Object.keys(this.state.errors).map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {this.state.errors[error]}
+                    </li>
+                ))}
+            </ul>
+        );
+    }
 
     render() {
         return (

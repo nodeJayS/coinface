@@ -44,7 +44,7 @@ class Registration extends Component {
             password2: this.state.password2
         }
         this.props.register(user)
-            .then(() => this.props.history.push('/signin') )
+            .then(() => this.props.history.push('/signin'))
     }
     
     // renderErrors() {
