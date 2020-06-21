@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Table from 'react-bootstrap/Table';
 import Image from 'react-bootstrap/Image';
 import { Sparklines, SparklinesLine } from 'react-sparklines'
 
-export default function CoinList({coinData}) {
+import * as CoinAPIUtil from '../../util/coin_util'
+
+export default class CoinList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            coinData: [],
+        }
+    }
+
+    componentDidMount() {
+        CoinAPIUtil.fetchCoinData(this.props.coinIds)
+            .then(res => this.setState({coinData: res.data}))
+    }
+
+    render() {
     let coinNum = 1;
     return (
         <Table responsive striped borderless size="sm" width="100">
@@ -20,7 +35,7 @@ export default function CoinList({coinData}) {
                 </tr>
             </thead>
             <tbody>
-                {coinData && coinData.map(coin =>
+                {this.state.coinData && this.state.coinData.map(coin =>
                 <tr key={coin.id}>
                     <td>{coinNum++}</td>
                     <td><Image src={coin.image} alt={coin.name} width="24" height="24"></Image></td>
@@ -34,5 +49,6 @@ export default function CoinList({coinData}) {
                 }
             </tbody>
         </Table>
-    )
+        )
+    }
 }

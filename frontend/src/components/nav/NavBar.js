@@ -5,9 +5,8 @@ import NavLink from 'react-bootstrap/NavLink'
 import Nav from 'react-bootstrap/Nav'
 import Button from 'react-bootstrap/Button'
 import NavDropdown from 'react-bootstrap/NavDropdown'
-import { withRouter } from 'react-router-dom';
 
-class NavBar extends Component {
+export default class NavBar extends Component {
 
   constructor(props) {
     super(props);
@@ -79,7 +78,7 @@ class NavBar extends Component {
       );
     }
 }
- 
+
   render() {
     return (
       <>
@@ -90,5 +89,3 @@ class NavBar extends Component {
     )
   }
 }
-
-export default withRouter(NavBar)

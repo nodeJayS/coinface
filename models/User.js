@@ -22,6 +22,16 @@ const UserSchema = new Schema({
     password: {
       type: String,
       required: true
+    },
+
+    usdBalance: {
+      type: Number,
+      default: 0
+    },
+
+    assetBalance: {
+      type: Number,
+      default: 0
     }
   })
 

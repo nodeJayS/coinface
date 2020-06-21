@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const db = require('./config/keys').mongoURI;
 const users = require('./routes/api/users')
-const assets = require('./routes/api/assets')
+// const assets = require('./routes/api/assets')
 const passport = require('passport');
 
 // Connect to database
@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(passport.initialize());
 
 app.use('/api/users', users);
-app.use('/api/assets', assets);
+// app.use('/api/assets', assets);
 
 const port = process.env.PORT || 5000;
 

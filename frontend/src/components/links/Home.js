@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 
-import CoinData from '../markets/CoinData'
+import CoinList from '../markets/CoinList'
 import RegHome from '../session/RegHome'
 
 
@@ -33,9 +33,7 @@ export default class home extends Component {
                 </Container>
 
                 <Container>
-                    <CoinData
-                        coinIds={this.state.coinIds}
-                    />  
+                    <CoinList coinIds={this.state.coinIds} />  
                 </Container>       
             </>
         )
