@@ -14,7 +14,7 @@ class Signin extends Component {
             };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.renderErrors = this.renderErrors.bind(this);
+        // this.renderErrors = this.renderErrors.bind(this);
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
@@ -37,20 +37,20 @@ class Signin extends Component {
             password: this.state.password
     };
 
-        this.props.login(user); 
+        this.props.signin(user); 
     }
 
-    renderErrors() {
-        return(
-            <ul>
-                {Object.keys(this.state.errors).map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {this.state.errors[error]}
-                    </li>
-                ))}
-            </ul>
-        );
-    }
+    // renderErrors() {
+    //     return(
+    //         <ul>
+    //             {Object.keys(this.state.errors).map((error, i) => (
+    //                 <li key={`error-${i}`}>
+    //                     {this.state.errors[error]}
+    //                 </li>
+    //             ))}
+    //         </ul>
+    //     );
+    // }
 
     render() {
         return (
@@ -76,7 +76,7 @@ class Signin extends Component {
                     </div>
                 
                     <Col>
-                        <button className="btn btn-primary" type="submit" value="Submit">
+                        <button className="btn btn-primary" type="submit">
                             Sign in
                         </button> 
                     </Col>

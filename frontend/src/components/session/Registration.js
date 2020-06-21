@@ -3,7 +3,6 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import { withRouter } from 'react-router-dom';
-import * as APIUtil from '../../util/session_api_util';
 
 class Registration extends Component {
     constructor(props) {
@@ -21,13 +20,13 @@ class Registration extends Component {
         this.clearedErrors = false;
     }
 
-    UNSAFE_componentWillReceiveProps(nextProps) {
-        if (nextProps.signedIn === true) {
-          this.props.history.push('/login');
-        }
+    // UNSAFE_componentWillReceiveProps(nextProps) {
+    //     if (nextProps.signedIn === true) {
+    //       this.props.history.push('/signin');
+    //     }
     
-        this.setState({errors: nextProps.errors})
-    }
+    //     this.setState({errors: nextProps.errors})
+    // }
     
     handleChange(e) {
         this.setState({
@@ -35,7 +34,7 @@ class Registration extends Component {
         })
     }    
     
-    handleSubmit(e) {
+    handleSubmit = (e) => {
         e.preventDefault();
         let user = {
             firstName: this.state.firstName,
@@ -43,17 +42,9 @@ class Registration extends Component {
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2
-        };
-        // this.props.register(user, this.props.history); 
-        APIUtil.register(user);
-        this.setState = {
-            firstName: '',
-            lastName: '',
-            email: '',
-            password: '',
-            password2: '',
-            errors: {}
-        };
+        }
+        this.props.register(user)
+            .then(() => this.props.history.push('/signin') )
     }
     
     // renderErrors() {

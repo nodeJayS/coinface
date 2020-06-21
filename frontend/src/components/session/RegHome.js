@@ -6,6 +6,21 @@ import Col from 'react-bootstrap/Col'
 import RegistrationModal from './RegistrationModal'
 
 export default class RegistrationBar extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+        }
+    this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange(e) {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    }    
+
     render() {
         return (
             <>
@@ -14,7 +29,7 @@ export default class RegistrationBar extends Component {
                         <Row>
                             <Col sm={8}>
                                 <Form.Group>
-                                    <Form.Control type="email" placeholder="Email address" />
+                                    <Form.Control id="email" onChange={this.handleChange} type="email" placeholder="Email address" />
                                 </Form.Group>
                             </Col>
                             <Col sm={4}>

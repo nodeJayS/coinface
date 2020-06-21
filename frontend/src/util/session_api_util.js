@@ -8,10 +8,10 @@ export const setAuthToken = token => {
     }
 };
 
-export const register = (user) => {
-    return axios.post('/api/users/register', user);
+export const register = (userData) => {
+    return axios.post('/api/users/register', userData);
 };
 
-export const signin = (user) => {
-    return axios.post('/api/users/signin', user);
+export const signin = (userData) => {
+    return axios.post('/api/users/signin', userData);
 };

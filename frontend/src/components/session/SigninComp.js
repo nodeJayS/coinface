@@ -4,14 +4,14 @@ import Signin from './Signin';
 
 const mapStateToProps = (state) => {
     return {
-    errors: state.errors.session
+    errors: state.error.session
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        // signin: user => dispatch(sigin(user))
-        signin: user => console.log("Signed in ", user)
+        signin: user => dispatch(signin(user))
+        // signin: user => console.log("Signed in ", user)
     }
 }
 
