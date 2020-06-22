@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import Table from 'react-bootstrap/Table';
 import Image from 'react-bootstrap/Image';
 import { Sparklines, SparklinesLine } from 'react-sparklines'
+import { withRouter } from 'react-router-dom';
 
-import * as CoinAPIUtil from '../../util/coin_util'
-
-export default class CoinList extends Component {
+class CoinList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,8 +13,8 @@ export default class CoinList extends Component {
     }
 
     componentDidMount() {
-        CoinAPIUtil.fetchCoinData(this.props.coinIds)
-            .then(res => this.setState({coinData: res.data}))
+        this.props.fetchCoinData(this.props.coinIds)
+            .then(res => this.setState({coinData: res.coin}))
     }
 
     render() {
@@ -52,3 +51,5 @@ export default class CoinList extends Component {
         )
     }
 }
+
+export default withRouter(CoinList)

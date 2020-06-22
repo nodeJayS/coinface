@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
+
 import { signin } from '../../actions/sessionActions';
 import Signin from './Signin';
 
 const mapStateToProps = (state) => {
     return {
-    errors: state.error.session
+        errors: state.error.session
     };
 };
 

@@ -1,20 +1,12 @@
-// import { connect } from 'react-redux';
-// import { fetchCoinData } from '../../actions/sessionActions';
+import { connect } from 'react-redux';
 
-// import Registration from './Registration';
+import { fetchCoinData } from '../../actions/coinActions';
+import CoinList from './CoinList'
 
-// const mapStateToProps = (state) => {
-//     return {
-//         signedIn: state.session.isSignedIn,
-//         errors: state.error.session
-//     }
-// }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchCoinData: coin => dispatch(fetchCoinData(coin))
+    }
+}
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         register: user => dispatch(register(user)),
-//         signin: user => dispatch(signin(user)),
-//     }
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Registration);
+export default connect(null, mapDispatchToProps)(CoinList);
