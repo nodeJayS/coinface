@@ -7,6 +7,7 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 const validateLoginInput = require('../../validation/login');
 const validateRegisterInput = require('../../validation/register');
+const db = require('../../config/keys').mongoURI;
 
 // Private authorization route
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
@@ -33,8 +34,11 @@ router.post("/signin", (req, res) => {
       bcrypt.compare(password, user.password)
         .then(isMatch => {
           if (isMatch) {
-            const payload = { id: user.id, email: user.email };
-  
+            const payload = { id: user.id,
+                              email: user.email,
+                              usdBalance: user.usdBalance
+                            };
+
             jwt.sign(payload, keys.secretOrKey, { expiresIn: 7200 }, (err, token) => {
               res.json({
                 success: true,
@@ -48,7 +52,6 @@ router.post("/signin", (req, res) => {
         });
     });
 });
-
 
 // Register new user
 router.post("/register", (req, res) => {
@@ -68,7 +71,8 @@ router.post("/register", (req, res) => {
           firstName: req.body.firstName,
           lastName: req.body.lastName,
           email: req.body.email,
-          password: req.body.password
+          password: req.body.password,
+          usdBalance: req.body.usdBalance
         });
       
       // Secure password with salt and hash
@@ -98,5 +102,22 @@ router.post("/register", (req, res) => {
     }
   });
 });
+
+router.put("/deposit", (req, res) => {
+  const depositAmt = req.body.depositAmt
+  console.log(req.body.user.id)
+    User.findById(req.body.user.id, (err, user)=> {
+      if(err) {
+        throw err
+      }
+      else {
+        user.usdBalance += depositAmt
+        user.save()
+      }
+    })
+
+  // .then(res => console.log(res))
+  //   .catch(err => console.log(err))
+})
 
 module.exports = router;

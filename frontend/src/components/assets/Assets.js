@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import BuyCoin from './BuyCoin'
 import AssetsList from './AssetsList'
 
 class Assets extends Component {
@@ -10,7 +9,6 @@ class Assets extends Component {
         return (
             <div>
                 <AssetsList assets={this.props.assets}/>
-                <BuyCoin />
             </div>
         )
     }

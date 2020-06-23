@@ -13,6 +13,7 @@ class Registration extends Component {
             email: '',
             password: '',
             password2: '',
+            usdBalance: 0,
             errors: {}
         };
         this.handleChange = this.handleChange.bind(this);
@@ -28,7 +29,7 @@ class Registration extends Component {
     //     this.setState({errors: nextProps.errors})
     // }
     
-    handleChange(e) {
+    handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value
         })
@@ -41,10 +42,11 @@ class Registration extends Component {
             lastName: this.state.lastName,
             email: this.state.email,
             password: this.state.password,
-            password2: this.state.password2
+            password2: this.state.password2,
+            usdBalance: this.state.usdBalance
         }
         this.props.register(user)
-            .then(() => this.props.history.push('/signin'))
+            .then(() => this.props.history.push('/dashboard'))
     }
     
     // renderErrors() {
@@ -99,6 +101,12 @@ class Registration extends Component {
                 <div className="form-group">
                     <Col>
                         <input id="password2" value={this.state.password2} onChange={this.handleChange} type="password" placeholder="Confirm password" />
+                    </Col>
+                </div>
+
+                <div className="form-group">
+                    <Col>
+                        <input id="usdBalance" value={this.state.usdBalance} onChange={this.handleChange} type="number" placeholder="Initial deposit amount" />
                     </Col>
                 </div>
 

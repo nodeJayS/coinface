@@ -4,7 +4,6 @@ import Image from 'react-bootstrap/Image';
 import { Sparklines, SparklinesLine } from 'react-sparklines'
 import { withRouter } from 'react-router-dom';
 import Button from 'react-bootstrap/Button'
-import { Link } from 'react-router-dom';
 
 class CoinList extends Component {
     constructor(props) {

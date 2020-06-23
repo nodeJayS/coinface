@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import Table from 'react-bootstrap/Table';
 import { withRouter } from 'react-router-dom';
+import Container from 'react-bootstrap/Container'
+
+import BuyCoin from '../assets/trade/BuyCoin'
 
 class CoinPage extends Component {
     constructor(props) {
@@ -42,9 +45,10 @@ class CoinPage extends Component {
 
     render() {
         return (
-            <div>
+            <Container>
                 <this.createTable />
-            </div>
+                <BuyCoin />
+            </Container>
         )
     }
 }

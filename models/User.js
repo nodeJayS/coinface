@@ -32,6 +32,11 @@ const UserSchema = new Schema({
     assetBalance: {
       type: Number,
       default: 0
+    },
+
+    assets: {
+      type: Array,
+      default: []
     }
   })
 

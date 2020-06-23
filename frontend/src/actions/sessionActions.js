@@ -47,3 +47,9 @@ export const signout = () => dispatch => {
     APIUtil.setAuthToken(false)
     dispatch(signOutUser())
 };
+
+export const deposit = (depositAmt) => dispatch => {
+    APIUtil.deposit(depositAmt)
+        .then((res) => dispatch(receiveCurrentUser(res)))
+        .catch(err => dispatch(receiveErrors(err.response.data)))
+}

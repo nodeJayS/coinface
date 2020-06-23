@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 
-import { buyCoin } from '../../actions/coinActions'
+import { buyCoin } from '../../../actions/coinActions'
 
 class BuyCoin extends Component {
     state = {

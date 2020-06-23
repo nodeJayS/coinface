@@ -15,3 +15,8 @@ export const register = (userData) => {
 export const signin = (userData) => {
     return axios.post('/api/users/signin', userData);
 };
+
+export const deposit = (depositAmt) => {
+    console.log(depositAmt)
+    return axios.put('/api/users/deposit', depositAmt);
+};
