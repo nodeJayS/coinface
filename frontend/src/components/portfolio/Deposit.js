@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { withRouter } from 'react-router-dom';
-import * as APIUTil from '../../util/session_api_util'
+// import * as APIUtil from '../../util/session_api_util'
 
 class Deposit extends Component {
     constructor(props) {
@@ -11,11 +11,18 @@ class Deposit extends Component {
         this.state = {
             show: false,
             depositAmt: 0,
+            user: this.props.user
         };
         this.handleShow = this.handleShow.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    // componentDidUpdate(prevProps) {
+    //     if (this.props.user.usdBalance !== prevProps.user.usdBalance) {
+    //         this.setState({user: this.state.user})
+    //     }
+    // }
 
     handleShow = () => {
         this.setState({
@@ -33,27 +40,31 @@ class Deposit extends Component {
         e.preventDefault();
         let depositAmt = {
             depositAmt: this.state.depositAmt,
-            user: this.props.user
+            user: this.state.user
 
         }
-        APIUTil.deposit(depositAmt)
-        // this.props.deposit(this.state.depositAmt)
-        //     .then(() => this.props.history.push('/dashboard'))
+        console.log(this.state.user)
+        // APIUtil.deposit(depositAmt)
+        this.props.deposit(depositAmt)
+        this.setState({
+            show: !this.state.show,
+            depositAmt: 0,
+        })
     }
 
     render() {
         return (
             <>
             <Button variant="primary" onClick={this.handleShow}>
-                Deposit
+                Deposit {this.props.user.usdBalance}
             </Button>        
 
             <Modal show={this.state.show} onHide={this.handleShow}>
+                <Form onSubmit={this.handleSubmit}>
                 <Modal.Header>
                     <Modal.Title>Deposit</Modal.Title>
                 </Modal.Header>
-                
-                <Form onSubmit={this.handleSubmit}>
+            
                 <Modal.Body>
                         <input id="depositAmt" value={this.state.depositAmt} onChange={this.handleChange} type="number" placeholder="$0.00" />
                 </Modal.Body>

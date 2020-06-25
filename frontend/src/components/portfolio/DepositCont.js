@@ -4,7 +4,6 @@ import { deposit } from '../../actions/sessionActions';
 import Deposit from './Deposit'
 
 const mapStateToProps = (state) => {
-    console.log(state.session)
     return {
         user: state.session.user
     }

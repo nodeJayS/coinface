@@ -28,7 +28,7 @@ export default class Main extends Component {
                     <AuthRoute exact path="/sign-in" component={Signin} />
                     <AuthRoute exact path="/registration" component={Registration} />
 
-                    <ProtectedRoute  path={`/prices/:coinid`} component={CoinPage} />
+                    <ProtectedRoute path={`/prices/:coinid`} component={CoinPage} />
                     <ProtectedRoute exact path="/dashboard" component={Dashboard} />
                     <ProtectedRoute exact path="/portfolio" component={Portfolio} />
                 </Switch>

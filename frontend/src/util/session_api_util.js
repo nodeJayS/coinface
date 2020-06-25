@@ -17,6 +17,5 @@ export const signin = (userData) => {
 };
 
 export const deposit = (depositAmt) => {
-    console.log(depositAmt)
-    return axios.put('/api/users/deposit', depositAmt);
+    return axios.patch('/api/users/deposit', depositAmt)
 };

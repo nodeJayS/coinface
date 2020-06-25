@@ -36,10 +36,12 @@ router.post("/signin", (req, res) => {
           if (isMatch) {
             const payload = { id: user.id,
                               email: user.email,
-                              usdBalance: user.usdBalance
+                              usdBalance: user.usdBalance,
+                              assetBalance: user.assetBalance,
+                              assets: user.assets
                             };
 
-            jwt.sign(payload, keys.secretOrKey, { expiresIn: 7200 }, (err, token) => {
+            jwt.sign(payload, keys.secretOrKey, { expiresIn: 1800 }, (err, token) => {
               res.json({
                 success: true,
                 token: "Bearer " + token
@@ -54,7 +56,7 @@ router.post("/signin", (req, res) => {
 });
 
 // Register new user
-router.post("/register", (req, res) => {
+router.put("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
 
   if (!isValid) {
@@ -86,7 +88,7 @@ router.post("/register", (req, res) => {
 
               const payload = { id: user.id, email: user.email };
 
-              jwt.sign(payload, keys.secretOrKey, { expiresIn: 7200 }, (err, token) => {
+              jwt.sign(payload, keys.secretOrKey, { expiresIn: 1800 }, (err, token) => {
                 if(err) throw err;
 
                 res.json({
@@ -103,21 +105,29 @@ router.post("/register", (req, res) => {
   });
 });
 
-router.put("/deposit", (req, res) => {
+router.patch("/deposit", (req, res) => {
   const depositAmt = req.body.depositAmt
-  console.log(req.body.user.id)
-    User.findById(req.body.user.id, (err, user)=> {
-      if(err) {
-        throw err
+  User.findById(req.body.user.id, (err, user)=> {
+    if(err) {
+      throw err
+    }
+    user.usdBalance += Number(depositAmt)
+    user.save()
+    .then(user => {
+      jwt.sign(
+      user,
+      keys.secretOrKey,
+      { expiresIn: 1800 },
+      (err, token) => {
+        res.json({
+          success: true,
+          token: "Bearer " + token
+        });
       }
-      else {
-        user.usdBalance += depositAmt
-        user.save()
-      }
-    })
+    )
+    });
 
-  // .then(res => console.log(res))
-  //   .catch(err => console.log(err))
+  })
 })
 
 module.exports = router;

@@ -5,6 +5,7 @@ const db = require('./config/keys').mongoURI;
 const users = require('./routes/api/users')
 // const assets = require('./routes/api/assets')
 const passport = require('passport');
+const cors = require('cors')
 
 // Connect to database
 mongoose
@@ -15,6 +16,7 @@ mongoose
 // Middleware configuration
 app.use(express.json());
 app.use(passport.initialize());
+app.use(cors());
 
 app.use('/api/users', users);
 // app.use('/api/assets', assets);
