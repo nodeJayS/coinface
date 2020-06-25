@@ -41,7 +41,7 @@ router.post("/signin", (req, res) => {
                               assets: user.assets
                             };
 
-            jwt.sign(payload, keys.secretOrKey, { expiresIn: 1800 }, (err, token) => {
+            jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
               res.json({
                 success: true,
                 token: "Bearer " + token
@@ -88,7 +88,7 @@ router.put("/register", (req, res) => {
 
               const payload = { id: user.id, email: user.email };
 
-              jwt.sign(payload, keys.secretOrKey, { expiresIn: 1800 }, (err, token) => {
+              jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                 if(err) throw err;
 
                 res.json({
@@ -105,29 +105,36 @@ router.put("/register", (req, res) => {
   });
 });
 
+// router.patch("/deposit", (req, res) => {
+//   const depositAmt = req.body.depositAmt
+//   User.findById(req.body.user.id, (err, user) => {
+//     if(err) {
+//       throw err
+//     }
+//     user.usdBalance += Number(depositAmt)
+//     user.save()
+//   })
+// })
+
 router.patch("/deposit", (req, res) => {
   const depositAmt = req.body.depositAmt
-  User.findById(req.body.user.id, (err, user)=> {
+if (req.headers && req.headers.authorization) {
+  var authorization = req.headers.authorization.split(' ')[1],
+        decoded;
+    try {
+      decoded = jwt.verify(authorization.split(' ')[1],secret.secretToken)
+    } catch (e) {
+        return res.status(401).send('unauthorized');
+    }
+  const userId = decoded.id;
+  User.findById(userId, (err, user) => {
     if(err) {
       throw err
     }
     user.usdBalance += Number(depositAmt)
     user.save()
-    .then(user => {
-      jwt.sign(
-      user,
-      keys.secretOrKey,
-      { expiresIn: 1800 },
-      (err, token) => {
-        res.json({
-          success: true,
-          token: "Bearer " + token
-        });
-      }
-    )
-    });
-
   })
+}
 })
 
 module.exports = router;

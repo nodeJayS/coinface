@@ -18,11 +18,11 @@ class Deposit extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // componentDidUpdate(prevProps) {
-    //     if (this.props.user.usdBalance !== prevProps.user.usdBalance) {
-    //         this.setState({user: this.state.user})
-    //     }
-    // }
+    componentDidUpdate(prevProps) {
+        if (this.props.user.usdBalance !== prevProps.user.usdBalance) {
+            this.setState({user: this.state.user})
+        }
+    }
 
     handleShow = () => {
         this.setState({
@@ -43,20 +43,20 @@ class Deposit extends Component {
             user: this.state.user
 
         }
-        console.log(this.state.user)
         // APIUtil.deposit(depositAmt)
         this.props.deposit(depositAmt)
         this.setState({
             show: !this.state.show,
             depositAmt: 0,
         })
+        console.log(this.state.user)
     }
 
     render() {
         return (
             <>
             <Button variant="primary" onClick={this.handleShow}>
-                Deposit {this.props.user.usdBalance}
+                Deposit
             </Button>        
 
             <Modal show={this.state.show} onHide={this.handleShow}>

@@ -49,7 +49,14 @@ export const signout = () => dispatch => {
 };
 
 export const deposit = (depositAmt) => dispatch => {
-    APIUtil.deposit(depositAmt)
-        .then((res) => dispatch(receiveCurrentUser(res)))
+    return APIUtil.deposit(depositAmt)
+        .then((res) => dispatch(receiveCurrentUser(res.data)))
+        // .then(res => {
+        //     const { token } = res.data;
+        //     localStorage.setItem('jwtToken', token);
+        //     APIUtil.setAuthToken(token);
+        //     const decoded = jwt_decode(token);
+        //     dispatch(receiveCurrentUser(decoded))
+        //     })
         .catch(err => dispatch(receiveErrors(err.response.data)))
 }
