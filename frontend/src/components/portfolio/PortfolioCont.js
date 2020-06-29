@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 
 import { deposit } from '../../actions/sessionActions';
-import Deposit from './Deposit'
+import Portfolio from './Portfolio'
 
 const mapStateToProps = (state) => {
     return {
-        usdBalance: state.session.user.usdBalance
+        user: state.session.user
     }
 } 
 
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Deposit);
+export default connect(mapStateToProps, mapDispatchToProps)(Portfolio);

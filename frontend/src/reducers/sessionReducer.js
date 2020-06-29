@@ -1,8 +1,12 @@
-import { RECEIVE_CURRENT_USER, RECEIVE_USER_SIGN_OUT, RECEIVE_USER_SIGN_IN } from '../actions/sessionActions';
+import { RECEIVE_CURRENT_USER,
+        RECEIVE_USER_SIGN_OUT,
+        RECEIVE_USER_SIGN_IN,
+        RECEIVE_USER_DEPOSIT }
+        from '../actions/sessionActions';
 
 const initialState = {
     isAuthenticated: false,
-    user: {}
+    user: localStorage.getItem('state'),
 };
 
 export default function(state = initialState, action) {
@@ -23,6 +27,11 @@ export default function(state = initialState, action) {
                 ...state,
                 isAuthenticated: true,
                 user: action.payload
+            };
+        case RECEIVE_USER_DEPOSIT:
+            return {
+                ...state,
+                user: {...state.user, usdBalance: action.usdBalance }
             };
         default:
             return state;

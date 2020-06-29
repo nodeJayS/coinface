@@ -11,7 +11,7 @@ import Registration from './components/session/RegistrationComp'
 import Markets from './components/links/products/Markets'
 import Wallet from './components/links/products/Wallet'
 import Dashboard from './components/dashboard/Dashboard'
-import Portfolio from './components/portfolio/Portfolio'
+import Portfolio from './components/portfolio/PortfolioCont'
 import CoinPage from './components/markets/CoinPageCont'
 
 export default class Main extends Component {

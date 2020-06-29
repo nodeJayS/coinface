@@ -5,6 +5,7 @@ export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_SIGN_OUT = "RECEIVE_USER_SIGN_OUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
+export const RECEIVE_USER_DEPOSIT = "RECEIVE_USER_DEPOSIT"
 
 export const receiveCurrentUser = currentUser => ({
     type: RECEIVE_CURRENT_USER,
@@ -23,6 +24,11 @@ export const receiveErrors = errors => ({
 export const signOutUser = () => ({
     type: RECEIVE_USER_SIGN_OUT
 });
+
+export const receiveUserDeposit = usdBalance => ({
+    type: RECEIVE_USER_DEPOSIT,
+    usdBalance
+})
 
 export const register = (user) => dispatch => (
     APIUtil.register(user)
@@ -50,13 +56,6 @@ export const signout = () => dispatch => {
 
 export const deposit = (depositAmt) => dispatch => {
     return APIUtil.deposit(depositAmt)
-        .then((res) => dispatch(receiveCurrentUser(res.data)))
-        // .then(res => {
-        //     const { token } = res.data;
-        //     localStorage.setItem('jwtToken', token);
-        //     APIUtil.setAuthToken(token);
-        //     const decoded = jwt_decode(token);
-        //     dispatch(receiveCurrentUser(decoded))
-        //     })
+        .then(res => dispatch(receiveUserDeposit(res.data)))
         .catch(err => dispatch(receiveErrors(err.response.data)))
 }

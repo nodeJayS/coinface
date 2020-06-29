@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import { setAuthToken } from './util/session_api_util'
 import { signout } from "./actions/sessionActions"
 import jwt_decode from 'jwt-decode'
+import { loadState, saveState } from './store/localStorage'
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
@@ -16,13 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
         setAuthToken(localStorage.jwtToken);
         const decoded = jwt_decode(localStorage.jwtToken);
 
-        const preloadedState = {
-            session: {
-                isAuthenticated: true,
-                user: decoded
-            }
-        }
+        const preloadedState = loadState()
+
         store = configureStore(preloadedState);
+
+        store.subscribe(() => saveState(store.getState()))
+
         const currentTime = Date.now() / 1000;
         if (decoded.exp < currentTime) {
             store.dispatch(signout());
@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     else {
         store = configureStore();
     }
+
 
     ReactDOM.render(<Provider store={store}><Main /></Provider>, document.getElementById('root')) 
 })

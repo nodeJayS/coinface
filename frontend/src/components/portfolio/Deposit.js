@@ -3,7 +3,6 @@ import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { withRouter } from 'react-router-dom';
-// import * as APIUtil from '../../util/session_api_util'
 
 class Deposit extends Component {
     constructor(props) {
@@ -11,18 +10,18 @@ class Deposit extends Component {
         this.state = {
             show: false,
             depositAmt: 0,
-            user: this.props.user
+            // user: this.props.user
         };
         this.handleShow = this.handleShow.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.user.usdBalance !== prevProps.user.usdBalance) {
-            this.setState({user: this.state.user})
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     if (this.props.user.usdBalance !== prevProps.user.usdBalance) {
+    //         this.setState({user: this.state.user})
+    //     }
+    // }
 
     handleShow = () => {
         this.setState({
@@ -40,23 +39,22 @@ class Deposit extends Component {
         e.preventDefault();
         let depositAmt = {
             depositAmt: this.state.depositAmt,
-            user: this.state.user
+            // user: this.state.user
 
         }
-        // APIUtil.deposit(depositAmt)
         this.props.deposit(depositAmt)
+        .then(() => this.props.history.push('/portfolio'))
         this.setState({
             show: !this.state.show,
             depositAmt: 0,
         })
-        console.log(this.state.user)
     }
 
     render() {
         return (
             <>
             <Button variant="primary" onClick={this.handleShow}>
-                Deposit
+                Deposit {this.props.usdBalance}
             </Button>        
 
             <Modal show={this.state.show} onHide={this.handleShow}>
