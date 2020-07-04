@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom';
 
-export default class Balance extends Component {
+class Balance extends Component {
     render() {
         return (
             <div>
-                Balance chart
+            Portfolio balance
+            {this.props.usdBalance}
             </div>
         )
     }
 }
+
+export default withRouter(Balance)

@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table';
 import { withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container'
 
-import BuyCoin from '../assets/trade/BuyCoin'
+import BuyCoin from './trade/BuyCoinCont'
 
 class CoinPage extends Component {
     constructor(props) {
@@ -47,7 +47,7 @@ class CoinPage extends Component {
         return (
             <Container>
                 <this.createTable />
-                <BuyCoin />
+                <BuyCoin coinId={this.state.coinData.id}/>
             </Container>
         )
     }

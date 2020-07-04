@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Balance from './Balance'
+import Balance from './BalanceCont'
 import Assets from '../assets/Assets'
 import Transactions from './Transactions'
 import Deposit from './DepositCont'
@@ -12,7 +12,6 @@ class Portfolio extends Component {
     render() {
         return (
             <div>
-                Portfolio with:
                 <Balance />
                 <Assets />
                 <Transactions />

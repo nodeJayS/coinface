@@ -31,7 +31,11 @@ export default function(state = initialState, action) {
         case RECEIVE_USER_DEPOSIT:
             return {
                 ...state,
-                user: {...state.user, usdBalance: action.usdBalance }
+                user: {
+                    ...state.user,
+                    usdBalance: action.deposit.usdBalance,
+                    assetBalance: action.deposit.assetBalance
+                }
             };
         default:
             return state;

@@ -4,7 +4,8 @@ const app = express();
 const mongoose = require('mongoose');
 const db = require('./config/keys').mongoURI;
 const users = require('./routes/api/users')
-// const assets = require('./routes/api/assets')
+const transactions = require('./routes/api/transactions')
+const assets = require('./routes/api/assets')
 const passport = require('passport');
 const cors = require('cors')
 
@@ -20,7 +21,8 @@ app.use(passport.initialize());
 app.use(cors());
 
 app.use('/api/users', users);
-// app.use('/api/assets', assets);
+app.use('/api/transactions', transactions);
+app.use('/api/assets', assets);
 
 const port = process.env.PORT || 5000;
 

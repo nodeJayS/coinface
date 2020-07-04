@@ -25,9 +25,9 @@ export const signOutUser = () => ({
     type: RECEIVE_USER_SIGN_OUT
 });
 
-export const receiveUserDeposit = usdBalance => ({
+export const receiveUserDeposit = (deposit) => ({
     type: RECEIVE_USER_DEPOSIT,
-    usdBalance
+    deposit
 })
 
 export const register = (user) => dispatch => (
@@ -52,7 +52,7 @@ export const signout = () => dispatch => {
     localStorage.removeItem('jwtToken')
     APIUtil.setAuthToken(false)
     dispatch(signOutUser())
-};
+}
 
 export const deposit = (depositAmt) => dispatch => {
     return APIUtil.deposit(depositAmt)

@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const AssetSchema = new Schema({
+  name: String,
+
+  balance: Number
+})
+
 const UserSchema = new Schema({
     firstName: {
       type: String,
@@ -29,15 +35,7 @@ const UserSchema = new Schema({
       default: 0
     },
 
-    assetBalance: {
-      type: Number,
-      default: 0
-    },
-
-    assets: {
-      type: Array,
-      default: []
-    }
+    assets: [AssetSchema]
   })
 
 module.exports = User = mongoose.model('User', UserSchema);

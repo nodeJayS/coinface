@@ -1,22 +1,10 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+// const mongoose = require('mongoose');
+// const Schema = mongoose.Schema;
 
-const AssetSchema = new Schema({
-    
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
+// const AssetSchema = new Schema({
+//   name: String,
 
-    name: {
-        type: String,
-        required: true
-    },
+//   balance: String
+// })
 
-    amount: {
-        type: Number,
-        required: true
-    }
-})
-
-module.exports = Asset = mongoose.model('Asset', AssetSchema);
+// module.exports = Asset = mongoose.model('Asset', AssetSchema);

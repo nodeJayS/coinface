@@ -10,7 +10,6 @@ class Deposit extends Component {
         this.state = {
             show: false,
             depositAmt: 0,
-            // user: this.props.user
         };
         this.handleShow = this.handleShow.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -39,7 +38,6 @@ class Deposit extends Component {
         e.preventDefault();
         let depositAmt = {
             depositAmt: this.state.depositAmt,
-            // user: this.state.user
 
         }
         this.props.deposit(depositAmt)
@@ -54,7 +52,7 @@ class Deposit extends Component {
         return (
             <>
             <Button variant="primary" onClick={this.handleShow}>
-                Deposit {this.props.usdBalance}
+                Deposit
             </Button>        
 
             <Modal show={this.state.show} onHide={this.handleShow}>

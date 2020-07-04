@@ -1,46 +1,66 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Asset = require('../../models/Asset');
+const jwt = require('jsonwebtoken');
+const keys = require('../../config/keys');
+const User = require('../../models/User');
+// const Asset = require('../../models/Asset')
 
-// Retrieve all assets
-router.get('/', (req, res) => {
-    Asset.find()
-        .then(assets => {res.json(assets)})
-        .catch(err => res.status(400).json('Error: ' + err))
+router.post("/createAsset", (req, res) => {
+    const coin = req.body
+  
+    if (req.headers && req.headers.authorization) {
+    
+      const authorization = req.headers.authorization.split(' ')[1] 
+      try {
+        decoded = jwt.verify(authorization, keys.secretOrKey);
+      } catch (e) {
+        return res.status(401).json('unauthorized');
+      }
+      const userId = decoded.id;
+
+      const newAsset = {
+        name: coin.id,
+        balance: Number(coin.quantity)
+      }
+    
+      User.findById(userId, (err, user) => {
+        if(err) {
+          throw err
+        }
+        user.assets.push(newAsset)
+          user.usdBalance -= Number(coin.usdAmount)
+          user.save()
+          console.log(user.assets)
+      })
+    }
 })
 
-// Retrieve specific asset by id
-router.get('/:assetId', (req, res) => {
-    Asset.findById(req.params.assetId)
-        .then(assets => {res.json(assets)})
-        .catch(err => res.status(400).json('Error: ' + err))
+router.patch("/updateAsset", (req, res) => {
+  const coin = req.body
+
+  if (req.headers && req.headers.authorization) {
+  
+    const authorization = req.headers.authorization.split(' ')[1] 
+    try {
+      decoded = jwt.verify(authorization, keys.secretOrKey);
+    } catch (e) {
+      return res.status(401).json('unauthorized');
+    }
+    const userId = decoded.id;
+
+    User.findById(userId, (err, user) => {
+      if(err) {
+        throw err
+      }
+      let assetIndex = user.assets.findIndex(asset => asset.name = coin.id)
+      user.assets[assetIndex].balance += Number(coin.quantity)
+      user.usdBalance -= Number(coin.usdAmount)
+      user.save()
+        .then(user => console.log(user))
+
+    })
+  }
 })
 
-// Generate new asset
-router.post('/', (req, res) => {
-    const asset = new Asset({
-        name: req.body.name,
-        price: req.body.price
-    });
-
-    asset.save()
-        .then(data => {res.json(data)})
-        .catch(err => res.status(400).json('Error: ' + err))
-});
-
-router.delete('/:assetId', (req, res) => {
-    Asset.deleteOne({_id: req.params.assetId})
-        .then(assets => {res.json(assets)})
-        .catch(err => res.status(400).json('Error: ' + err))
-})
-
-router.patch('/:assetId', (req, res) => {
-    Asset.updateOne(
-        {_id: req.params.assetId},
-        { $set: { assetAmount: req.body.assetAmount }}
-        )
-        .then(assets => {res.json(assets)})
-        .catch(err => res.status(400).json('Error: ' + err))
-})
 
 module.exports = router;

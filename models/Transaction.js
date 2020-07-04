@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const TransactionSchema = new Schema({
     user: {
     type: Schema.Types.ObjectId,
-    ref: 'users'
+    ref: 'User'
     },
 
     name: {
@@ -22,6 +22,11 @@ const TransactionSchema = new Schema({
         required: true
     },
 
+    usdAmount: {
+        type: Number,
+        required: true
+    },
+    
     date: {
         type: Date,
         default: Date.now
@@ -33,4 +38,4 @@ const TransactionSchema = new Schema({
     }
 })
 
-module.exports = Transaction = mongoose.model('Transaction', TransactionSchema);
+module.exports = Tx = mongoose.model('Transaction', TransactionSchema);

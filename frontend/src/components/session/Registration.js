@@ -43,7 +43,7 @@ class Registration extends Component {
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2,
-            usdBalance: this.state.usdBalance
+            usdBalance: parseInt(this.state.usdBalance)
         }
         this.props.register(user)
             .then(() => this.props.history.push('/dashboard'))
