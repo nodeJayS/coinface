@@ -2,9 +2,9 @@
 // const Schema = mongoose.Schema;
 
 // const AssetSchema = new Schema({
-//   name: String,
+//   'name': String,
 
-//   balance: String
+//   'balance': String
 // })
 
 // module.exports = Asset = mongoose.model('Asset', AssetSchema);

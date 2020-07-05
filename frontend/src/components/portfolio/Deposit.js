@@ -41,7 +41,7 @@ class Deposit extends Component {
 
         }
         this.props.deposit(depositAmt)
-        .then(() => this.props.history.push('/portfolio'))
+            .then(() => this.props.history.push('/portfolio'))
         this.setState({
             show: !this.state.show,
             depositAmt: 0,

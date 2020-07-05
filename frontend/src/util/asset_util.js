@@ -4,6 +4,6 @@ export const createAsset = (coinTx) => {
     return axios.post('/api/assets/createAsset', coinTx)
 };
 
-export const updateAsset = (coinTx) => {
-    return axios.patch('/api/assets/updateAsset', coinTx)
+export const updateAsset = (asset) => {
+    return axios.patch('/api/assets/updateAsset', asset)
 };

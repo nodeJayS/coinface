@@ -35,30 +35,6 @@ router.post("/buy", (req, res) => {
         newTx
           .save()
           .catch(err => console.log(err));
-          // .then(newTx => {console.log(newTx)
-          //   if (user.assets.hasOwnProperty(newTx.name)) {
-          //     user.assets[newTx.name] += Number(newTx.quantity)
-          //     user.usdBalance -= Number(newTx.usdAmount)
-          //   } else {
-          //     user.assets[newTx.name] = Number(newTx.quantity)
-          //     user.usdBalance -= Number(newTx.usdAmount)
-          //   }
-          //   user
-          //     .save()
-          //     .then(user => console.log(user.assets))
-          // })
-
-        // if (user.assets[coin.name] > 0) {
-        //   user.assets[coin.name] += Number(coin.quantity)
-        //   user.usdBalance -= Number(coin.quantity)
-        // } else {
-        //   user.assets[coin.name] = Number(coin.quantity)
-        //   user.usdBalance -= Number(coin.usdAmount)
-        // }
-
-        // user
-        //   .save()
-        //   .then(user => console.log(user.assets))
       })
     }
 })

@@ -23,7 +23,3 @@ export const deposit = (depositAmt) => {
 export const subtract = (usdAmount) => {
     return axios.patch('/api/users/subtract', usdAmount)
 };
-
-export const addAsset = (buyTx) => {
-    return axios.patch('/api/users/updateAsset', buyTx)
-};

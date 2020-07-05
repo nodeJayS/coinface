@@ -3,7 +3,6 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const User = require('../../models/User');
-// const Asset = require('../../models/Asset')
 
 router.post("/createAsset", (req, res) => {
     const coin = req.body
@@ -30,7 +29,11 @@ router.post("/createAsset", (req, res) => {
         user.assets.push(newAsset)
           user.usdBalance -= Number(coin.usdAmount)
           user.save()
-          console.log(user.assets)
+            .then(user => {
+            let assetIndex = user.assets.findIndex(asset => asset.name = newAsset.name)
+            res.json(user.assets[assetIndex])
+          })
+            .catch(err => console.log(err));
       })
     }
 })
@@ -56,7 +59,8 @@ router.patch("/updateAsset", (req, res) => {
       user.assets[assetIndex].balance += Number(coin.quantity)
       user.usdBalance -= Number(coin.usdAmount)
       user.save()
-        .then(user => console.log(user))
+        .then(user => res.json(user.assets[0]))
+        .catch(err => console.log(err));
 
     })
   }

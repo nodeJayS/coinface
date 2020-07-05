@@ -92,6 +92,7 @@ router.post("/register", (req, res) => {
                 id: user.id,
                 email: user.email,
                 usdBalance: user.usdBalance,
+                assets: user.assets
               };
 
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
@@ -130,12 +131,10 @@ router.patch("/deposit", (req, res) => {
       }
 
       user.usdBalance += Number(depositAmt)
-      user.assetBalance += Number(depositAmt)
       user
         .save()
         .then(user => res.json({
-          usdBalance: user.usdBalance,
-          assetBalance: user.assetBalance
+          usdBalance: user.usdBalance
           }))
         .catch(err => console.log(err));
     })

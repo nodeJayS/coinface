@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import * as txAPIUtil from '../../../util/tx_util'
-import * as assetAPIUtil from '../../../util/asset_util'
+// import * as assetAPIUtil from '../../../util/asset_util'
 import { withRouter } from 'react-router-dom';
 
 class BuyCoin extends Component {
@@ -39,9 +39,9 @@ class BuyCoin extends Component {
             usdAmount: Number(this.state.usdAmount)
         }
         if (coinTx.quantity > 0) {
-            console.log(coinTx)
             txAPIUtil.buyTx(coinTx)
-            assetAPIUtil.updateAsset(coinTx)
+            this.props.updateAsset(coinTx)
+            // assetAPIUtil.createAsset(coinTx)
         } else {
             console.log('Not enough usdBalance.')
         }

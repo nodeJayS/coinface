@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { fetchCoinData } from '../../../actions/coinActions';
-import { deposit } from '../../../actions/sessionActions';
+import { createAsset, updateAsset } from '../../../actions/sessionActions';
 import BuyCoin from './BuyCoin';
 
 const mapStateToProps = (state) => {
@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deposit: (depositAmt) => dispatch(deposit(depositAmt)),
+        createAsset: (asset) => dispatch(createAsset(asset)),
+        updateAsset: (asset) => dispatch(updateAsset(asset)),
         fetchCoinData: coin => dispatch(fetchCoinData(coin))
     }
 }

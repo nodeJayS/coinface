@@ -1,13 +1,9 @@
 import React from 'react'
 
-const AssetsList = ({assets}) => {
+const AssetsList = () => {
     return (
         <>
-        {assets && assets.map(asset => {
-            return (
-                <div key={asset.coinName}>{asset.coinName}</div>
-            )
-        })}
+        TEST
         </>
     )
 }
