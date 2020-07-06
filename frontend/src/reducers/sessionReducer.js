@@ -2,8 +2,7 @@ import { RECEIVE_CURRENT_USER,
     RECEIVE_USER_SIGN_OUT,
     RECEIVE_USER_SIGN_IN,
     RECEIVE_USER_DEPOSIT,
-    RECEIVE_CREATED_ASSET,
-    RECEIVE_UPDATED_ASSET }
+    RECEIVE_UPDATED_ASSETS }
     from '../actions/sessionActions';
 
 const initialState = {
@@ -41,24 +40,15 @@ switch (action.type) {
                 usdBalance: action.deposit.usdBalance
             }
         };
-    case RECEIVE_CREATED_ASSET:
+    case RECEIVE_UPDATED_ASSETS:
         return {
             ...state,
-            assets: [
-                ...state.assets,
-                action.asset
-            ]
-        }
-    case RECEIVE_UPDATED_ASSET:
-        return {
-            ...state,
-            assets: state.assets.map(thing => {
-            if (thing.name === action.asset.name) {
-                return {...thing, 'balance': action.asset.balance}
-            } else {
-                return thing;
-            }
-        })}
+            user: {
+                ...state.user,
+                usdBalance: action.payload.usdBalance
+            },
+            assets: action.payload.assets
+        };
     default:
         return state;
     }

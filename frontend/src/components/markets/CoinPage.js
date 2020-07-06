@@ -47,7 +47,7 @@ class CoinPage extends Component {
         return (
             <Container>
                 <this.createTable />
-                <BuyCoin coinId={this.state.coinData.id}/>
+                <BuyCoin coinId={this.props.match.params.coinid}/>
             </Container>
         )
     }

@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
-import * as txAPIUtil from '../../../util/tx_util'
-// import * as assetAPIUtil from '../../../util/asset_util'
 import { withRouter } from 'react-router-dom';
+
+import * as txAPIUtil from '../../../util/tx_util'
 
 class BuyCoin extends Component {
     constructor(props) {
@@ -20,7 +20,9 @@ class BuyCoin extends Component {
 
     componentDidMount() {
         this.props.fetchCoinData(this.props.coinId)
-            .then(res => this.setState({coin: res.coin[0]}))
+            .then(res => 
+                this.setState({coin: res.coin[0]})
+            )
     }
 
     handleChange = (e) => {
@@ -38,10 +40,19 @@ class BuyCoin extends Component {
             price: this.state.coin['current_price'],
             usdAmount: Number(this.state.usdAmount)
         }
-        if (coinTx.quantity > 0) {
+        if ((this.state.usdAmount < this.props.usdBalance) && (quantity > 0)) {
             txAPIUtil.buyTx(coinTx)
-            this.props.updateAsset(coinTx)
-            // assetAPIUtil.createAsset(coinTx)
+            let assetExist = this.props.assets.find(asset => asset.name === coinTx.id)
+            if (assetExist) {   
+                console.log('asset exists')         
+                this.props.updateAsset(coinTx)
+                    .then(() => this.props.history.push(`/prices/${this.state.coin.id}`))
+            }
+            else {
+                console.log('asset doesnt exist')
+                this.props.createAsset(coinTx)
+                    .then(() => this.props.history.push(`/prices/${this.state.coin.id}`))
+            }
         } else {
             console.log('Not enough usdBalance.')
         }

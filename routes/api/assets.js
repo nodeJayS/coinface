@@ -29,10 +29,14 @@ router.post("/createAsset", (req, res) => {
         user.assets.push(newAsset)
           user.usdBalance -= Number(coin.usdAmount)
           user.save()
-            .then(user => {
-            let assetIndex = user.assets.findIndex(asset => asset.name = newAsset.name)
-            res.json(user.assets[assetIndex])
-          })
+          .then(user => 
+            { let userData = {
+                usdBalance: user.usdBalance,
+                assets: user.assets
+              }
+            res.json(userData)
+            }
+          )
             .catch(err => console.log(err));
       })
     }
@@ -55,16 +59,22 @@ router.patch("/updateAsset", (req, res) => {
       if(err) {
         throw err
       }
-      let assetIndex = user.assets.findIndex(asset => asset.name = coin.id)
+      let assetIndex = user.assets.findIndex(asset => asset.name === coin.id)
       user.assets[assetIndex].balance += Number(coin.quantity)
       user.usdBalance -= Number(coin.usdAmount)
       user.save()
-        .then(user => res.json(user.assets[0]))
+        .then(user => 
+          { let userData = {
+              usdBalance: user.usdBalance,
+              assets: user.assets
+            }
+          res.json(userData)
+          }
+        )
         .catch(err => console.log(err));
 
     })
   }
 })
-
 
 module.exports = router;

@@ -34,10 +34,10 @@ router.post("/buy", (req, res) => {
 
         newTx
           .save()
+          .then(newTx => res.json(newTx))
           .catch(err => console.log(err));
       })
     }
 })
-
 
 module.exports = router;

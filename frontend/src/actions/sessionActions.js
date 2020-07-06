@@ -8,8 +8,7 @@ export const RECEIVE_USER_SIGN_OUT = "RECEIVE_USER_SIGN_OUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 export const RECEIVE_USER_DEPOSIT = "RECEIVE_USER_DEPOSIT"
 
-export const RECEIVE_CREATED_ASSET = 'RECEIVE_CREATED_ASSET'
-export const RECEIVE_UPDATED_ASSET = 'RECEIVE_UPDATED_ASSET'
+export const RECEIVE_UPDATED_ASSETS = 'RECEIVE_UPDATED_ASSETS'
 
 export const receiveCurrentUser = currentUser => ({
     type: RECEIVE_CURRENT_USER,
@@ -30,13 +29,10 @@ export const receiveUserDeposit = (deposit) => ({
     type: RECEIVE_USER_DEPOSIT,
     deposit
 })
-export const receiveCreatedAsset = (asset) => ({
-    type: RECEIVE_CREATED_ASSET,
-    asset
-})
-export const receiveUpdatedAsset = (asset) => ({
-    type: RECEIVE_UPDATED_ASSET,
-    asset
+
+export const receiveUpdatedAssets = (payload) => ({
+    type: RECEIVE_UPDATED_ASSETS,
+    payload
 })
 
 export const register = (user) => dispatch => (
@@ -71,12 +67,12 @@ export const deposit = (depositAmt) => dispatch => {
 
 export const createAsset = (asset) => dispatch => {
     return AssetAPIUtil.createAsset(asset)
-        .then(res => dispatch(receiveCreatedAsset(res.data)))
+        .then(res => dispatch(receiveUpdatedAssets(res.data)))
         .catch(err => dispatch(receiveErrors(err.response.data)))
 }
 
 export const updateAsset = (asset) => dispatch => {
     return AssetAPIUtil.updateAsset(asset)
-        .then(res => dispatch(receiveUpdatedAsset(res.data)))
+        .then(res => dispatch(receiveUpdatedAssets(res.data)))
         .catch(err => dispatch(receiveErrors(err.response.data)))
 }

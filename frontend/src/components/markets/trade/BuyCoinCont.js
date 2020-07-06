@@ -6,7 +6,8 @@ import BuyCoin from './BuyCoin';
 
 const mapStateToProps = (state) => {
     return {
-        usdBalance: state.session.user.usdBalance
+        usdBalance: state.session.user.usdBalance,
+        assets: state.session.assets
     }
 } 
 
