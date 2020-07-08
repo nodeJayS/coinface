@@ -1,14 +1,10 @@
 import * as SessionAPIUtil from '../util/session_api_util'
-// import * as AssetAPIUtil from '../util/asset_api_util'
 import jwt_decode from 'jwt-decode';
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_SIGN_OUT = "RECEIVE_USER_SIGN_OUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
-// export const RECEIVE_USER_DEPOSIT = "RECEIVE_USER_DEPOSIT"
-
-// export const RECEIVE_UPDATED_ASSETS = 'RECEIVE_UPDATED_ASSETS'
 
 export const receiveCurrentUser = currentUser => ({
     type: RECEIVE_CURRENT_USER,
@@ -25,16 +21,6 @@ export const receiveErrors = errors => ({
 export const signOutUser = () => ({
     type: RECEIVE_USER_SIGN_OUT
 });
-
-// export const receiveUserDeposit = (deposit) => ({
-//     type: RECEIVE_USER_DEPOSIT,
-//     deposit
-// })
-
-// export const receiveUpdatedAssets = (payload) => ({
-//     type: RECEIVE_UPDATED_ASSETS,
-//     payload
-// })
 
 export const register = (user) => dispatch => (
     SessionAPIUtil.register(user)
@@ -59,21 +45,3 @@ export const signout = () => dispatch => {
     SessionAPIUtil.setAuthToken(false)
     dispatch(signOutUser())
 }
-
-// export const deposit = (depositAmt) => dispatch => {
-//     return SessionAPIUtil.deposit(depositAmt)
-//         .then(res => dispatch(receiveUserDeposit(res.data)))
-//         .catch(err => dispatch(receiveErrors(err.response.data)))
-// }
-
-// export const createAsset = (asset) => dispatch => {
-//     return AssetAPIUtil.createAsset(asset)
-//         .then(res => dispatch(receiveUpdatedAssets(res.data)))
-//         .catch(err => dispatch(receiveErrors(err.response.data)))
-// }
-
-// export const updateAsset = (asset) => dispatch => {
-//     return AssetAPIUtil.updateAsset(asset)
-//         .then(res => dispatch(receiveUpdatedAssets(res.data)))
-//         .catch(err => dispatch(receiveErrors(err.response.data)))
-// }

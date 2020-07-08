@@ -12,8 +12,8 @@ export const subtract = (usdAmount) => {
     return axios.patch('/api/assets/subtractUSD', usdAmount)
 };
 
-export const createAsset = (coinTx) => {
-    return axios.post('/api/assets/createAsset', coinTx)
+export const createAsset = (asset) => {
+    return axios.post('/api/assets/createAsset', asset)
 };
 
 export const updateAsset = (asset) => {

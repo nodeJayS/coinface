@@ -5,7 +5,7 @@ import Deposit from './Deposit'
 
 const mapStateToProps = (state) => {
     return {
-        id: state.session.user.id,
+        userid: state.session.user.id,
         usdBalance: state.session.user.usdBalance
     }
 } 

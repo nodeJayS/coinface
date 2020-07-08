@@ -27,6 +27,7 @@ class BuyCoin extends Component {
         let coin = this.props.coin[0]
         let quantity = (this.state.usdAmount/coin['current_price'])
         let coinTx = {
+            userid: this.props.user.id,
             id: coin.id,
             quantity: quantity,
             price: coin['current_price'],
