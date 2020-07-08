@@ -17,6 +17,7 @@ import CoinPage from './components/markets/CoinPageCont'
 export default class Main extends Component {
     render() {
         return (
+            <>
             <Router>
                 <NavBar />
                 <Switch>
@@ -33,6 +34,7 @@ export default class Main extends Component {
                     <ProtectedRoute exact path="/portfolio" component={Portfolio} />
                 </Switch>
             </Router>
+            </>
         )
     }
 }

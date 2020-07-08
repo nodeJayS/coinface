@@ -10,19 +10,10 @@ class BuyCoin extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            coin: {},
-            buyingAmt: 0,
-            usdAmount: 0,
+            usdAmount: ''
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    componentDidMount() {
-        this.props.fetchCoinData(this.props.coinId)
-            .then(res => 
-                this.setState({coin: res.coin[0]})
-            )
     }
 
     handleChange = (e) => {
@@ -33,11 +24,12 @@ class BuyCoin extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        let quantity = (this.state.usdAmount/this.state.coin['current_price'])
+        let coin = this.props.coin[0]
+        let quantity = (this.state.usdAmount/coin['current_price'])
         let coinTx = {
-            id: this.state.coin.id,
+            id: coin.id,
             quantity: quantity,
-            price: this.state.coin['current_price'],
+            price: coin['current_price'],
             usdAmount: Number(this.state.usdAmount)
         }
         if ((this.state.usdAmount < this.props.usdBalance) && (quantity > 0)) {
@@ -46,15 +38,21 @@ class BuyCoin extends Component {
             if (assetExist) {   
                 console.log('asset exists')         
                 this.props.updateAsset(coinTx)
-                    .then(() => this.props.history.push(`/prices/${this.state.coin.id}`))
-            }
+                    .then(() => this.props.history.push(`/prices/${coin.id}`))
+                this.setState({
+                    usdAmount: '',
+                })
+                }
             else {
                 console.log('asset doesnt exist')
                 this.props.createAsset(coinTx)
-                    .then(() => this.props.history.push(`/prices/${this.state.coin.id}`))
-            }
+                    .then(() => this.props.history.push(`/prices/${coin.id}`))
+                }
+                this.setState({
+                    usdAmount: '',
+                })
         } else {
-            console.log('Not enough usdBalance.')
+            console.log('Please input a value higher than 0')
         }
     }
 
@@ -68,17 +66,11 @@ class BuyCoin extends Component {
                 </h1>
             </Col>
                 
-            <Form onSubmit={this.handleSubmit}>
+            <Form id="Buy-coin-form" onSubmit={this.handleSubmit}>
                 <div className="form-group">
                     <Col>
                         <label>Amount</label>
-                        <input id="usdAmount" type="number" placeholder="$0.00" onChange={this.handleChange}/>
-                    </Col>
-                </div>
-
-                <div>
-                    <Col>
-                        <label>You are buying {this.state.name}</label>
+                        <input id="usdAmount" value={this.state.usdAmount} type="number" placeholder="$0" onChange={this.handleChange}/>
                     </Col>
                 </div>
 

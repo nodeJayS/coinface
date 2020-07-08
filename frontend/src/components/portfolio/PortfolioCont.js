@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { deposit } from '../../actions/sessionActions';
+import { assetData, deposit } from '../../actions/assetActions';
 import Portfolio from './Portfolio'
 
 const mapStateToProps = (state) => {
@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        assetData: () => dispatch(assetData()),
         deposit: (depositAmt) => dispatch(deposit(depositAmt))
     }
 }

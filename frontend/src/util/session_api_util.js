@@ -15,11 +15,3 @@ export const register = (userData) => {
 export const signin = (userData) => {
     return axios.post('/api/users/signin', userData);
 };
-
-export const deposit = (depositAmt) => {
-    return axios.patch('/api/users/deposit', depositAmt)
-};
-
-export const subtract = (usdAmount) => {
-    return axios.patch('/api/users/subtract', usdAmount)
-};

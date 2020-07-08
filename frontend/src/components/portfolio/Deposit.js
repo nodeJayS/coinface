@@ -9,7 +9,7 @@ class Deposit extends Component {
         super(props);
         this.state = {
             show: false,
-            depositAmt: 0,
+            depositAmt: '',
         };
         this.handleShow = this.handleShow.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -37,11 +37,12 @@ class Deposit extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         let depositAmt = {
+            userid: this.props.id,
             depositAmt: this.state.depositAmt,
 
         }
         this.props.deposit(depositAmt)
-            .then(() => this.props.history.push('/portfolio'))
+            // .then(() => this.props.history.push('/portfolio'))
         this.setState({
             show: !this.state.show,
             depositAmt: 0,
@@ -62,7 +63,7 @@ class Deposit extends Component {
                 </Modal.Header>
             
                 <Modal.Body>
-                        <input id="depositAmt" value={this.state.depositAmt} onChange={this.handleChange} type="number" placeholder="$0.00" />
+                        <input id="depositAmt" value={this.state.depositAmt} onChange={this.handleChange} type="number" placeholder="$0" />
                 </Modal.Body>
 
                 <Modal.Footer>

@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 
-import { fetchCoinData } from '../../../actions/coinActions';
-import { createAsset, updateAsset } from '../../../actions/sessionActions';
+import { createAsset, updateAsset } from '../../../actions/assetActions';
 import BuyCoin from './BuyCoin';
 
 const mapStateToProps = (state) => {
     return {
-        usdBalance: state.session.user.usdBalance,
-        assets: state.session.assets
+        coin: state.coin.coin,
+        usdBalance: state.assets.usdBalance,
+        assets: state.assets.assets,
     }
 } 
 
@@ -15,7 +15,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         createAsset: (asset) => dispatch(createAsset(asset)),
         updateAsset: (asset) => dispatch(updateAsset(asset)),
-        fetchCoinData: coin => dispatch(fetchCoinData(coin))
     }
 }
 

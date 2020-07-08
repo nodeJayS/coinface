@@ -15,10 +15,12 @@ class CoinPage extends Component {
     }
 
     componentDidMount() {
+        this.props.assetData()
         this.props.fetchCoinData(this.props.match.params.coinid)
             .then(res => this.setState({coinData: res.coin}))
     }
 
+    
     createTable = () => {
         
     return <Table responsive striped borderless size="sm" width="100">
@@ -47,7 +49,7 @@ class CoinPage extends Component {
         return (
             <Container>
                 <this.createTable />
-                <BuyCoin coinId={this.props.match.params.coinid}/>
+                <BuyCoin />
             </Container>
         )
     }

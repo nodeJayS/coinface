@@ -1,14 +1,11 @@
 import { RECEIVE_CURRENT_USER,
     RECEIVE_USER_SIGN_OUT,
-    RECEIVE_USER_SIGN_IN,
-    RECEIVE_USER_DEPOSIT,
-    RECEIVE_UPDATED_ASSETS }
+    RECEIVE_USER_SIGN_IN }
     from '../actions/sessionActions';
 
 const initialState = {
     isAuthenticated: false,
-    user: localStorage.getItem('state'),
-    assets: []
+    user: {}
 };
 
 export default function(state = initialState, action) {
@@ -23,30 +20,14 @@ switch (action.type) {
     case RECEIVE_USER_SIGN_OUT:
         return {
             isAuthenticated: false,
-            user: undefined
+            user: undefined,
+            assets: undefined
         };
     case RECEIVE_USER_SIGN_IN:
         return {
             ...state,
             isAuthenticated: true,
             user: action.payload,
-            assets: action.payload.assets
-        };
-    case RECEIVE_USER_DEPOSIT:
-        return {
-            ...state,
-            user: {
-                ...state.user,
-                usdBalance: action.deposit.usdBalance
-            }
-        };
-    case RECEIVE_UPDATED_ASSETS:
-        return {
-            ...state,
-            user: {
-                ...state.user,
-                usdBalance: action.payload.usdBalance
-            },
             assets: action.payload.assets
         };
     default:

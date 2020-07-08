@@ -5,6 +5,23 @@ const keys = require('../../config/keys');
 const User = require('../../models/User');
 const Tx = require('../../models/Transaction');
 
+router.get('/', (req, res) => {
+  if (req.headers && req.headers.authorization) {
+  
+    const authorization = req.headers.authorization.split(' ')[1] 
+    try {
+      decoded = jwt.verify(authorization, keys.secretOrKey);
+    } catch (e) {
+      return res.status(401).json('unauthorized');
+    }
+    const userId = decoded.id;
+
+    Tx.find({ user: userId })
+      .then(tx => res.json(tx))
+
+  }
+})
+
 router.post("/buy", (req, res) => {
     const coin = req.body
   

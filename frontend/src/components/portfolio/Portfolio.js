@@ -6,8 +6,12 @@ import Transactions from './Transactions'
 import Deposit from './DepositCont'
 import { withRouter } from 'react-router-dom';
 
-
 class Portfolio extends Component {
+
+    componentDidMount() {
+        this.props.assetData()
+            .then(res => console.log(res))
+    }
 
     render() {
         return (
