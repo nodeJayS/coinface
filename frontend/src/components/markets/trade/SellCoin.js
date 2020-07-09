@@ -29,17 +29,18 @@ class SellCoin extends Component {
             id: coin.id,
             quantity: quantity,
             price: coin['current_price'],
-            usdAmount: Number(this.state.usdAmount)
+            usdAmount: Number(this.state.usdAmount),
+            txType: 'SELL'
         }
         if ((quantity > 0)) {
             // this.props.buyTx(coinTx)
             let userAsset = this.props.assets.find(asset => asset.name === coinTx.id)
-            console.log(userAsset)
             if (userAsset.balance < coinTx.quantity) {
                 console.log(`not enough ${coinTx.id}`)
             }
             else if (userAsset.balance > 0) {   
-                console.log('asset sold')         
+                console.log('asset sold') 
+                this.props.newTx(coinTx)        
                 this.props.updateSellAsset(coinTx)
                     .then(() => this.props.history.push(`/prices/${coin.id}`))
                 this.setState({
@@ -47,7 +48,8 @@ class SellCoin extends Component {
                     })
                 }
             else if (userAsset.balance === coinTx.quantity) {   
-                console.log('asset deleted')         
+                console.log('asset deleted') 
+                this.props.newTx(coinTx)        
                 this.props.deleteAsset(coinTx)
                     .then(() => this.props.history.push(`/prices/${coin.id}`))
                 this.setState({
@@ -80,7 +82,7 @@ class SellCoin extends Component {
 
                 <Col>
                     <button className="btn btn-primary" type="submit">
-                        Buy
+                        Sell
                     </button>
                 </Col>
             </Form>

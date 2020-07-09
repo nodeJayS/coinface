@@ -1,5 +1,5 @@
 import { RECEIVE_ALL_TX,
-        RECEIVE_BUY_TX }
+        RECEIVE_NEW_TX }
     from '../actions/txActions';
 
     const initialState = {}
@@ -11,7 +11,7 @@ import { RECEIVE_ALL_TX,
                     ...state,
                     transactions: action.tx
                 }
-            case RECEIVE_BUY_TX:
+            case RECEIVE_NEW_TX:
                 return {
                     ...state,
                     transactions: {

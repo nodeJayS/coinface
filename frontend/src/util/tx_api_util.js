@@ -4,6 +4,6 @@ export const getAllTx = () => {
     return axios.get('/api/transactions')
 }
 
-export const buyTx = (coinTx) => {
-    return axios.post('/api/transactions/buy', coinTx)
+export const newTx = (coinTx) => {
+    return axios.post('/api/transactions/newTx', coinTx)
 };

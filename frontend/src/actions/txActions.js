@@ -1,15 +1,15 @@
 import * as TxAPIUtil from '../util/tx_api_util'
 
 export const RECEIVE_ALL_TX = 'RECEIVE_ALL_TX'
-export const RECEIVE_BUY_TX = 'RECEIVE_BUY_TX'
+export const RECEIVE_NEW_TX = 'RECEIVE_NEW_TX'
 
 export const receiveAllTx = (tx) => ({
     type: RECEIVE_ALL_TX,
     tx
 })
 
-export const receiveBuyTx = (tx) => ({
-    type: RECEIVE_BUY_TX,
+export const receiveNewTx = (tx) => ({
+    type: RECEIVE_NEW_TX,
     tx
 })
 
@@ -19,8 +19,8 @@ export const getAllTx = (userid) => dispatch => {
         .catch(err => console.log('error'))
 }
 
-export const buyTx = (tx) => dispatch => {
-    return TxAPIUtil.buyTx(tx)
-        .then(res => dispatch(receiveBuyTx(res.data)))
+export const newTx = (tx) => dispatch => {
+    return TxAPIUtil.newTx(tx)
+        .then(res => dispatch(receiveNewTx(res.data)))
         .catch(err => console.log('error'))
 }

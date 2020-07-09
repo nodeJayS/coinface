@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
   }
 })
 
-router.post("/buy", (req, res) => {
+router.post("/newTx", (req, res) => {
   const userid = req.body.userid
   const coin = req.body
 
@@ -36,7 +36,7 @@ router.post("/buy", (req, res) => {
         quantity: coin.quantity,
         price: coin.price,
         usdAmount: coin.usdAmount,
-        transactionType: 'BUY'
+        transactionType: coin.txType
       })
 
       newTx

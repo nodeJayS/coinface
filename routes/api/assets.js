@@ -48,7 +48,7 @@ router.patch("/depositUSD", (req, res) => {
   })
 })
 
-router.patch("/subtractUSD", (req, res) => {
+router.patch("/withdrawUSD", (req, res) => {
   const userid = req.body.userid
   const subtractAmt = req.body.usdAmount
 

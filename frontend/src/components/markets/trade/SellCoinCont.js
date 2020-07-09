@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-// import { buyTx } from '../../../actions/txActions'
+import { newTx } from '../../../actions/txActions'
 import { deleteAsset, updateSellAsset } from '../../../actions/assetActions';
 import SellCoin from './SellCoin';
 
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        // buyTx: (asset) => dispatch(buyTx(asset)),
+        newTx: (asset) => dispatch(newTx(asset)),
         updateSellAsset: (asset) => dispatch(updateSellAsset(asset)),
         deleteAsset: (asset) => dispatch(deleteAsset(asset)),
     }

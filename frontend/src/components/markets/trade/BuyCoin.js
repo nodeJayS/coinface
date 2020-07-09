@@ -29,10 +29,11 @@ class BuyCoin extends Component {
             id: coin.id,
             quantity: quantity,
             price: coin['current_price'],
-            usdAmount: Number(this.state.usdAmount)
+            usdAmount: Number(this.state.usdAmount),
+            txType: 'BUY'
         }
         if ((this.state.usdAmount < this.props.usdBalance) && (quantity > 0)) {
-            this.props.buyTx(coinTx)
+            this.props.newTx(coinTx)
             let assetExist = this.props.assets.find(asset => asset.name === coinTx.id)
             if (assetExist) {   
                 console.log('asset exists')         
