@@ -32,8 +32,7 @@ class SellCoin extends Component {
             usdAmount: Number(this.state.usdAmount),
             txType: 'SELL'
         }
-        if ((quantity > 0)) {
-            // this.props.buyTx(coinTx)
+        if (quantity > 0) {
             let userAsset = this.props.assets.find(asset => asset.name === coinTx.id)
             if (userAsset.balance < coinTx.quantity) {
                 console.log(`not enough ${coinTx.id}`)

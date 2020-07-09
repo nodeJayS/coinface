@@ -32,19 +32,23 @@ class BuyCoin extends Component {
             usdAmount: Number(this.state.usdAmount),
             txType: 'BUY'
         }
-        if ((this.state.usdAmount < this.props.usdBalance) && (quantity > 0)) {
-            this.props.newTx(coinTx)
+        if (quantity > 0) {
             let assetExist = this.props.assets.find(asset => asset.name === coinTx.id)
-            if (assetExist) {   
-                console.log('asset exists')         
+            if (this.state.usdAmount > this.props.usdBalance) {
+                console.log('not enough USD Balance')
+            }
+            else if (assetExist) {   
+                this.props.newTx(coinTx)
+                console.log('asset exists, updated asset')         
                 this.props.updateAsset(coinTx)
                     .then(() => this.props.history.push(`/prices/${coin.id}`))
                 this.setState({
                     usdAmount: '',
-                })
+                    })
                 }
             else {
-                console.log('asset doesnt exist')
+                this.props.newTx(coinTx)
+                console.log('asset doesnt exist, created new asset')
                 this.props.createAsset(coinTx)
                     .then(() => this.props.history.push(`/prices/${coin.id}`))
                 }
