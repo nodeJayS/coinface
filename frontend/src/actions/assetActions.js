@@ -5,7 +5,7 @@ export const RECEIVE_ALL_ASSET_DATA = 'RECEIVE_ALL_ASSET_DATA'
 export const RECEIVE_DEPOSIT = 'RECEIVE_DEPOSIT'
 export const RECEIVE_UPDATED_ASSETS = 'RECEIVE_UPDATED_ASSETS'
 
-export const receiveErrors = errors => ({
+export const receiveErrors = (errors) => ({
     type: RECEIVE_ERRORS,
     errors
 });
@@ -45,6 +45,18 @@ export const createAsset = (asset) => dispatch => {
 
 export const updateAsset = (asset) => dispatch => {
     return AssetAPIUtil.updateAsset(asset)
+        .then(res => dispatch(receiveUpdatedAssets(res.data)))
+        .catch(err => dispatch(receiveErrors(err.response.data)))
+}
+
+export const updateSellAsset = (asset) => dispatch => {
+    return AssetAPIUtil.updateSellAsset(asset)
+        .then(res => dispatch(receiveUpdatedAssets(res.data)))
+        .catch(err => dispatch(receiveErrors(err.response.data)))
+}
+
+export const deleteAsset = (asset) => dispatch => {
+    return AssetAPIUtil.deleteAsset(asset)
         .then(res => dispatch(receiveUpdatedAssets(res.data)))
         .catch(err => dispatch(receiveErrors(err.response.data)))
 }

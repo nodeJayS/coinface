@@ -4,8 +4,6 @@ import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import { withRouter } from 'react-router-dom';
 
-import * as txAPIUtil from '../../../util/tx_util'
-
 class BuyCoin extends Component {
     constructor(props) {
         super(props);
@@ -34,7 +32,7 @@ class BuyCoin extends Component {
             usdAmount: Number(this.state.usdAmount)
         }
         if ((this.state.usdAmount < this.props.usdBalance) && (quantity > 0)) {
-            txAPIUtil.buyTx(coinTx)
+            this.props.buyTx(coinTx)
             let assetExist = this.props.assets.find(asset => asset.name === coinTx.id)
             if (assetExist) {   
                 console.log('asset exists')         

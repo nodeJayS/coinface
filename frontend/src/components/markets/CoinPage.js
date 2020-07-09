@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container'
 
 import BuyCoin from './trade/BuyCoinCont'
+import SellCoin from './trade/SellCoinCont'
 
 class CoinPage extends Component {
     constructor(props) {
@@ -50,6 +51,7 @@ class CoinPage extends Component {
             <Container>
                 <this.createTable />
                 <BuyCoin />
+                <SellCoin />
             </Container>
         )
     }

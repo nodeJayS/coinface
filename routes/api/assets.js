@@ -86,7 +86,7 @@ router.post("/createAsset", (req, res) => {
             usdBalance: user.usdBalance,
             assets: user.assets
           }
-        res.json(userData)
+          res.json(userData)
         }
       )
       .catch(err => console.log(err));
@@ -110,10 +110,58 @@ router.patch("/updateAsset", (req, res) => {
             usdBalance: user.usdBalance,
             assets: user.assets
           }
-        res.json(userData)
+          res.json(userData)
         }
       )
       .catch(err => console.log(err));
+  })
+})
+
+router.patch("/updateSellAsset", (req, res) => {
+  const userid = req.body.userid
+  const coin = req.body
+
+  User.findById(userid, (err, user) => {
+    if(err) {
+      throw err
+    }
+    let assetIndex = user.assets.findIndex(asset => asset.name === coin.id)
+    user.assets[assetIndex].balance -= Number(coin.quantity)
+    user.usdBalance += Number(coin.usdAmount)
+    user.save()
+      .then(user => 
+        { let userData = {
+            usdBalance: user.usdBalance,
+            assets: user.assets
+          }
+          res.json(userData)
+        }
+      )
+      .catch(err => console.log(err));
+  })
+})
+
+router.delete("/deleteAsset", (req, res) => {
+  const userid = req.body.userid
+  const coin = req.body
+
+  User.findById(userid, (err, user) => {
+    if(err) {
+      throw err
+    }
+    let assetIndex = user.assets.findIndex(asset => asset.name === coin.id)
+    user.assets.splice(assetIndex, 1)
+    user.usdBalance += Number(coin.usdAmount)
+    user.save()
+      .then(user =>
+        { let userData = {
+          usdBalance: user.usdBalance,
+          assets: user.assets
+          }
+        res.json(userData)
+        }
+    )
+    .catch(err => console.log(err));
   })
 })
 

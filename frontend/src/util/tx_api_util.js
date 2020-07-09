@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getTx = () => {
+export const getAllTx = () => {
     return axios.get('/api/transactions')
 }
 

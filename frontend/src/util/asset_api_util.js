@@ -19,3 +19,11 @@ export const createAsset = (asset) => {
 export const updateAsset = (asset) => {
     return axios.patch('/api/assets/updateAsset', asset)
 };
+
+export const updateSellAsset = (asset) => {
+    return axios.patch('/api/assets/updateSellAsset', asset)
+}
+
+export const deleteAsset = (asset) => {
+    return axios.delete('api/assets/deleteAsset', asset)
+}
