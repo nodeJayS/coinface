@@ -14,16 +14,8 @@ class Signin extends Component {
             };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        // this.renderErrors = this.renderErrors.bind(this);
     }
 
-    // UNSAFE_componentWillReceiveProps(nextProps) {
-    //     if (nextProps.signedIn === true) {
-    //       this.props.history.push('/portfolio');
-    //     }
-    //     this.setState({errors: nextProps.errors})
-    // }
-    
     handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value
@@ -40,19 +32,7 @@ class Signin extends Component {
         this.props.signin(user)
             .then(() => this.props.history.push('/dashboard'))
     }
-
-    renderErrors() {
-        return(
-            <ul>
-                {Object.keys(this.state.errors).map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {this.state.errors[error]}
-                    </li>
-                ))}
-            </ul>
-        );
-    }
-
+    
     render() {
         return (
             <>

@@ -24,7 +24,7 @@ export default class NavBar extends Component {
       return (
         <>
         <NavbarBrand>
-          <NavLink href="../dashboard">
+          <NavLink href="/dashboard">
             Coinface
           </NavLink>
         </NavbarBrand>
@@ -52,7 +52,7 @@ export default class NavBar extends Component {
       return (
         <>
         <NavbarBrand>
-          <NavLink href="../">
+          <NavLink href="/">
             Coinface
           </NavLink>
         </NavbarBrand>

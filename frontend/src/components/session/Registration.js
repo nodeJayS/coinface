@@ -14,21 +14,11 @@ class Registration extends Component {
             password: '',
             password2: '',
             usdBalance: 0,
-            errors: {}
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.clearedErrors = false;
     }
 
-    // UNSAFE_componentWillReceiveProps(nextProps) {
-    //     if (nextProps.signedIn === true) {
-    //       this.props.history.push('/signin');
-    //     }
-    
-    //     this.setState({errors: nextProps.errors})
-    // }
-    
     handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value
@@ -48,20 +38,7 @@ class Registration extends Component {
         this.props.register(user)
             .then(() => this.props.history.push('/dashboard'))
     }
-    
-    // renderErrors() {
-    //     return(
-    //         <div>
-    //         <ul>
-    //             {Object.keys(this.state.errors).map((error, i) => (
-    //                 <li key={`error-${i}`}>
-    //                 {this.state.errors[error]}
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //         </div>
-    //     );
-    // }
+
 
     render() {
         return (

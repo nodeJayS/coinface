@@ -22,7 +22,7 @@ export default class Main extends Component {
             <Router>
                 <NavBar />
                 <Switch>
-                    <Route exact path="/" component={Home} />
+                    <AuthRoute exact path="/" component={Home} />
                     <Route exact path="/prices" component={Prices} />
                     <Route exact path="/markets" component={Markets} />
                     <Route exact path="/wallet" component={Wallet} />
@@ -30,7 +30,6 @@ export default class Main extends Component {
                     <AuthRoute exact path="/sign-in" component={Signin} />
                     <AuthRoute exact path="/registration" component={Registration} />
                     
-                    <ProtectedRoute exact path="/" component={Dashboard} />
                     <ProtectedRoute path={`/prices/:coinid`} component={CoinPage} />
                     <ProtectedRoute exact path="/dashboard" component={Dashboard} />
                     <ProtectedRoute exact path="/portfolio" component={Portfolio} />

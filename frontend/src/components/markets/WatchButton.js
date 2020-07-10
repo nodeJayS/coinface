@@ -8,7 +8,7 @@ class WatchButton extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            watchStar: true
+            watchStar: false
         }
         this.updateWatchList = this.updateWatchList.bind(this)
         this.getStar = this.getStar.bind(this)
@@ -21,7 +21,7 @@ class WatchButton extends Component {
             name: this.props.coin.coin[0].id
         }
         let wl = this.props.watchlist
-        let userAsset = wl.find(asset => asset.name === coin.name)
+        let userAsset = wl.find(asset => asset.name === this.props.match.params.coinid)
             if (userAsset) {
                 console.log('removing from wl')
                 this.props.removeWL(coin)
@@ -37,7 +37,6 @@ class WatchButton extends Component {
                 })
             }
     }
-
 
     getStar = () => {
         let exist = this.props.watchlist.find(asset => asset.name === this.props.match.params.coinid)
@@ -58,7 +57,7 @@ class WatchButton extends Component {
         )
         }
         else {
-             return (<div>Loading...</div>)
+            return (<div>Loading...</div>)
         }
     }
 }
