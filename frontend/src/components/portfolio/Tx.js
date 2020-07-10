@@ -33,8 +33,8 @@ componentDidMount() {
                     {this.state.tx && this.state.tx.map(tx =>
                         <tr key={tx['_id']}>
                             <td>{(tx.name).toUpperCase()}</td>
-                            <td>{tx.quantity}</td>
-                            <td>${tx.usdAmount}</td>
+                            <td>{Number(tx.quantity.toFixed(4)).toLocaleString('en')}</td>
+                            <td>${tx.usdAmount.toLocaleString('en')}</td>
                             <td>{tx.transactionType}</td>
                         </tr>
                     )}

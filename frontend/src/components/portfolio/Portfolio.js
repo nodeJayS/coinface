@@ -10,6 +10,7 @@ class Portfolio extends Component {
 
     componentDidMount() {
         this.props.assetData()
+        this.props.watchlist()
     }
 
     render() {
@@ -21,6 +22,7 @@ class Portfolio extends Component {
                 <Deposit />
             </div>
         )
+
     }
 }
 

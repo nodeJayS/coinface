@@ -16,12 +16,6 @@ class Deposit extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // componentDidUpdate(prevProps) {
-    //     if (this.props.user.usdBalance !== prevProps.user.usdBalance) {
-    //         this.setState({user: this.state.user})
-    //     }
-    // }
-
     handleShow = () => {
         this.setState({
             show: !this.state.show
@@ -37,12 +31,12 @@ class Deposit extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         let depositAmt = {
-            userid: this.props.id,
+            userid: this.props.userid,
             depositAmt: this.state.depositAmt,
 
         }
         this.props.deposit(depositAmt)
-            // .then(() => this.props.history.push('/portfolio'))
+            .then(() => this.props.history.push('/portfolio'))
         this.setState({
             show: !this.state.show,
             depositAmt: 0,

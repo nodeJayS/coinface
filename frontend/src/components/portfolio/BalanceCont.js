@@ -4,14 +4,10 @@ import Balance from './Balance'
 
 const mapStateToProps = (state) => {
     return {
-        usdBalance: state.session.user.usdBalance
+        usd: state.assets.usdBalance,
+        assets: state.assets.assets,
+    
     }
-} 
-
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         deposit: (depositAmt) => dispatch(deposit(depositAmt))
-//     }
-// }
+}
 
 export default connect(mapStateToProps)(Balance);

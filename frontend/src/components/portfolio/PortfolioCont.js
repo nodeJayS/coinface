@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { assetData, deposit } from '../../actions/assetActions';
+import { watchlist } from '../../actions/watchActions'
 import Portfolio from './Portfolio'
 
 const mapStateToProps = (state) => {
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         assetData: () => dispatch(assetData()),
+        watchlist: () => dispatch(watchlist()),
         deposit: (depositAmt) => dispatch(deposit(depositAmt))
     }
 }
