@@ -3,11 +3,13 @@ const app = express();
 
 const mongoose = require('mongoose');
 const db = require('./config/keys').mongoURI;
+const passport = require('passport');
+const cors = require('cors')
+
 const users = require('./routes/api/users')
 const transactions = require('./routes/api/transactions')
 const assets = require('./routes/api/assets')
-const passport = require('passport');
-const cors = require('cors')
+const watchlist = require('./routes/api/watchlist')
 
 // Connect to database
 mongoose
@@ -23,6 +25,7 @@ app.use(cors());
 app.use('/api/users', users);
 app.use('/api/transactions', transactions);
 app.use('/api/assets', assets);
+app.use('/api/watchlist', watchlist)
 
 const port = process.env.PORT || 5000;
 

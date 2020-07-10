@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
+import { withRouter } from 'react-router-dom';
 
 import Balance from '../portfolio/Balance'
 
 class Dashboard extends Component {
+
+    componentDidMount() {
+        this.props.assetData()
+    }
+
     render() {
         return (
             <>
@@ -16,4 +22,4 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard
+export default withRouter(Dashboard)

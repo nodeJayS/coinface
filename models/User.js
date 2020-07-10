@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const WatchlistSchema = new Schema({
+  'name': String,
+})
+
 const AssetSchema = new Schema({
   'name': String,
 
@@ -34,6 +38,8 @@ const UserSchema = new Schema({
       type: Number,
       default: 0
     },
+
+    watchlist: [WatchlistSchema],
 
     assets: [AssetSchema]
   })

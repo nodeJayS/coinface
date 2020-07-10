@@ -8,7 +8,7 @@ export const RECEIVE_UPDATED_ASSETS = 'RECEIVE_UPDATED_ASSETS'
 export const receiveErrors = (errors) => ({
     type: RECEIVE_ERRORS,
     errors
-});
+})
 
 export const receiveAllAssetData = (payload) => ({
     type: RECEIVE_ALL_ASSET_DATA,
@@ -28,7 +28,7 @@ export const receiveUpdatedAssets = (payload) => ({
 export const assetData = () => dispatch => {
     return AssetAPIUtil.allAssetData()
         .then(res => dispatch(receiveAllAssetData(res.data)))
-        .catch(err => dispatch(receiveErrors(err.response.data)))
+        .catch(err => console.log('error'))
 }
 
 export const deposit = (depositAmt) => dispatch => {

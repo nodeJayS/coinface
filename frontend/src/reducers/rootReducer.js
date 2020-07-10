@@ -4,10 +4,12 @@ import coinReducer from './coinReducer'
 import assetReducer from './assetReducer'
 import txReducer from './txReducer'
 import { combineReducers } from 'redux'
+import watchReducer from './watchReducer'
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     assets: assetReducer,
+    watchlist: watchReducer,
     transactions: txReducer,
     error: errorReducer,
     coin: coinReducer

@@ -25,5 +25,5 @@ export const updateSellAsset = (asset) => {
 }
 
 export const deleteAsset = (asset) => {
-    return axios.delete('api/assets/deleteAsset', asset)
+    return axios.patch('api/assets/deleteAsset', asset)
 }

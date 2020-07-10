@@ -141,7 +141,7 @@ router.patch("/updateSellAsset", (req, res) => {
   })
 })
 
-router.delete("/deleteAsset", (req, res) => {
+router.patch("/deleteAsset", (req, res) => {
   const userid = req.body.userid
   const coin = req.body
 

@@ -1,30 +1,31 @@
 import React, { Component } from 'react'
 import Table from 'react-bootstrap/Table';
 import { withRouter } from 'react-router-dom';
-import Container from 'react-bootstrap/Container'
+import Container from 'react-bootstrap/Container';
 
-import BuyCoin from './trade/BuyCoinCont'
-import SellCoin from './trade/SellCoinCont'
+import BuyCoin from './trade/BuyCoinCont';
+import SellCoin from './trade/SellCoinCont';
+import WatchButton from './WatchButtonCont'
 
 class CoinPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             coinData: [],
+
         }
         this.createTable = this.createTable.bind(this)
     }
 
     componentDidMount() {
         this.props.assetData()
+        this.props.watchlist()
         this.props.fetchCoinData(this.props.match.params.coinid)
             .then(res => this.setState({coinData: res.coin}))
     }
 
-    
     createTable = () => {
-        
-    return <Table responsive striped borderless size="sm" width="100">
+        return <Table responsive striped borderless size="sm" width="100">
             <thead>
                 <tr>               
                 <th>Market cap</th>
@@ -38,17 +39,19 @@ class CoinPage extends Component {
                 <tr key={coin.id}>
                 <td>${Number(coin['market_cap']).toLocaleString('en')}</td>
                 <td>${Number(coin['total_volume']).toLocaleString('en')}</td>
-                <td>{coin['circulating_supply'].toLocaleString('en')} {coin.symbol}</td>
+                <td>{coin['circulating_supply'].toLocaleString('en')} {(coin.symbol).toUpperCase()}</td>
                 <td>${Number(coin['ath']).toFixed(2).toLocaleString('en')}</td>
                 </tr>)
                 }
             </tbody>
-    </Table>
+        </Table>
     }
 
     render() {
         return (
             <Container>
+                
+                <WatchButton />
                 <this.createTable />
                 <BuyCoin />
                 <SellCoin />
