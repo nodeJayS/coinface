@@ -1,8 +1,9 @@
-import React from 'react';
+import React from 'react'
 import ReactDOM from 'react-dom'
 import jwt_decode from 'jwt-decode'
 
-import './css/index.css';
+import './css/index.css'
+import './css/table.css'
 import Root from './Root'
 import configureStore from './store/store'
 import { setAuthToken } from './util/session_api_util'

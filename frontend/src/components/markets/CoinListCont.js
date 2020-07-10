@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
 
 import { fetchCoinData } from '../../actions/coinActions';
-import CoinList from './CoinList'
+import { watchlist } from '../../actions/watchActions';
+import CoinList from './CoinList';
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchCoinData: coin => dispatch(fetchCoinData(coin))
+        watchlist: () => dispatch(watchlist()),
+        fetchCoinData: (coin) => dispatch(fetchCoinData(coin))
     }
 }
 

@@ -50,7 +50,6 @@ class CoinPage extends Component {
     render() {
         return (
             <Container>
-                
                 <WatchButton />
                 <this.createTable />
                 <BuyCoin />

@@ -1,0 +1,13 @@
+.coinTable td{
+    vertical-align: middle
+}
+
+.greenNum {
+    text-align: center;
+    color: green;
+}
+
+.redNum {
+    text-align: center;
+    color:red;
+}
