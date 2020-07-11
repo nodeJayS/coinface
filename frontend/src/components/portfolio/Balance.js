@@ -4,27 +4,49 @@ import { withRouter } from 'react-router-dom';
 class Balance extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
-        this.getTotalBalance = this.getTotalBalance.bind(this)
+        this.state = {
+            coins: [],
+            balance: 0
+        };
+        this.getAssetNames = this.getAssetNames.bind(this)
+        this.getAssetData = this.getAssetData.bind(this)
     }
 
-    getTotalBalance = () => {
-        let totalBalance = this.props.usd;
+    componentDidMount(){
+        this.props.fetchCoinData()
+            .then(res => {
+                this.setState({
+                    coins: res.coin
+                })
+            })
+    }
+
+    getAssetNames = () => {
+        let assetNames = ''
         for (let i = 0; i < this.props.assets.length; i++) {
-            totalBalance += this.props.assets[i].balance
+            assetNames += (this.props.assets[i].name + ',')
         }
-        return Number(totalBalance.toFixed(2)).toLocaleString('en')
+        return assetNames
+    }
+
+    getAssetData = () => {
+        let totalBalance = this.props.usd
+        for (let i = 0; i < this.props.assets.length; i++) {
+            let assetExist = this.state.coins.find(asset => asset.id === this.props.assets[i].name)
+            totalBalance += (assetExist['current_price'] * this.props.assets[i].balance)
+        }
+        return (Number((totalBalance).toFixed(2)).toLocaleString('en'))
     }
 
     render() {
-        if(this.props.assets && this.props.usd) {
-        return (
-            <>
-            <div>
+        if(this.props.assets && this.props.usd) {      
+                return (
+                    <>
+                    <div>
                 Portfolio balance
             </div>
             <div className="totalBalance">
-                $ {this.getTotalBalance()}
+            $ {this.getAssetData()}
             </div>
             </>
         )

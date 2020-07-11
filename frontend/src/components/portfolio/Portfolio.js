@@ -7,6 +7,10 @@ import Deposit from './DepositCont'
 import { withRouter } from 'react-router-dom';
 
 class Portfolio extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
 
     componentDidMount() {
         this.props.assetData()
