@@ -5,8 +5,7 @@ class Balance extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            coins: [],
-            balance: 0
+            coins: []
         };
         this.getAssetNames = this.getAssetNames.bind(this)
         this.getAssetData = this.getAssetData.bind(this)
