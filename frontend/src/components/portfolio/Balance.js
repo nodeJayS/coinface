@@ -11,15 +11,6 @@ class Balance extends Component {
         this.getAssetData = this.getAssetData.bind(this)
     }
 
-    componentDidMount(){
-        this.props.fetchCoinData()
-            .then(res => {
-                this.setState({
-                    coins: res.coin
-                })
-            })
-    }
-
     getAssetNames = () => {
         let assetNames = ''
         for (let i = 0; i < this.props.assets.length; i++) {
@@ -31,14 +22,14 @@ class Balance extends Component {
     getAssetData = () => {
         let totalBalance = this.props.usd
         for (let i = 0; i < this.props.assets.length; i++) {
-            let assetExist = this.state.coins.find(asset => asset.id === this.props.assets[i].name)
+            let assetExist = this.props.coins.find(asset => asset.id === this.props.assets[i].name)
             totalBalance += (assetExist['current_price'] * this.props.assets[i].balance)
         }
         return (Number((totalBalance).toFixed(2)).toLocaleString('en'))
     }
 
     render() {
-        if(this.props.assets && this.props.usd) {      
+        if(this.props.assets && this.props.usd && this.props.coins) {      
                 return (
                     <>
                     <div>

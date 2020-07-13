@@ -8,3 +8,13 @@ export const fetchCoinData = (coinIds) => {
     }
     return axios.get(coinURL)
 };
+
+export const fetchWeekData = (coinId) => {
+    let coinURL = `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=7`
+    return axios.get(coinURL)
+}
+
+export const fetchMonthData = (coinId) => {
+    let coinURL = `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=30`
+    return axios.get(coinURL)
+}

@@ -3,6 +3,7 @@ import Table from 'react-bootstrap/Table';
 import { withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 
+import CoinChart from './CoinChartCont'
 import BuyCoin from './trade/BuyCoinCont';
 import SellCoin from './trade/SellCoinCont';
 import WatchButton from './WatchButtonCont'
@@ -12,9 +13,8 @@ class CoinPage extends Component {
         super(props);
         this.state = {
             coinData: [],
-
+            weekData: true
         }
-        this.createTable = this.createTable.bind(this)
     }
 
     componentDidMount() {
@@ -22,6 +22,8 @@ class CoinPage extends Component {
         this.props.watchlist()
         this.props.fetchCoinData(this.props.match.params.coinid)
             .then(res => this.setState({coinData: res.coin}))
+        this.props.fetchWeekData(this.props.match.params.coinid)
+        this.props.fetchMonthData(this.props.match.params.coinid)
     }
 
     createTable = () => {
@@ -51,6 +53,7 @@ class CoinPage extends Component {
         return (
             <Container>
                 <WatchButton />
+                <CoinChart />
                 <this.createTable />
                 <BuyCoin />
                 <SellCoin />

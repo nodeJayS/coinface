@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Table from 'react-bootstrap/Table';
 import Image from 'react-bootstrap/Image';
-// import { Sparklines, SparklinesLine } from 'react-sparklines'
 import { withRouter } from 'react-router-dom';
 import Button from 'react-bootstrap/Button'
 
@@ -48,7 +47,6 @@ class CoinList extends Component {
                     <td className={Number(coin['price_change_percentage_24h_in_currency']) > 0 ? "greenNum" : "redNum"}>{Number(coin['price_change_percentage_24h_in_currency']).toFixed(2)}%</td>
                     <td className={Number(coin['price_change_percentage_7d_in_currency']) > 0 ? "greenNum" : "redNum"}>{Number(coin['price_change_percentage_7d_in_currency']).toFixed(2)}%</td>
                     <td>${coin['market_cap'].toLocaleString('en')}</td>
-                    {/* <td><Sparklines data={(coin['sparkline_in_7d']['price'])}><SparklinesLine size="sm"/></Sparklines></td> */}
                     <td><Button href={`/prices/${coin.id}`}>Trade</Button></td>
                 </tr>
                 )}
