@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import Balance from '../portfolio/BalanceCont'
 import Tx from '../portfolio/TxCont'
 import Watchlist from './WatchlistCont'
+import Assets from '../portfolio/AssetsCont'
 
 class Dashboard extends Component {
 
@@ -21,6 +22,7 @@ class Dashboard extends Component {
                     <Balance />
                     <Watchlist />
                     <Tx />
+                    <Assets />
                 </Container>
             </>
         )

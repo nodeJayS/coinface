@@ -40,13 +40,13 @@ class Watchlist extends Component {
                                 <div className='row'>
                                     <div><Image src={coin.image} alt={coin.name} width="24" height="24"></Image></div>
                                     <div>{coin.name}</div>
-                                    <div>24h</div>
+                                    <div>7d</div>
                                 </div>
                                 <div className='row'>
                                     <div>${Number(coin['current_price']).toFixed(2).toLocaleString('en')}</div>
-                                    <div className={Number(coin['price_change_percentage_24h_in_currency']) > 0 ? "greenNum" : "redNum"}>{Number(coin['price_change_percentage_24h_in_currency']).toFixed(2)}%</div>
+                                    <div className={Number(coin['price_change_percentage_7d_in_currency']) > 0 ? "greenNum" : "redNum"}>{Number(coin['price_change_percentage_24h_in_currency']).toFixed(2)}%</div>
                                 </div>
-                                    <div><Sparklines data={(coin['sparkline_in_7d']['price'])}><SparklinesLine style={{fill: "none"}} color="blue"/></Sparklines></div>
+                                    <div><Sparklines data={(coin['sparkline_in_7d']['price'])}><SparklinesLine style={{fill: "none"}} color="#007AFF"/></Sparklines></div>
                             </a>
                         ))}
                     </div>
