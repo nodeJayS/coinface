@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { withRouter } from 'react-router-dom';
 
-class Deposit extends Component {
+class Withdraw extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -30,35 +30,39 @@ class Deposit extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        let deposit = {
+        let withdraw = {
             userid: this.props.userid,
             id: 'USD',
             quantity: this.state.usdAmount,
             price: 1,
             usdAmount: this.state.usdAmount,
-            txType: 'DEPOSIT USD'
+            txType: 'WITHDRAW USD'
 
         }
-        this.props.deposit(deposit)
-        this.props.newTx(deposit)
+        if(withdraw.usdAmount <= this.props.usdBalance) {
+        this.props.withdraw(withdraw)
+        this.props.newTx(withdraw)
             .then(() => this.props.history.push('/portfolio'))
         this.setState({
             show: !this.state.show,
             usdAmount: 0,
-        })
+        })}
+        else {
+            console.log(this.props.usdBalance)
+        }
     }
 
     render() {
         return (
             <>
             <Button variant="primary" onClick={this.handleShow}>
-                Deposit
+                Withdraw
             </Button>        
 
             <Modal show={this.state.show} onHide={this.handleShow}>
                 <Form onSubmit={this.handleSubmit}>
                 <Modal.Header>
-                    <Modal.Title>Deposit</Modal.Title>
+                    <Modal.Title>Withdraw</Modal.Title>
                 </Modal.Header>
             
                 <Modal.Body>
@@ -67,7 +71,7 @@ class Deposit extends Component {
 
                 <Modal.Footer>
                     <Button type="submit" variant="primary">
-                        Deposit
+                        Withdraw
                     </Button>   
 
                     <Button variant="secondary" onClick={this.handleShow}>
@@ -81,4 +85,4 @@ class Deposit extends Component {
     }
 }
 
-export default withRouter(Deposit)
+export default withRouter(Withdraw)

@@ -3,6 +3,7 @@ import * as AssetAPIUtil from '../util/asset_api_util'
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS'
 export const RECEIVE_ALL_ASSET_DATA = 'RECEIVE_ALL_ASSET_DATA'
 export const RECEIVE_DEPOSIT = 'RECEIVE_DEPOSIT'
+export const RECEIVE_WITHDRAWAL = 'RECEIVE_WITHDRAWAL'
 export const RECEIVE_UPDATED_ASSETS = 'RECEIVE_UPDATED_ASSETS'
 
 export const receiveErrors = (errors) => ({
@@ -20,6 +21,11 @@ export const receiveDeposit = (deposit) => ({
     deposit
 })
 
+export const receiveWithdrawal = (withdraw) => ({
+    type: RECEIVE_WITHDRAWAL,
+    withdraw
+})
+
 export const receiveUpdatedAssets = (payload) => ({
     type: RECEIVE_UPDATED_ASSETS,
     payload
@@ -28,12 +34,18 @@ export const receiveUpdatedAssets = (payload) => ({
 export const assetData = () => dispatch => {
     return AssetAPIUtil.allAssetData()
         .then(res => dispatch(receiveAllAssetData(res.data)))
-        .catch(err => console.log('error'))
+        .catch(err => dispatch(receiveErrors(err.response.data)))
 }
 
 export const deposit = (depositAmt) => dispatch => {
     return AssetAPIUtil.deposit(depositAmt)
         .then(res => dispatch(receiveDeposit(res.data)))
+        .catch(err => dispatch(receiveErrors(err.response.data)))
+}
+
+export const withdraw = (withdrawAmt) => dispatch => {
+    return AssetAPIUtil.withdraw(withdrawAmt)
+        .then(res => dispatch(receiveWithdrawal(res.data)))
         .catch(err => dispatch(receiveErrors(err.response.data)))
 }
 

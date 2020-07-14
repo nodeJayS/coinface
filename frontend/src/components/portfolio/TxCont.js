@@ -1,18 +1,11 @@
 import { connect } from 'react-redux';
 
-import { getAllTx } from '../../actions/txActions'
 import Tx from './Tx'
 
 const mapStateToProps = (state) => {
     return {
-        userid: state.session.user.id
+        userid: state.session.user.id,
+        tx: state.transactions.transactions
     }
 } 
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getAllTx: () => dispatch(getAllTx()),
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Tx);
+export default connect(mapStateToProps)(Tx);

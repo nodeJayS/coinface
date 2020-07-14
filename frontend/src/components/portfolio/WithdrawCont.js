@@ -1,20 +1,21 @@
 import { connect } from 'react-redux'
 
-import { deposit } from '../../actions/assetActions'
+import { withdraw } from '../../actions/assetActions'
 import { newTx } from '../../actions/txActions'
-import Deposit from './Deposit'
+import Withdraw from './Withdraw'
 
 const mapStateToProps = (state) => {
     return {
         userid: state.session.user.id,
+        usdBalance: state.assets.usdBalance
     }
 } 
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deposit: (depositAmt) => dispatch(deposit(depositAmt)),
+        withdraw: (withdrawAmt) => dispatch(withdraw(withdrawAmt)),
         newTx: (tx) => dispatch(newTx(tx))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Deposit);
+export default connect(mapStateToProps, mapDispatchToProps)(Withdraw);

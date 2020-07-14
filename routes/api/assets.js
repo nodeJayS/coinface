@@ -31,7 +31,7 @@ router.get('/allAssetData', (req, res) => {
 
 router.patch("/depositUSD", (req, res) => {
   const userid = req.body.userid
-  const depositAmt = req.body.depositAmt
+  const depositAmt = req.body.usdAmount
 
   User.findById(userid, (err, user) => {
     if(err) {
@@ -60,7 +60,9 @@ router.patch("/withdrawUSD", (req, res) => {
       user.usdBalance -= Number(subtractAmt)
       user
         .save()
-        .then(user => console.log(user.usdBalance))
+        .then(user => res.json({
+          usdBalance: user.usdBalance
+          }))
         .catch(err => console.log(err));
     })
 })

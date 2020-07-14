@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 
-import { assetData, deposit } from '../../actions/assetActions';
+import { assetData } from '../../actions/assetActions';
 import { fetchCoinData, fetchWeekData, fetchMonthData } from '../../actions/coinActions';
 import { watchlist } from '../../actions/watchActions';
+import { getAllTx } from '../../actions/txActions'
 
 import Portfolio from './Portfolio'
 
@@ -16,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         assetData: () => dispatch(assetData()),
         watchlist: () => dispatch(watchlist()),
-        deposit: (depositAmt) => dispatch(deposit(depositAmt)),
+        getAllTx: () => dispatch(getAllTx()),
         fetchCoinData: (coin) => dispatch(fetchCoinData(coin)),
         fetchWeekData: (coin) => dispatch(fetchWeekData(coin)),
         fetchMonthData: (coin) => dispatch(fetchMonthData(coin)),

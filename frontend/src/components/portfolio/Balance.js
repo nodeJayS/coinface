@@ -4,10 +4,7 @@ import { withRouter } from 'react-router-dom';
 class Balance extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            coins: []
-        };
-        this.getAssetNames = this.getAssetNames.bind(this)
+        this.state = {};
         this.getAssetData = this.getAssetData.bind(this)
     }
 
@@ -20,7 +17,7 @@ class Balance extends Component {
     }
 
     getAssetData = () => {
-        let totalBalance = this.props.usd
+        let totalBalance = 0 + this.props.usd
         for (let i = 0; i < this.props.assets.length; i++) {
             let assetExist = this.props.coins.find(asset => asset.id === this.props.assets[i].name)
             totalBalance += (assetExist['current_price'] * this.props.assets[i].balance)
@@ -30,20 +27,20 @@ class Balance extends Component {
 
     render() {
         if(this.props.assets && this.props.usd && this.props.coins) {      
-                return (
-                    <>
-                    <div>
-                Portfolio balance
-            </div>
-            <div className="totalBalance">
-            $ {this.getAssetData()}
-            </div>
+            return (
+            <>
+                <div>
+                    Portfolio balance
+                </div>
+                <div className="totalBalance">
+                    $ {this.getAssetData()}
+                </div>
             </>
         )
         }
         else {
             return (
-                <div>Loading...</div>
+                <div>Loading balance...</div>
             )
         }
     }

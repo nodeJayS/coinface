@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom';
 
 import Balance from './BalanceCont'
-import Assets from '../assets/Assets'
+import Assets from '../assets/AssetsCont'
 import Tx from './TxCont'
 import Deposit from './DepositCont'
-import { withRouter } from 'react-router-dom';
+import Withdraw from './WithdrawCont'
 
 class Portfolio extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class Portfolio extends Component {
         this.props.assetData()
         this.props.watchlist()
         this.props.fetchCoinData()
+        this.props.getAllTx()
     }
 
     render() {
@@ -25,6 +27,7 @@ class Portfolio extends Component {
                 <Assets />
                 <Tx />
                 <Deposit />
+                <Withdraw />
             </div>
         )
     }

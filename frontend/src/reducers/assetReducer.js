@@ -1,5 +1,6 @@
 import { RECEIVE_ALL_ASSET_DATA,
     RECEIVE_DEPOSIT,
+    RECEIVE_WITHDRAWAL,
     RECEIVE_UPDATED_ASSETS }
     from '../actions/assetActions';
 
@@ -17,6 +18,11 @@ import { RECEIVE_ALL_ASSET_DATA,
                 return {
                     ...state,
                     usdBalance: action.deposit.usdBalance
+                };
+            case RECEIVE_WITHDRAWAL:
+                return {
+                    ...state,
+                    usdBalance: action.withdraw.usdBalance
                 };
             case RECEIVE_UPDATED_ASSETS:
                 return {
