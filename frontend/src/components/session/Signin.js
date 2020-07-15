@@ -4,6 +4,8 @@ import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import { withRouter } from 'react-router-dom';
 
+import DummySignin from './dummy/DummySigninCont'
+
 class Signin extends Component {
     constructor(props) {
         super(props);
@@ -62,6 +64,7 @@ class Signin extends Component {
                         </button> 
                     </Col>
                 </Form>
+                <DummySignin />
             </Container>
             </>
         )

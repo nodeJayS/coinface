@@ -1,6 +1,5 @@
 import { RECEIVE_CURRENT_USER,
-    RECEIVE_USER_SIGN_OUT,
-    RECEIVE_USER_SIGN_IN }
+    RECEIVE_USER_SIGN_OUT }
     from '../actions/sessionActions';
 
 const initialState = {
@@ -21,14 +20,6 @@ switch (action.type) {
         return {
             isAuthenticated: false,
             user: undefined,
-            assets: undefined
-        };
-    case RECEIVE_USER_SIGN_IN:
-        return {
-            ...state,
-            isAuthenticated: true,
-            user: action.payload,
-            assets: action.payload.assets
         };
     default:
         return state;

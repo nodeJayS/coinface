@@ -72,7 +72,7 @@ export default class NavBar extends Component {
         
         <Nav>
             <NavLink href="../sign-in">Sign in</NavLink>
-            <Button href="../registration">Get Started</Button>
+            <Button href="../registration">Register</Button>
         </Nav>
         </>
       );

@@ -35,8 +35,8 @@ class Tx extends Component {
                 {recentTx.map(tx =>
                     <tr key={tx['_id']}>
                         <td>{(tx.name).toUpperCase()}</td>
-                        <td>{Number(tx.quantity.toFixed(4)).toLocaleString('en')}</td>
-                        <td>${tx.usdAmount.toLocaleString('en')}</td>
+                        <td>{Number((tx.quantity).toFixed(2)).toLocaleString('en')}</td>
+                        <td>${(Number((tx.usdAmount).toFixed(2)).toLocaleString('en'))}</td>
                         <td>{tx.transactionType}</td>
                     </tr>
                 )}
@@ -56,7 +56,7 @@ class Tx extends Component {
         }
         else {
             return (
-                <div>Loading recent transactions...</div>
+                <div>No transactions found.</div>
             )
         }
     }

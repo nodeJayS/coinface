@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 
 import CoinList from '../markets/CoinListCont'
-import RegHome from '../session/RegHome'
-
+import DummySignin from '../session/dummy/DummySigninCont'
 
 export default class home extends Component {
     constructor(props) {
@@ -29,7 +28,7 @@ export default class home extends Component {
                 </Container>
 
                 <Container>
-                    <RegHome/>
+                    <DummySignin />
                 </Container>
 
                 <Container>

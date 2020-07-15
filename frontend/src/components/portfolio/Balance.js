@@ -40,7 +40,7 @@ class Balance extends Component {
         }
         else {
             return (
-                <div>Loading balance...</div>
+                <div>Empty balance.</div>
             )
         }
     }

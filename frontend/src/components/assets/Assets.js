@@ -3,6 +3,7 @@ import Table from 'react-bootstrap/Table';
 import { withRouter } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
 import Container from 'react-bootstrap/Container';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Assets extends Component {
     constructor(props) {
@@ -56,6 +57,15 @@ class Assets extends Component {
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td><FontAwesomeIcon icon="dollar-sign"/> USD</td>
+                    <td>$ {Number(this.props.usd).toFixed(2).toLocaleString('en')}</td>
+                    {
+                        ((Number(this.props.usd)/totalBalance) * 100) < 1 ?
+                        <td>{'< 1 %'}</td> :          
+                        <td>{((Number(this.props.usd)/totalBalance) * 100).toFixed(2)} %</td>
+                    }
+                </tr>
                 {assetData.map(coin =>
                 <tr key={coin.id}>
                     <td><Image src={coin.image} alt={coin.name} width="24" height="24"></Image> {coin.name}</td>
@@ -83,8 +93,9 @@ class Assets extends Component {
             </Container>
             )
         }
+
         else {
-            return <div>Loading...</div>
+            return <div>No assets found.</div>
         }
     }
 }

@@ -20,6 +20,10 @@ class Portfolio extends Component {
         this.props.getAllTx()
     }
 
+    componentDidUpdate() {
+        this.props.getAllTx()
+    }
+
     render() {
         return (
             <div>

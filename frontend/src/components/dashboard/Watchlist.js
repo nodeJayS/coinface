@@ -65,7 +65,7 @@ class Watchlist extends Component {
         )
         }
         else {
-            return (<div>Loading...</div>)
+            return (<div>Watchlist is empty!</div>)
         }
     }
 }
