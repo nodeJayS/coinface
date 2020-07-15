@@ -14,27 +14,24 @@ export default class home extends Component {
 
     render() {
         return (
-            <>
-                <Container>
-                    <div className="homeTitle">
-                        The face of cryptocurrency.
-                    </div>
+            <div className="homePage">
+                <Container className="homeTitle d-flex justify-content-center">
+                    The face of cryptocurrency.
                 </Container>
 
-                <Container>
-                    <div>
-                        Just kidding! Coinface is a cryptocurrency exchange simulator. Sign in to buy, sell and manage your simulated currency!
-                    </div>
+
+                <Container className="homeDesc d-flex justify-content-center">
+                    Just kidding! Coinface is a cryptocurrency exchange simulator. Sign in to buy, sell and manage your simulated currency!
                 </Container>
 
-                <Container>
+                <Container className="quickstart d-flex justify-content-center">
                     <DummySignin />
                 </Container>
 
-                <Container>
+                <Container className="coinlist">
                     <CoinList coinIds={this.state.coinIds} />  
                 </Container>       
-            </>
+            </div>
         )
     }
 }

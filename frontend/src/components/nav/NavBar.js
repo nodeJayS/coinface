@@ -22,9 +22,9 @@ export default class NavBar extends Component {
   getLinks() {
     if (this.props.signedIn) {
       return (
-        <>
-        <NavbarBrand>
-          <NavLink href="/dashboard">
+        <div className="container">
+        <NavbarBrand >
+          <NavLink className="logo" href="/dashboard">
             Coinface
           </NavLink>
         </NavbarBrand>
@@ -46,13 +46,13 @@ export default class NavBar extends Component {
           <Nav>
               <Button onClick={this.signoutUser}>Sign out</Button>
           </Nav>
-        </>
+        </div>
       )
     } else {
       return (
-        <>
+        <div className="container">
         <NavbarBrand>
-          <NavLink href="/">
+          <NavLink className="logo" href="/">
             Coinface
           </NavLink>
         </NavbarBrand>
@@ -62,9 +62,9 @@ export default class NavBar extends Component {
                 Prices
             </NavLink>
 
-            <NavDropdown title="Products">
-                <NavLink href="/markets">Markets</NavLink>
-                <NavLink href="/wallet">Wallet</NavLink>
+            <NavDropdown className="navDropdown" title="Products">
+                <NavDropdown.Item href="/markets">Markets</NavDropdown.Item>
+                <NavDropdown.Item href="/wallet">Wallet</NavDropdown.Item>
             </NavDropdown>
             
             <NavLink href="../about-us">About Us</NavLink>
@@ -74,7 +74,7 @@ export default class NavBar extends Component {
             <NavLink href="../sign-in">Sign in</NavLink>
             <Button href="../registration">Register</Button>
         </Nav>
-        </>
+        </div>
       );
     }
 }
@@ -82,7 +82,7 @@ export default class NavBar extends Component {
   render() {
     return (
       <>
-      <Navbar className="NavHeader" bg="light">
+      <Navbar className="navheader NavHeader">
         {this.getLinks()}
       </Navbar>
       </>

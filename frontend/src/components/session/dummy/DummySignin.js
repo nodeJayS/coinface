@@ -22,38 +22,38 @@ class DummySignin extends Component {
     }
 
     handleSubmit = (e) => {
-      e.preventDefault();
-      let user = {
-          email: 'test@test.com',
-          password: 'password'
-        };
+        e.preventDefault();
+        let user = {
+            email: 'test@test.com',
+            password: 'password'
+            };
 
-      this.props.signin(user)
-          .then(() => this.props.history.push('/dashboard'))
-  }
-  
+        this.props.signin(user)
+            .then(() => this.props.history.push('/dashboard'))
+    }
+
     render() {
         return (
             <>
-            <Button variant="primary" onClick={this.handleShow}>
+            <Button className="startButton" variant="success" onClick={this.handleShow}>
                 Quick start
             </Button>        
 
             <Modal show={this.state.show} onHide={this.handleShow}>
                 <Form onSubmit={this.handleSubmit}>
                 <Modal.Header>
-                    <Modal.Title>Sign in with dummy account</Modal.Title>
+                    <Modal.Title>Quick start</Modal.Title>
                 </Modal.Header>
 
-              <Modal.Body>
-                <div>
-                  Use this to sign in with a dummy account if you want to try out this website's features without registering!
-                </div>
-              </Modal.Body>
+                <Modal.Body>
+                    <div>
+                        Use this to sign in with a pre-made account if you want to try out this website's features without registering!
+                    </div>
+                </Modal.Body>
 
                 <Modal.Footer>
                     <Button type="submit" variant="primary">
-                        Sign in with dummy account
+                        Sign in with pre-made account
                     </Button>   
 
                     <Button variant="secondary" onClick={this.handleShow}>

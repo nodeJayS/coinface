@@ -59,7 +59,7 @@ class Assets extends Component {
             <tbody>
                 <tr>
                     <td><FontAwesomeIcon icon="dollar-sign"/> USD</td>
-                    <td>$ {Number(this.props.usd).toFixed(2).toLocaleString('en')}</td>
+                    <td>$ {Number((this.props.usd).toFixed(2)).toLocaleString('en')}</td>
                     {
                         ((Number(this.props.usd)/totalBalance) * 100) < 1 ?
                         <td>{'< 1 %'}</td> :          

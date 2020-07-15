@@ -1,0 +1,12 @@
+.homeTitle {
+    font-size: 48px;
+    font-weight: bolder;
+    color: white;
+    margin-top: 36px;
+}
+
+.homeDesc {
+    color: white;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}

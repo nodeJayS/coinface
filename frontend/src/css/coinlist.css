@@ -1,0 +1,31 @@
+.coinlist {
+    border-radius: 12px;
+    padding: 24px 16px 16px 16px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    background-color: white;
+}
+
+.coinlist td{
+    vertical-align: middle;
+    font-weight: lighter;
+}
+
+.coinlist th{
+    color: rgba(17, 51, 83, 0.6);
+    font-weight: lighter;
+}
+
+.greenNum {
+    text-align: center;
+    color: green;
+}
+
+.redNum {
+    text-align: center;
+    color:red;
+}
+
+.centerText {
+    text-align: center;
+}

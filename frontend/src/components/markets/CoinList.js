@@ -23,15 +23,15 @@ class CoinList extends Component {
     let coinNum = 1;
     return (
         <>
-        <Table className="coinTable" responsive striped borderless size="md">
+        <Table className="coinlist" responsive size="md">
             <thead>
                 <tr>               
                 <th>#</th>
                 <th></th>
                 <th>Name</th>
                 <th>Price</th>
-                <th>Change in 24 hrs</th>
-                <th>Change in 7 days</th>
+                <th className="centerText">24h Change</th>
+                <th className="centerText">7d Change</th>
                 <th>Marketcap</th>
                 <th>Trade</th>
                 </tr>
@@ -47,7 +47,7 @@ class CoinList extends Component {
                     <td className={Number(coin['price_change_percentage_24h_in_currency']) > 0 ? "greenNum" : "redNum"}>{Number(coin['price_change_percentage_24h_in_currency']).toFixed(2)}%</td>
                     <td className={Number(coin['price_change_percentage_7d_in_currency']) > 0 ? "greenNum" : "redNum"}>{Number(coin['price_change_percentage_7d_in_currency']).toFixed(2)}%</td>
                     <td>${coin['market_cap'].toLocaleString('en')}</td>
-                    <td><Button href={`/prices/${coin.id}`}>Trade</Button></td>
+                    <td><Button variant="success" href={`/prices/${coin.id}`}>Trade</Button></td>
                 </tr>
                 )}
             </tbody>
