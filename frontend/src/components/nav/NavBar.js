@@ -43,7 +43,7 @@ export default class NavBar extends Component {
               </NavLink>
           </Nav>
           
-          <Nav>
+          <Nav className="justifyEnd">
               <Button onClick={this.signoutUser}>Sign out</Button>
           </Nav>
         </div>

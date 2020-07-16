@@ -7,6 +7,7 @@ import './css/homepage.css'
 import './css/coinlist.css'
 import './css/navbar.css'
 import './css/sessionpage.css'
+import './css/dashboard.css'
 
 import Root from './Root'
 import configureStore from './store/store'

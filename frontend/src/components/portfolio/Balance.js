@@ -28,19 +28,26 @@ class Balance extends Component {
     render() {
         if(this.props.assets && this.props.usd && this.props.coins) {      
             return (
-            <>
-                <div>
+            <div className='container'>
+                <div className='balanceTitle'>
                     Portfolio balance
                 </div>
                 <div className="totalBalance">
                     $ {this.getAssetData()}
                 </div>
-            </>
+            </div>
         )
         }
         else {
             return (
-                <div>Empty balance.</div>
+                <div className='container'>
+                <div className='balanceTitle'>
+                    Portfolio balance
+                </div>
+                <div className="totalBalance">
+                    $ 0
+                </div>
+            </div>
             )
         }
     }

@@ -84,7 +84,7 @@ class CoinList extends Component {
 
     render() {
     return (
-        <>
+        <div>
             <div className="searchbar border d-inline-flex p-2">
                 <div className="searchstar">
                 <FontAwesomeIcon icon="search" />
@@ -97,7 +97,7 @@ class CoinList extends Component {
                 />
             </div>
             {this.createTable()}
-        </>
+        </div>
         )
     }
 }

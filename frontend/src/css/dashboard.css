@@ -1,0 +1,62 @@
+.balanceTitle {
+    font-size: 24px;
+    font-weight: bolder;
+    color: white;
+    margin-top: 24px;
+    border-bottom: solid;
+    font-weight: lighter;
+}
+
+.totalBalance {
+    font-size: 36px;
+    font-weight: bolder;
+    color: white;
+    font-weight: lighter;
+    margin-bottom: 24px;
+}
+
+.watchlistTitle {
+    font-size: 24px;
+    font-weight: lighter;
+    margin-top: 12px;
+    border-bottom: 1px solid rgb(236, 239, 241);
+}
+
+.watchlist{
+    font-size: 14px;
+    border: 1px solid rgb(236, 239, 241);
+    border-radius: 12px;
+    background-color: white;
+}
+
+.watchlist div{
+    color: black;
+    font-weight: lighter;
+}
+
+.watchlistData{
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.watchlistData a {
+    z-index: 1;
+}
+
+.watchlistCoin {
+    justify-content: center;
+    align-items: center;
+}
+
+.viewButton {
+    z-index: 2;
+    opacity: 0;
+    position:absolute;
+    left:25%;
+    top:25%;
+}
+
+.watchlistAnch:hover > .viewButton {
+    transition: opacity .3s;
+    opacity: 1;
+}
