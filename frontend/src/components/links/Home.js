@@ -30,7 +30,7 @@ export default class home extends Component {
 
                 <Container className="coinlist">
                     <CoinList coinIds={this.state.coinIds} />  
-                </Container>       
+                </Container>
             </div>
         )
     }

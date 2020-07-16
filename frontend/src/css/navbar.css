@@ -27,3 +27,16 @@ a:focus {
 .navbar-light .navbar-nav .nav-link:hover {
     color: white;
 }
+
+.dropdown-item:hover {
+    color: #1652F0;
+    background-color: white;
+}
+
+.navbar .container {
+    justify-content: flex-start;
+}
+
+.justifyEnd {
+    margin-left: auto;
+}

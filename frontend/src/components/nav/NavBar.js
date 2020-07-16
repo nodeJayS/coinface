@@ -57,20 +57,20 @@ export default class NavBar extends Component {
           </NavLink>
         </NavbarBrand>
 
-        <Nav>
-            <NavLink href="../prices">             
-                Prices
-            </NavLink>
+        <Nav className="navContent">
+          <NavLink href="../prices">             
+            Prices
+          </NavLink>
 
-            <NavDropdown className="navDropdown" title="Products">
-                <NavDropdown.Item href="/markets">Markets</NavDropdown.Item>
-                <NavDropdown.Item href="/wallet">Wallet</NavDropdown.Item>
-            </NavDropdown>
+          <NavDropdown title="Products">
+            <NavDropdown.Item href="/markets">Markets</NavDropdown.Item>
+            <NavDropdown.Item href="/wallet">Wallet</NavDropdown.Item>
+          </NavDropdown>
             
-            <NavLink href="../about-us">About Us</NavLink>
+          <NavLink href="../about-us">About Us</NavLink>
         </Nav>
         
-        <Nav>
+        <Nav className="justifyEnd">
             <NavLink href="../sign-in">Sign in</NavLink>
             <Button href="../registration">Register</Button>
         </Nav>

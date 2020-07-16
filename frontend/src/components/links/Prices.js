@@ -7,7 +7,7 @@ export default class Prices extends Component {
     render() {
         return (
             <>
-                <Container>
+                <Container className="coinlist">
                     <CoinList />
                 </Container>
             </>

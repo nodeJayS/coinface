@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
 import { withRouter } from 'react-router-dom';
 
 class Registration extends Component {
@@ -42,59 +41,59 @@ class Registration extends Component {
 
     render() {
         return (
-        <>
-        <Container>
-            <Col>
-                <h1>
+        <div className="container  mx-auto justify-content-center">
+            <Col className="d-flex justify-content-center">
+                <h1 className="sessionTitle">
                     Register
                 </h1>
             </Col>
                 
-            <Form onSubmit={this.handleSubmit}>
+            <div className="container justify-content-center">
+                <Form className="sessionCont" onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                    <Col>
+                    <Col className="d-flex justify-content-center">
                         <input id="firstName" value={this.state.firstName} onChange={this.handleChange} type="string" placeholder="First name" />
                     </Col>
                 </div>
 
                 <div className="form-group">
-                    <Col>
+                    <Col className="d-flex justify-content-center">
                         <input id="lastName" value={this.state.lastName} onChange={this.handleChange} type="string" placeholder="Last name" />
                     </Col>
                 </div>
 
                 <div className="form-group">
-                    <Col>
+                    <Col className="d-flex justify-content-center">
                         <input id="email" value={this.state.email} onChange={this.handleChange} type="email" placeholder="Email address" />
                     </Col>
                 </div>
 
                 <div className="form-group">
-                    <Col>
+                    <Col className="d-flex justify-content-center">
                         <input id="password" value={this.state.password} onChange={this.handleChange} type="password" placeholder="Password" />
                     </Col>
                 </div>
                 
                 <div className="form-group">
-                    <Col>
+                    <Col className="d-flex justify-content-center">
                         <input id="password2" value={this.state.password2} onChange={this.handleChange} type="password" placeholder="Confirm password" />
                     </Col>
                 </div>
 
                 <div className="form-group">
-                    <Col>
+                    <Col className="d-flex justify-content-center">
                         <input id="usdBalance" value={this.state.usdBalance} onChange={this.handleChange} type="number" placeholder="Initial deposit amount" />
                     </Col>
                 </div>
 
-                <Col>
+                <Col className="d-flex justify-content-center">
                     <button className="btn btn-primary" type="submit">
                         Submit
                     </button> 
                 </Col>
-            </Form>
-        </Container>
-        </>
+                </Form>
+            </div>
+        </div>
         )
     }
 }
