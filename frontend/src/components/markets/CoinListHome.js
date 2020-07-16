@@ -3,55 +3,27 @@ import Table from 'react-bootstrap/Table';
 import Image from 'react-bootstrap/Image';
 import { withRouter } from 'react-router-dom';
 import Button from 'react-bootstrap/Button'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-class CoinList extends Component {
+class CoinListHome extends Component {
     constructor(props) {
         super(props);
         this.state = {
             marketData: [],
-            filteredData: [],
             coinid: '',
-            searchInput: ''
         }
-        this.createTable = this.createTable.bind(this)
-    }
-
-    handleChange = (e) => {
-        this.setState({
-            searchInput: e.target.value
-        })
-        this.coinSearch()
     }
 
     componentDidMount() {
-        this.props.fetchCoinData()
+        this.props.fetchCoinData(this.props.coinIds)
             .then(res => this.setState({marketData: res.coin}))
         this.props.watchlist()
     }
 
-    coinSearch = () => {
-        let marketData = this.state.marketData
-        let newData = marketData.filter(value => {
-        return (
-            value.id.toLowerCase().includes(this.state.searchInput.toLowerCase()) ||
-            value.symbol.toLowerCase().includes(this.state.searchInput.toLowerCase())
-            );
-        })
-        this.setState({ filteredData: newData });
-    };
-
-    createTable = () => {
-        let coinNum = 1
-        let coinData;
-        if(this.state.searchInput) {
-            coinData = this.state.filteredData
-        }
-        else {
-            coinData = this.state.marketData
-        }
-        return (
-            <Table className="coinlist" responsive size="md">
+    render() {
+    let coinNum = 1;
+    return (
+        <>
+        <Table className="coinlist" responsive size="md">
             <thead>
                 <tr>               
                 <th>#</th>
@@ -65,7 +37,8 @@ class CoinList extends Component {
                 </tr>
             </thead>
             <tbody>
-                {coinData.map(coin =>
+                {this.state.marketData && this.state.marketData.map(coin =>
+                
                 <tr key={coin.id}>
                     <td>{coinNum++}</td>
                     <td><Image src={coin.image} alt={coin.name} width="24" height="24"></Image></td>
@@ -78,28 +51,10 @@ class CoinList extends Component {
                 </tr>
                 )}
             </tbody>
-            </Table>
-        )
-    }
-
-    render() {
-    return (
-        <>
-            <div className="searchbar border d-inline-flex p-2">
-                <div className="searchstar">
-                <FontAwesomeIcon icon="search" />
-                </div>
-                <input 
-                    className="inputsearch"
-                    value={this.state.searchInput}
-                    onChange={this.handleChange}
-                    placeholder={'Search all assets...'}
-                />
-            </div>
-            {this.createTable()}
+        </Table>
         </>
         )
     }
 }
 
-export default withRouter(CoinList)
+export default withRouter(CoinListHome)

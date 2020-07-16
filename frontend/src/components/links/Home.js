@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 
-import CoinList from '../markets/CoinListCont'
+import CoinList from '../markets/CoinListHomeCont'
 import DummySignin from '../session/dummy/DummySigninCont'
 
 export default class home extends Component {
