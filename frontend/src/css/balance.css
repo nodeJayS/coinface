@@ -1,0 +1,15 @@
+.balanceTitle {
+    font-size: 24px;
+    font-weight: bolder;
+    color: white;
+    margin-top: 24px;
+    border-bottom: solid;
+    font-weight: lighter;
+}
+
+.totalBalance {
+    font-size: 36px;
+    color: white;
+    font-weight: lighter;
+    margin-bottom: 24px;
+}

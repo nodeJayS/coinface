@@ -10,6 +10,8 @@ class Withdraw extends Component {
         this.state = {
             show: false,
             usdAmount: '',
+            warning0: false,
+            warningBalance: false,
         };
         this.handleShow = this.handleShow.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -18,7 +20,9 @@ class Withdraw extends Component {
 
     handleShow = () => {
         this.setState({
-            show: !this.state.show
+            show: !this.state.show,
+            warning0: false,
+            warningBalance: false,
         })
     }
 
@@ -39,16 +43,29 @@ class Withdraw extends Component {
             txType: 'WITHDRAW USD'
 
         }
-        if(withdraw.usdAmount <= this.props.usdBalance) {
-        this.props.withdraw(withdraw)
-        this.props.newTx(withdraw)
-            .then(() => this.props.history.push('/portfolio'))
-        this.setState({
-            show: !this.state.show,
-            usdAmount: 0,
-        })}
+        if(this.state.usdAmount > 0) {
+            if(withdraw.usdAmount <= this.props.usdBalance) {
+                this.props.withdraw(withdraw)
+                this.props.newTx(withdraw)
+                    .then(() => this.props.history.push('/portfolio'))
+                this.setState({
+                    show: !this.state.show,
+                    usdAmount: 0,
+                    warning0: false,
+                    warningBalance: false,
+            })}
+            else {
+                this.setState({
+                    warning0: false,
+                    warningBalance: true
+                })
+            }
+        }
         else {
-            console.log(this.props.usdBalance)
+            this.setState({
+                warningBalance: false,
+                warning0: true
+            })
         }
     }
 
@@ -65,8 +82,12 @@ class Withdraw extends Component {
                     <Modal.Title>Withdraw</Modal.Title>
                 </Modal.Header>
             
-                <Modal.Body>
-                        <input id="usdAmount" value={this.state.depositAmt} onChange={this.handleChange} type="number" placeholder="$0" />
+                <Modal.Body className='modalContent'>
+                    <div>Input amount to withdraw here.</div>
+                    <input id="usdAmount" value={this.state.depositAmt} onChange={this.handleChange} type="number" placeholder="$0" />
+                    {this.state.warning0 ? <div>Amount must be higher than 0.</div> : ''}
+                    {this.state.warningBalance ? <div>Not enough USD in balance.</div> : ''}
+
                 </Modal.Body>
 
                 <Modal.Footer>

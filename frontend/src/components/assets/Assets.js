@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Table from 'react-bootstrap/Table';
 import { withRouter } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
-import Container from 'react-bootstrap/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Assets extends Component {
@@ -48,7 +47,7 @@ class Assets extends Component {
     createTable = () => {
         let assetData = this.getAssetData()
         let totalBalance = this.getTotalBalance()
-        return <Table responsive size="sm" width="100">
+        return <Table responsive size="sm">
             <thead>
                 <tr>               
                     <th>Asset</th>
@@ -87,10 +86,10 @@ class Assets extends Component {
     render() {
         if (this.props.usd && this.props.assets && this.props.coin) {
             return (
-            <Container>
-                <div>Your assets</div>
+            <div className='container assets'>
+                <div className='assetsTitle'>Your assets</div>
                 <this.createTable />
-            </Container>
+            </div>
             )
         }
 

@@ -18,12 +18,12 @@
 
 .greenNum {
     text-align: center;
-    color: green;
+    color: green !important;
 }
 
 .redNum {
     text-align: center;
-    color:red;
+    color:red !important;
 }
 
 .centerText {
@@ -40,6 +40,7 @@
 .searchbar input {
     border: none !important;
     background-color: white;
+    font-weight: lighter;
 }
 
 .searchbar div {

@@ -26,12 +26,24 @@ class Portfolio extends Component {
 
     render() {
         return (
-            <div>
+            <div className = 'container'>
                 <Balance />
-                <Assets />
-                <Tx />
-                <Deposit />
-                <Withdraw />
+                <div className='row'>
+                    <div className='col'>
+                        <Assets />
+                    </div>
+                    <div className='col'>
+                        <div className='container bank'>
+                            <div className='bankTitle'>Bank routes</div>
+                            <div className='bankDesc'>Deposit and withdraw USD in account (WARNING: NOT REAL USD OR BANK ACCOUNT)</div>
+                            <div className='bankFunc container row d-flex justify-content-sm-around'>
+                                <div ><Deposit className='col col-6'/></div>
+                                <div ><Withdraw className='col col-4'/></div>
+                            </div>
+                        </div>
+                        <Tx />
+                    </div>
+                </div>
             </div>
         )
     }

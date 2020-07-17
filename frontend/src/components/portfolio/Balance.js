@@ -18,7 +18,8 @@ class Balance extends Component {
 
     getAssetData = () => {
         let totalBalance = 0 + this.props.usd
-        for (let i = 0; i < this.props.assets.length; i++) {
+        let totalAssets = this.props.assets
+        for (let i = 0; i < totalAssets.length; i++) {
             let assetExist = this.props.coins.find(asset => asset.id === this.props.assets[i].name)
             totalBalance += (assetExist['current_price'] * this.props.assets[i].balance)
         }
@@ -26,7 +27,7 @@ class Balance extends Component {
     }
 
     render() {
-        if(this.props.assets && this.props.usd && this.props.coins) {      
+        if(this.props.usd && this.props.assets && this.props.coins) {      
             return (
             <div className='container'>
                 <div className='balanceTitle'>
@@ -41,13 +42,13 @@ class Balance extends Component {
         else {
             return (
                 <div className='container'>
-                <div className='balanceTitle'>
-                    Portfolio balance
+                    <div className='balanceTitle'>
+                        Portfolio balance
+                    </div>
+                    <div className="totalBalance">
+                        $ 0
+                    </div>
                 </div>
-                <div className="totalBalance">
-                    $ 0
-                </div>
-            </div>
             )
         }
     }

@@ -10,6 +10,7 @@ class Deposit extends Component {
         this.state = {
             show: false,
             usdAmount: '',
+            warningShow: false,
         };
         this.handleShow = this.handleShow.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -18,7 +19,8 @@ class Deposit extends Component {
 
     handleShow = () => {
         this.setState({
-            show: !this.state.show
+            show: !this.state.show,
+            warningShow: false
         })
     }
 
@@ -39,13 +41,21 @@ class Deposit extends Component {
             txType: 'DEPOSIT USD'
 
         }
-        this.props.deposit(deposit)
-        this.props.newTx(deposit)
-            .then(() => this.props.history.push('/portfolio'))
-        this.setState({
-            show: !this.state.show,
-            usdAmount: 0,
-        })
+        if(this.state.usdAmount > 0) {
+            this.props.deposit(deposit)
+            this.props.newTx(deposit)
+                .then(() => this.props.history.push('/portfolio'))
+            this.setState({
+                show: !this.state.show,
+                usdAmount: 0,
+                warningShow: false,
+            })
+        }
+        else {
+            this.setState({
+                warningShow: true
+            })
+        }
     }
 
     render() {
@@ -61,8 +71,10 @@ class Deposit extends Component {
                     <Modal.Title>Deposit</Modal.Title>
                 </Modal.Header>
             
-                <Modal.Body>
-                        <input id="usdAmount" value={this.state.depositAmt} onChange={this.handleChange} type="number" placeholder="$0" />
+                <Modal.Body className='modalContent'>
+                    <div>Input amount to deposit here.</div>
+                    <input id="usdAmount" value={this.state.depositAmt} onChange={this.handleChange} type="number" placeholder="$0" />
+                    {this.state.warningShow ? <div>Amount must be higher than 0.</div> :''}
                 </Modal.Body>
 
                 <Modal.Footer>

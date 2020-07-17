@@ -13,6 +13,7 @@ class Registration extends Component {
             password: '',
             password2: '',
             usdBalance: 0,
+            errors: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,7 +36,15 @@ class Registration extends Component {
             usdBalance: parseInt(this.state.usdBalance)
         }
         this.props.register(user)
-            .then(() => this.props.history.push('/dashboard'))
+            .then((res) => 
+                {if(!Object.values(res.errors)[0]) {
+                    this.props.history.push('/dashboard')}
+                else {
+                    this.setState({
+                        errors: (Object.values(res.errors)[0])
+                    })
+                }
+            })
     }
 
 
@@ -91,6 +100,7 @@ class Registration extends Component {
                         Submit
                     </button> 
                 </Col>
+                <div className="sessionWarnings d-flex justify-content-center">{this.state.errors}</div>
                 </Form>
             </div>
         </div>

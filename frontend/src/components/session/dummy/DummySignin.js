@@ -45,7 +45,7 @@ class DummySignin extends Component {
                     <Modal.Title>Quick start</Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body>
+                <Modal.Body className='modalContent'>
                     <div>
                         Use this to sign in with a pre-made account if you want to try out this website's features without registering!
                     </div>

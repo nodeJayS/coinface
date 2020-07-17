@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Container from 'react-bootstrap/Container'
 import { withRouter } from 'react-router-dom';
 
 import Balance from '../portfolio/BalanceCont'
@@ -19,12 +18,18 @@ class Dashboard extends Component {
     render() {
         return (
             <>
-                <Container>
+                <div className='container'>
                     <Balance />
                     <Watchlist />
-                    <Tx />
-                    <Assets />
-                </Container>
+                    <div className='row'>
+                        <div className='col'>
+                            <Assets />
+                        </div>
+                        <div className='col'>
+                            <Tx/>
+                        </div>
+                    </div>
+                </div>
             </>
         )
     }

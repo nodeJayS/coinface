@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Table from 'react-bootstrap/Table';
 import { withRouter } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
 
 class Tx extends Component {
     constructor(props) {
@@ -30,7 +29,15 @@ class Tx extends Component {
     createTxTable = () => {
         let recentTx = this.getRecentTx()
             return (
-            <Table responsive size="sm" width="100">
+            <Table responsive size="sm">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>USD Amount</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
                 <tbody>
                 {recentTx.map(tx =>
                     <tr key={tx['_id']}>
@@ -48,10 +55,10 @@ class Tx extends Component {
     render() {
         if(this.props.userid && this.props.tx) {
             return (
-                <Container>
-                    <div>Recent Transactions</div>
+                <div className='container recentTx' >
+                    <div className='watchlistTitle'>Recent Transactions</div>
                     {this.createTxTable()}
-                </Container>
+                </div>
             )
         }
         else {

@@ -35,21 +35,19 @@ class Watchlist extends Component {
                 <div className='container watchlistData'>
                     <div className='row'>
                         {coinData.map(coin => (
-                            <div className='col-sm-3'>
-                            <a className='watchlistAnch' href={`/prices/${coin.id}`} key={coin.id}>
+                            <a className='watchlistAnch col-sm-3' href={`/prices/${coin.id}`} key={coin.id}>
                                     <Button className='viewButton'>View asset</Button>
-                                    <div className='row'>
+                                    <div className='row d-flex'>
                                         <div><Image src={coin.image} alt={coin.name} width="24" height="24"></Image></div>
-                                        <div>{coin.name}</div>
-                                        <div>7d</div>
+                                        <div className="paddedName">{coin.name}</div>
+                                        <div className="justifyEnd">7d</div>
                                     </div>
-                                    <div className='row'>
+                                    <div className='row d-flex'>
                                         <div>${Number(coin['current_price']).toFixed(2).toLocaleString('en')}</div>
-                                        <div className={Number(coin['price_change_percentage_7d_in_currency']) > 0 ? "greenNum" : "redNum"}>{Number(coin['price_change_percentage_24h_in_currency']).toFixed(2)}%</div>
+                                        <div className={Number(coin['price_change_percentage_7d_in_currency']) > 0 ? "greenNum justifyEnd" : "redNum justifyEnd"}>{Number(coin['price_change_percentage_24h_in_currency']).toFixed(2)}%</div>
                                     </div>
-                                    <div><Sparklines data={(coin['sparkline_in_7d']['price'])}><SparklinesLine style={{fill: "none"}} color="#007AFF"/></Sparklines></div>
+                                    <div className='row d-flex justify-content-center'><Sparklines data={(coin['sparkline_in_7d']['price'])}><SparklinesLine style={{fill: "none"}} color="#007AFF"/></Sparklines></div>
                             </a>
-                            </div>
                         ))}
                     </div>
                 </div>

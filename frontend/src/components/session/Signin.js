@@ -12,8 +12,8 @@ class Signin extends Component {
         this.state = {
             email: '',
             password: '',
-            errors: {}
-            };
+            errors: ''
+        };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -29,12 +29,20 @@ class Signin extends Component {
         let user = {
             email: this.state.email,
             password: this.state.password
-    };
-
+        };
+        
         this.props.signin(user)
-            .then(() => this.props.history.push('/dashboard'))
+            .then((res) => 
+                {if(!res.errors.msg) {
+                    this.props.history.push('/dashboard')}
+                else {
+                    this.setState({
+                        errors: res.errors.msg
+                    })
+                }
+            })
     }
-    
+
     render() {
         return (
             <div className="container mx-auto justify-content-center">
@@ -64,6 +72,7 @@ class Signin extends Component {
                         </button> 
                         <DummySignin />
                     </Col>
+                    <div className="sessionWarnings d-flex justify-content-center">{this.state.errors}</div>
                     </Form>
                 </div>
             </div>

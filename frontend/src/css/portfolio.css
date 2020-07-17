@@ -1,0 +1,23 @@
+.bank {
+    font-size: 14px;
+    border: 1px solid rgb(236, 239, 241);
+    border-radius: 12px;
+    background-color: white;
+    margin-top: 12px;
+}
+
+.bankTitle {
+    font-size: 24px;
+    font-weight: lighter;
+    margin-top: 12px;
+    border-bottom: 1px solid rgb(236, 239, 241);
+}
+
+.bankDesc {
+    font-weight: lighter;
+}
+
+.bankFunc {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
