@@ -20,12 +20,12 @@ export const signOutUser = () => ({
 
 export const register = (user) => dispatch => (
     SessionAPIUtil.register(user)
-    .then(res => {
-        const { token } = res.data;
-        localStorage.setItem('jwtToken', token);
-        SessionAPIUtil.setAuthToken(token);
-        const decoded = jwt_decode(token);
-        dispatch(receiveCurrentUser(decoded))
+        .then(res => {
+            const { token } = res.data;
+            localStorage.setItem('jwtToken', token);
+            SessionAPIUtil.setAuthToken(token);
+            const decoded = jwt_decode(token);
+            dispatch(receiveCurrentUser(decoded))
         })
         .catch(err => dispatch(receiveErrors(err.response.data)))
 );

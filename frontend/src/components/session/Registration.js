@@ -36,13 +36,14 @@ class Registration extends Component {
             usdBalance: parseInt(this.state.usdBalance)
         }
         this.props.register(user)
-            .then((res) => 
-                {if(!Object.values(res.errors)[0]) {
-                    this.props.history.push('/dashboard')}
-                else {
+            .then((res) =>
+                {if(res) {
                     this.setState({
                         errors: (Object.values(res.errors)[0])
                     })
+                }
+                else {
+                    this.props.history.push('/dashboard')
                 }
             })
     }

@@ -40,3 +40,7 @@ a:focus {
 .justifyEnd {
     margin-left: auto;
 }
+
+.signOutButton {
+    padding-right: 1%
+}

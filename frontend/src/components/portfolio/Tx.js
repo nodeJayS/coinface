@@ -63,7 +63,9 @@ class Tx extends Component {
         }
         else {
             return (
-                <div>No transactions found.</div>
+                <div className='container'>
+                    <div className='loadingMsg'>No transactions found.</div>
+                </div>
             )
         }
     }

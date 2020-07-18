@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
 import { withRouter } from 'react-router-dom';
 
 class SellCoin extends Component {
@@ -64,9 +63,9 @@ class SellCoin extends Component {
     render() {
         return (
         <>
-        <Container>
+        <div className='container assets'>
             <Col>
-                <h1>
+                <h1 className='assetsTitle'>
                     Sell
                 </h1>
             </Col>
@@ -85,7 +84,7 @@ class SellCoin extends Component {
                     </button>
                 </Col>
             </Form>
-        </Container>
+        </div>
         </>
         )
     }

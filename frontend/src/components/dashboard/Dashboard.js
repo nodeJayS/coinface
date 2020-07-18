@@ -16,11 +16,12 @@ class Dashboard extends Component {
     }
 
     render() {
-        return (
-            <>
-                <div className='container'>
-                    <Balance />
-                    <Watchlist />
+        if(this.props.userid) {
+            return (
+                <>
+                    <div className='container'>
+                        <Balance />
+                        <Watchlist />
                     <div className='row'>
                         <div className='col'>
                             <Assets />
@@ -29,9 +30,17 @@ class Dashboard extends Component {
                             <Tx/>
                         </div>
                     </div>
+                    </div>
+                </>
+            )
+        }
+        else {
+            return (
+                <div className='container'>
+                    <div className='loadingMsg'>Loading dashboard...</div>
                 </div>
-            </>
-        )
+            )
+        }
     }
 }
 

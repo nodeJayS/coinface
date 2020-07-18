@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table';
 import { withRouter } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
 
-import CoinChart from './CoinChartCont'
+import CoinChart from './CoinChartCont';
 import BuyCoin from './trade/BuyCoinCont';
 import SellCoin from './trade/SellCoinCont';
-import WatchButton from './WatchButtonCont'
+import WatchButton from './WatchButtonCont';
+import CoinBalance from './CoinBalanceCont';
 
 class CoinPage extends Component {
     constructor(props) {
@@ -15,6 +16,7 @@ class CoinPage extends Component {
             coinData: [],
             weekData: true
         }
+        this.createTitle = this.createTitle.bind(this)
     }
 
     componentDidMount() {
@@ -24,6 +26,28 @@ class CoinPage extends Component {
             .then(res => this.setState({coinData: res.coin}))
         this.props.fetchWeekData(this.props.match.params.coinid)
         this.props.fetchMonthData(this.props.match.params.coinid)
+    }
+
+    createTitle = () => {
+        if (this.state.coinData[0]) {
+            return (
+                <div className='coinHeader row'>
+                <div className='container coinPageLeft col-sm row'>
+                    <div className='coinImage'><Image src={this.state.coinData[0].image} alt={this.state.coinData[0].name} width="48" height="48"></Image></div>
+                    <div className='coinTitle'>{this.state.coinData[0].name}</div>
+                    <div className='coinSymbol'>{this.state.coinData[0].symbol.toUpperCase()}</div>
+                </div>
+                <div className='coinPageRight col-sm'>
+                    <div className='coinWatchlist'><WatchButton /></div>
+                </div>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div></div>
+            )
+        }
     }
 
     createTable = () => {
@@ -51,13 +75,20 @@ class CoinPage extends Component {
 
     render() {
         return (
-            <Container>
-                <WatchButton />
-                <CoinChart />
-                <this.createTable />
-                <BuyCoin />
-                <SellCoin />
-            </Container>
+            <div className='container coinPage'>
+                <this.createTitle />
+                <div className='container row'>
+                    <div className='col'>
+                        <CoinChart />
+                        <this.createTable />
+                    </div>
+                    <div className='col col-lg-auto'>
+                        <CoinBalance />
+                        <BuyCoin />
+                        <SellCoin />
+                    </div>
+                </div>
+            </div>
         )
     }
 }

@@ -30,20 +30,20 @@ export default class NavBar extends Component {
         </NavbarBrand>
 
           <Nav>
-              <NavLink href="/dashboard">             
-                  Home
-              </NavLink>
+            <NavLink href="/dashboard">             
+              Home
+            </NavLink>
 
-              <NavLink href="../portfolio">
-                  Portfolio
-              </NavLink>
+            <NavLink href="../portfolio">
+              Portfolio
+            </NavLink>
 
-              <NavLink href="../prices">             
-                  Prices
-              </NavLink>
+            <NavLink href="../prices">             
+              Prices
+            </NavLink>
           </Nav>
           
-          <Nav className="justifyEnd">
+          <Nav className="justifyEnd signOutButton">
               <Button onClick={this.signoutUser}>Sign out</Button>
           </Nav>
         </div>

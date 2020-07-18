@@ -1,0 +1,37 @@
+.coinHeader {
+    justify-content: center;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.coinHeader div {
+    align-self: center;
+}
+
+.coinPageLeft {
+    float: left;
+}
+
+.coinPageRight {
+    float: right;
+}
+
+.coinTitle {
+    font-size: 36px;
+    color: white;
+    padding-right: 2.5%;
+}
+
+.coinSymbol {
+    font-size: 36px;
+    color: lightgrey;
+}
+
+.coinWatchlist {
+    float: right;
+}
+
+.coinImage {
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+}

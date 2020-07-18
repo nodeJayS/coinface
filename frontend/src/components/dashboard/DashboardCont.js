@@ -7,6 +7,12 @@ import { watchlist } from '../../actions/watchActions';
 
 import Dashboard from './Dashboard'
 
+const mapStateToProps = (state) => {
+    return {
+        userid: state.session.user.id
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
         assetData: () => dispatch(assetData()),
@@ -16,4 +22,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

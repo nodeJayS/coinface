@@ -33,14 +33,15 @@ class Signin extends Component {
         
         this.props.signin(user)
             .then((res) => 
-                {if(!res.errors.msg) {
-                    this.props.history.push('/dashboard')}
-                else {
+                {if(res) {
                     this.setState({
                         errors: res.errors.msg
                     })
                 }
-            })
+                else {
+                    this.props.history.push('/dashboard')
+                }
+                })
     }
 
     render() {

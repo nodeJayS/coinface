@@ -15,5 +15,9 @@
 
 .assets Table {
     font-weight: lighter;
+    vertical-align: middle;
 }
 
+.assetsTable td {
+    vertical-align: middle;
+}

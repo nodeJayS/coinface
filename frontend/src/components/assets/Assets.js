@@ -3,6 +3,8 @@ import Table from 'react-bootstrap/Table';
 import { withRouter } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Button from 'react-bootstrap/Button'
+
 
 class Assets extends Component {
     constructor(props) {
@@ -47,12 +49,13 @@ class Assets extends Component {
     createTable = () => {
         let assetData = this.getAssetData()
         let totalBalance = this.getTotalBalance()
-        return <Table responsive size="sm">
+        return <Table className='assetsTable' responsive size="sm">
             <thead>
                 <tr>               
                     <th>Asset</th>
                     <th>Balance</th>
                     <th>Allocation</th>
+                    <th>Trade</th>
                 </tr>
             </thead>
             <tbody>
@@ -77,7 +80,11 @@ class Assets extends Component {
                         <td>
                             {(((Number((this.props.assets.find(asset => asset.name === coin.id)).balance) * Number(coin['current_price']))/totalBalance) * 100).toFixed(2)} %
                         </td>
+                        
                     }
+                    <td>
+                        <Button size='sm' href={`/prices/${coin.id}`}>Trade</Button>
+                    </td>
                 </tr>
                 )}
             </tbody>
@@ -94,7 +101,11 @@ class Assets extends Component {
         }
 
         else {
-            return <div>No assets found.</div>
+            return (
+                <div className='container'>
+                    <div className='loadingMsg'>No assets found.</div>
+                </div>
+            )
         }
     }
 }

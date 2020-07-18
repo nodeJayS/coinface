@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -51,9 +50,9 @@ class WatchButton extends Component {
     render() {
         if(this.props.watchlist && this.props.coin) {
         return (
-            <Container>
+            <div>
                 <Button onClick={this.updateWatchList}>{this.getStar()}</Button>
-            </Container>
+            </div>
         )
         }
         else {

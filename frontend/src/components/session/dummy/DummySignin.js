@@ -47,13 +47,13 @@ class DummySignin extends Component {
 
                 <Modal.Body className='modalContent'>
                     <div>
-                        Use this to sign in with a pre-made account if you want to try out this website's features without registering!
+                        Use this to sign in with a demo account if you want to try out this website's features without registering!
                     </div>
                 </Modal.Body>
 
                 <Modal.Footer>
                     <Button type="submit" variant="primary">
-                        Sign in with pre-made account
+                        Sign in with demo account
                     </Button>   
 
                     <Button variant="secondary" onClick={this.handleShow}>

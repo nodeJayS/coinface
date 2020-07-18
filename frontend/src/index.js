@@ -14,6 +14,8 @@ import './css/balance.css'
 import './css/assets.css'
 import './css/portfolio.css'
 import './css/modal.css'
+import './css/coinpage.css'
+import './css/loading.css'
 
 import Root from './Root'
 import configureStore from './store/store'
