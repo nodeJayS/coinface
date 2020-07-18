@@ -19,10 +19,12 @@ class Balance extends Component {
     getAssetData = () => {
         let totalBalance = 0 + this.props.usd
         let totalAssets = this.props.assets
-        for (let i = 0; i < totalAssets.length; i++) {
-            let assetExist = this.props.coins.find(asset => asset.id === this.props.assets[i].name)
-            totalBalance += (assetExist['current_price'] * this.props.assets[i].balance)
-        }
+            for (let i = 0; i < totalAssets.length; i++) {
+                let assetExist = this.props.coins.find(asset => asset.id === this.props.assets[i].name)
+                if(assetExist) {
+                    totalBalance += (assetExist['current_price'] * this.props.assets[i].balance)
+                }
+            }
         return (Number((totalBalance).toFixed(2)).toLocaleString('en'))
     }
 

@@ -77,7 +77,7 @@ class SellCoin extends Component {
     getCoinQuantity = () => {
         if (this.props.coin) {
             return (
-                <div>{this.state.usdAmount/this.props.coin[0]['current_price']} {this.props.coin[0].symbol.toUpperCase()}</div>
+                <div>{(this.state.usdAmount/this.props.coin[0]['current_price']).toFixed(4)} {this.props.coin[0].symbol.toUpperCase()}</div>
             )
         }
         else {

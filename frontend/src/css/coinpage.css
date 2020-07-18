@@ -41,3 +41,12 @@
     margin-bottom: 12px;
     font-weight: lighter;
 }
+
+.nav-tabs .nav-item {
+    margin-top: 12px;
+}
+
+.tab-content {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}

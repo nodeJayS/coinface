@@ -1,0 +1,31 @@
+.coinChart{
+    font-size: 14px;
+    border: 1px solid rgb(236, 239, 241);
+    border-radius: 12px;
+    background-color: white;
+    margin-top: 12px;
+}
+
+.coinChart a:hover {
+    color: black !important;
+}
+
+.coinChart a:focus {
+    color: black !important;
+}
+
+.priceCont {
+    align-items: top;
+}
+
+.currentPrice {
+    font-size: 32px;
+    font-weight: lighter;
+}
+
+.currentPercent div{
+    font-size: 18px;
+    font-weight: lighter;
+    margin-left: 6px;
+    margin-top: 6px;
+}

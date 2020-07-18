@@ -24,6 +24,7 @@ class CoinPage extends Component {
         this.props.watchlist()
         this.props.fetchCoinData(this.props.match.params.coinid)
             .then(res => this.setState({coinData: res.coin}))
+        this.props.fetchDailyData(this.props.match.params.coinid)
         this.props.fetchWeekData(this.props.match.params.coinid)
         this.props.fetchMonthData(this.props.match.params.coinid)
     }
@@ -51,7 +52,9 @@ class CoinPage extends Component {
     }
 
     createTable = () => {
-        return <Table responsive striped borderless size="sm" width="100">
+        return (
+        <div className='coinlist'>
+        <Table responsive size="sm" width="100">
             <thead>
                 <tr>               
                 <th>Market cap</th>
@@ -71,6 +74,8 @@ class CoinPage extends Component {
                 }
             </tbody>
         </Table>
+        </div>
+        )
     }
 
     render() {

@@ -1,11 +1,17 @@
 import * as CoinAPIUtil from '../util/coin_util'
 
 export const RECEIVE_COIN_DATA = 'RECEIVE_COIN_DATA'
+export const RECEIVE_DAILY_DATA = 'RECEIVE_DAILY_DATA'
 export const RECEIVE_WEEK_DATA = 'RECEIVE_WEEK_DATA'
 export const RECEIVE_MONTH_DATA = 'RECEIVE_MONTH_DATA'
 
 export const receiveCoinData = (coin) => ({
     type: RECEIVE_COIN_DATA,
+    coin
+})
+
+export const receiveDailyData = (coin) => ({
+    type: RECEIVE_DAILY_DATA,
     coin
 })
 
@@ -22,6 +28,12 @@ export const receiveMonthData = (coin) => ({
 export const fetchCoinData = (name) => dispatch => (
     CoinAPIUtil.fetchCoinData(name)
         .then(coin => dispatch(receiveCoinData(coin.data)))
+        .catch(err => dispatch(console.log(err)))
+)
+
+export const fetchDailyData = (name) => dispatch => (
+    CoinAPIUtil.fetchDailyData(name)
+        .then(coin => dispatch(receiveDailyData(coin.data)))
         .catch(err => dispatch(console.log(err)))
 )
 

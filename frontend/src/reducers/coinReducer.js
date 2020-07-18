@@ -1,4 +1,5 @@
 import { RECEIVE_COIN_DATA,
+        RECEIVE_DAILY_DATA,
         RECEIVE_WEEK_DATA,
         RECEIVE_MONTH_DATA } from '../actions/coinActions'
 
@@ -10,6 +11,11 @@ const coinReducer = (state = initState, action) => {
             return {
                 ...state,
                 coin: action.coin
+            };
+        case RECEIVE_DAILY_DATA:
+            return {
+                ...state,
+                dailyPrices: action.coin.prices
             };
         case RECEIVE_WEEK_DATA:
             return {

@@ -16,7 +16,6 @@
 
 .coinBalanceTitle {
     font-size: 16px;
-    color: white;
     margin-top: 16px;
     border-bottom: solid 1px;
     font-weight: lighter;
@@ -24,11 +23,16 @@
 
 .coinTotalBalance {
     font-size: 28px;
-    color: white;
     font-weight: lighter;
+}
+
+.usdTotalBalance {
+    font-size: 28px;
+    font-weight: lighter;
+    margin-bottom: 24px;
 }
 
 .subCoinBalance {
     font-size: 16px;
-    color: lightgrey;
+    color: grey;
 }
