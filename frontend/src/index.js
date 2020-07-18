@@ -17,6 +17,7 @@ import './css/modal.css'
 import './css/coinpage.css'
 import './css/loading.css'
 import './css/chart.css'
+import './css/desc.css'
 
 import Root from './Root'
 import configureStore from './store/store'

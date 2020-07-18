@@ -1,0 +1,25 @@
+.marketHeader {
+    font-size: 36px;
+    color: white;
+    margin-top: 36px;
+}
+
+.coinGeckoBody {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.axiosBody {
+    color: white;
+    margin-bottom: 12px;
+}
+
+.siteLink {
+    font-weight: bolder;
+    color: white !important;
+}
+
+.logoWrapper {
+    text-align: center;
+}
