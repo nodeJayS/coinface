@@ -7,10 +7,13 @@ class BuyCoin extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            usdAmount: ''
+            usdAmount: '',
+            balanceWarning: false,
+            valueWarning: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.getCoinQuantity = this.getCoinQuantity.bind(this)
     }
 
     handleChange = (e) => {
@@ -31,18 +34,29 @@ class BuyCoin extends Component {
             usdAmount: Number(this.state.usdAmount),
             txType: 'BUY'
         }
-        if (quantity > 0) {
+        if (quantity <= 0) {
+            this.setState({
+                balanceWarning: false,
+                valueWarning: true
+            })
+        }
+        else if (this.state.usdAmount > this.props.usdBalance) {
+            this.setState({
+                balanceWarning: true,
+                valueWarning: false
+            })
+        }
+        else {
             let assetExist = this.props.assets.find(asset => asset.name === coinTx.id)
-            if (this.state.usdAmount > this.props.usdBalance) {
-                console.log('not enough USD Balance')
-            }
-            else if (assetExist) {   
+            if (assetExist) {   
                 this.props.newTx(coinTx)
                 console.log('asset exists, updated asset')         
                 this.props.updateAsset(coinTx)
                     .then(() => this.props.history.push(`/prices/${coin.id}`))
                 this.setState({
                     usdAmount: '',
+                    balanceWarning: false,
+                    valueWarning: false
                     })
                 }
             else {
@@ -53,9 +67,22 @@ class BuyCoin extends Component {
                 }
                 this.setState({
                     usdAmount: '',
+                    balanceWarning: false,
+                    valueWarning: false
                 })
-        } else {
-            console.log('Please input a value higher than 0')
+        }
+    }
+
+    getCoinQuantity = () => {
+        if (this.props.coin) {
+            return (
+                <div>{this.state.usdAmount/this.props.coin[0]['current_price']} {this.props.coin[0].symbol.toUpperCase()}</div>
+            )
+        }
+        else {
+            return (
+                <div>0</div>
+            )
         }
     }
 
@@ -69,19 +96,25 @@ class BuyCoin extends Component {
                 </h1>
             </Col>
                 
-            <Form id="Buy-coin-form" onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                    <Col>
-                        <label>Amount</label>
-                        <input id="usdAmount" value={this.state.usdAmount} type="number" placeholder="$0" onChange={this.handleChange}/>
-                    </Col>
+            <Form id="Buy-coin-form" className='coinTradeForm container justify-content-center' onSubmit={this.handleSubmit}>
+                <div className='row d-flex'>
+                    <div className="form-group container">
+                        <div>
+                            <label>Input amount in usd</label>
+                        </div>
+                        <div>
+                            <input className='usdInput' id="usdAmount" value={this.state.usdAmount} type="number" placeholder="$0" onChange={this.handleChange}/>
+                        </div>
+                        <this.getCoinQuantity/>
+                        {this.state.valueWarning ? <div>Amount must be higher than 0.</div> : ''}                    
+                        {this.state.balanceWarning ? <div>Not enough USD balance.</div> : ''}                    
+                        </div>
+                    <div className='col'>
+                        <button className="btn btn-primary" type="submit">
+                            Buy
+                        </button>
+                    </div>
                 </div>
-
-                <Col>
-                    <button className="btn btn-primary" type="submit">
-                        Buy
-                    </button>
-                </Col>
             </Form>
         </div>
         </>

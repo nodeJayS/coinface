@@ -11,8 +11,9 @@ class CoinBalance extends Component {
     getAssetData = () => {
         let totalBalance = 0
         let totalAssets = this.props.assets.find(asset => asset.name === this.props.coin[0].id)
+        if(totalAssets) {
         totalBalance += totalAssets.balance * this.props.coin[0]['current_price']
-        console.log(totalBalance)
+        }
         return (Number((totalBalance).toFixed(2)).toLocaleString('en'))
     }
 
@@ -23,8 +24,9 @@ class CoinBalance extends Component {
                 <div className='coinBalanceTitle'>
                     {this.props.coin[0]['symbol'].toUpperCase()} balance
                 </div>
-                <div className="coinTotalBalance">
-                    $ {this.getAssetData()}
+                <div >
+                    <div className="coinTotalBalance">$ {this.getAssetData()}</div> 
+                    <div className='subCoinBalance'>{this.props.assets.find(asset => asset.name === this.props.coin[0].id).balance.toFixed(2)} {this.props.coin[0].symbol.toUpperCase()}</div>
                 </div>
                 <div className='coinBalanceTitle'>
                     USD balance

@@ -7,10 +7,14 @@ class SellCoin extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            usdAmount: ''
+            usdAmount: '',
+            balanceWarning: false,
+            valueWarning: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.getCoinQuantity = this.getCoinQuantity.bind(this)
+
     }
 
     handleChange = (e) => {
@@ -31,20 +35,31 @@ class SellCoin extends Component {
             usdAmount: Number(this.state.usdAmount),
             txType: 'SELL'
         }
-        if (quantity > 0) {
-            let userAsset = this.props.assets.find(asset => asset.name === coinTx.id)
-            if (userAsset.balance < coinTx.quantity) {
-                console.log(`not enough ${coinTx.id}`)
-            }
-            else if (userAsset.balance > 0) {   
+        let userAsset = this.props.assets.find(asset => asset.name === coinTx.id)
+        if (coinTx.quantity <= 0) {
+            this.setState({
+                balanceWarning: false,
+                valueWarning: true
+            })
+        }
+        else if (userAsset.balance < coinTx.quantity) {
+            this.setState({
+                balanceWarning: true,
+                valueWarning: false
+            })
+        }
+        else {
+            if (userAsset.balance > 0) {   
                 console.log('asset sold') 
                 this.props.newTx(coinTx)        
                 this.props.updateSellAsset(coinTx)
                     .then(() => this.props.history.push(`/prices/${coin.id}`))
                 this.setState({
                     usdAmount: '',
+                    balanceWarning: false,
+                    valueWarning: false
                     })
-                }
+            }
             else if (userAsset.balance === coinTx.quantity) {   
                 console.log('asset deleted') 
                 this.props.newTx(coinTx)        
@@ -52,11 +67,23 @@ class SellCoin extends Component {
                     .then(() => this.props.history.push(`/prices/${coin.id}`))
                 this.setState({
                     usdAmount: '',
-                    })
+                    balanceWarning: false,
+                    valueWarning: false
+                })
             }
         }
+    }
+
+    getCoinQuantity = () => {
+        if (this.props.coin) {
+            return (
+                <div>{this.state.usdAmount/this.props.coin[0]['current_price']} {this.props.coin[0].symbol.toUpperCase()}</div>
+            )
+        }
         else {
-            console.log('Please input a value higher than 0')
+            return (
+                <div>0</div>
+            )
         }
     }
 
@@ -70,19 +97,25 @@ class SellCoin extends Component {
                 </h1>
             </Col>
                 
-            <Form id="Sell-coin-form" onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                    <Col>
-                        <label>Amount</label>
-                        <input id="usdAmount" value={this.state.usdAmount} type="number" placeholder="$0" onChange={this.handleChange}/>
-                    </Col>
+            <Form id="Sell-coin-form" className='coinTradeForm container justify-content-center' onSubmit={this.handleSubmit}>
+            <div className='row d-flex'>
+                    <div className="form-group container">
+                        <div>
+                            <label>Input amount in usd</label>
+                        </div>
+                        <div>
+                            <input className='usdInput' id="usdAmount" value={this.state.usdAmount} type="number" placeholder="$0" onChange={this.handleChange}/>
+                        </div>
+                        <this.getCoinQuantity/>
+                        {this.state.valueWarning ? <div>Amount must be higher than 0.</div> : ''}                    
+                        {this.state.balanceWarning ? <div>Not enough {this.props.coin[0].symbol.toUpperCase()} balance.</div> : ''}                    
+                        </div>
+                    <div className='col'>
+                        <button className="btn btn-primary" type="submit">
+                            Sell
+                        </button>
+                    </div>
                 </div>
-
-                <Col>
-                    <button className="btn btn-primary" type="submit">
-                        Sell
-                    </button>
-                </Col>
             </Form>
         </div>
         </>

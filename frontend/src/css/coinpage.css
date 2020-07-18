@@ -35,3 +35,9 @@
     padding-left: 2.5%;
     padding-right: 2.5%;
 }
+
+.coinTradeForm{
+    justify-content: center;
+    margin-bottom: 12px;
+    font-weight: lighter;
+}
