@@ -7,11 +7,11 @@ export default class Markets extends Component {
     let axiosLink = <a className='siteLink' href='https://github.com/axios/axios'>here</a>
         return (
             <div className='container'>
-                <div className='marketDesc'>
-                <div className='marketHeader'>
+                <div className='descWrapper'>
+                <div className='descHeader'>
                     Where is the market data coming from?
                 </div>
-                <div className='coinGeckoBody'>
+                <div className='descBody'>
                     All coin related data is pulled from {coinGeckoLink}'s market API. 
                     However, I am NOT in any sort of partnership with CoinGecko.
                     I am just using their awesome API provided for free to power the data you see in Coinface's charts.
@@ -19,7 +19,7 @@ export default class Markets extends Component {
                     I use Axios, a promise-based HHTP client to send requests to this API and lets me receive this data to use in Coinface.
                 </div>
                 <div className='axiosBody'>
-                    I use Axios, a promise-based HHTP client to send requests to CoinGecko's API and receive this data to use in Coinface.
+                    I use Axios, a promise-based HTTP client to send requests to CoinGecko's API and receive this data to use in Coinface.
                     Click {axiosLink} to check out the official Axios github.
                 </div>
                 </div>
