@@ -1,4 +1,4 @@
-/config/keys.js
+/config/devkeys.js
 /node_modules
 /frontend/node_modules
 /frontend/src/config/CoinGecko.js
