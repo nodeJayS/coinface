@@ -1,6 +1,6 @@
 # Coinface
 
-Coinface is an imitation website of Coinbase, a cryptocurrency exchange market.
+Coinface is a cryptocurrency market exchange simulator.
 
 ## Stack/Tech
 
