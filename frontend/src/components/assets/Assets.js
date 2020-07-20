@@ -93,7 +93,7 @@ class Assets extends Component {
         </Table>
     }
     render() {
-        if (this.props.usd && this.props.assets && this.props.coin) {
+        if (this.props.usd && this.props.assets.length && this.props.coin) {
             return (
             <div className='container assets'>
                 <div className='assetsTitle'>Your assets</div>

@@ -9,10 +9,10 @@ import Assets from '../assets/AssetsCont'
 class Dashboard extends Component {
 
     componentDidMount() {
+        this.props.fetchCoinData()
         this.props.assetData()
         this.props.watchlist()
         this.props.getAllTx()
-        this.props.fetchCoinData()
     }
 
     render() {
