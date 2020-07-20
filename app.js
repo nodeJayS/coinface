@@ -4,18 +4,27 @@ const app = express();
 const mongoose = require('mongoose');
 const db = require('./config/keys').mongoURI;
 const passport = require('passport');
-const cors = require('cors')
+const cors = require('cors');
+const path = reqiore('path')
 
-const users = require('./routes/api/users')
-const transactions = require('./routes/api/transactions')
-const assets = require('./routes/api/assets')
-const watchlist = require('./routes/api/watchlist')
+const users = require('./routes/api/users');
+const transactions = require('./routes/api/transactions');
+const assets = require('./routes/api/assets');
+const watchlist = require('./routes/api/watchlist');
 
 // Connect to database
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
+
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+  });
+}
 
 // Middleware configuration
 app.use(express.json());
