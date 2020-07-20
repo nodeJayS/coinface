@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const db = require('./config/keys').mongoURI;
 const passport = require('passport');
 const cors = require('cors');
-const path = reqiore('path')
+const path = require('path')
 
 const users = require('./routes/api/users');
 const transactions = require('./routes/api/transactions');
