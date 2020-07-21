@@ -15,8 +15,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        assetData: () => dispatch(assetData()),
         watchlist: () => dispatch(watchlist()),
+        assetData: () => dispatch(assetData()),
         getAllTx: () => dispatch(getAllTx()),
         fetchCoinData: coin => dispatch(fetchCoinData(coin))
     }

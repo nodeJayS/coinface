@@ -71,7 +71,7 @@ class Assets extends Component {
                         <td>{((Number(this.props.usd)/totalBalance) * 100).toFixed(2)} %</td>
                     }
                 </tr>
-                {assetData.map(coin =>
+                {assetData && assetData.map(coin =>
                 <tr key={coin.id}>
                     <td><Image src={coin.image} alt={coin.name} width="24" height="24"></Image> {coin.name}</td>
                     <td>
