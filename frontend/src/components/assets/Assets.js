@@ -15,12 +15,13 @@ class Assets extends Component {
 
     getAssetNames = () => {
         let assetNames = []
-        for (let i = 0; i < this.props.assets.length; i++) {
-            let asset = (this.props.assets[i].name)
-            let assetExist = this.props.coin.find(coin => coin.id === asset)
-            console.log(assetExist)
-            if((this.props.assets[i].balance * assetExist['current_price']) > 0.01) {
-            assetNames.push(asset)
+        if(this.props.assets.length > 0) {
+            for (let i = 0; i < this.props.assets.length; i++) {
+                let asset = (this.props.assets[i].name)
+                let assetExist = this.props.coin.find(coin => coin.id === asset)
+                if((this.props.assets[i].balance * assetExist['current_price']) > 0.01) {
+                assetNames.push(asset)
+                }
             }
         }
         return assetNames
@@ -93,7 +94,7 @@ class Assets extends Component {
         </Table>
     }
     render() {
-        if (this.props.usd && this.props.assets.length && this.props.coin) {
+        if (this.props.usd && this.props.assets && this.props.coin) {
             return (
             <div className='container assets'>
                 <div className='assetsTitle'>Your assets</div>
