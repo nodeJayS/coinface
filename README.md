@@ -2,7 +2,7 @@
 
 Coinface is a cryptocurrency market exchange simulator.
 
-Live site can be visited here - [Coinface](https://agile-stream-24176.herokuapp.com)
+Live site can be visited here - [Coinface](https://agile-stream-24176.herokuapp.com)  
 *Due to using Heroku's free web hosting services, initial loading may be slow.*
 
 ## Stack/Tech
