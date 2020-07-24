@@ -7,10 +7,12 @@ export default class AboutUs extends Component {
             <>
                 <div className='container'>
                     <div className='descHeader'>
-                        Under construction
+                        About Us
                     </div>
                     <div className='descBody'>
                         Hi! I'm Jay and I created this app to show the possibilities of what the MERN full-stack can do.
+                    </div>
+                    <div className='descBody'>
                         The majority of code for both front and back-end is written in Javascript with a bit of HTML and CSS sprinkled in.
                         MongoDB is used to store user data.
                         Express and Node.js are used to process information and requests from client to server and vice-versa.

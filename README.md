@@ -2,6 +2,9 @@
 
 Coinface is a cryptocurrency market exchange simulator.
 
+Live site can be visited here - [Coinface](https://agile-stream-24176.herokuapp.com)
+*Due to using Heroku's free web hosting services, initial loading may be slow.*
+
 ## Stack/Tech
 
 Coinface is created using MongoDB as its database, Express and NodeJS for the back-end and React/Redux for the front-end. 
