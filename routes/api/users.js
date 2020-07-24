@@ -17,7 +17,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
 // Login existing user
 router.post("/signin", (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
-  
+
     if (!isValid) {
       return res.status(400).json(errors);
     }

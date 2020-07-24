@@ -10,15 +10,17 @@ class Assets extends Component {
     constructor(props) {
         super(props);
         this.state = {}
+            this.getAssetData = this.getAssetData.bind(this)
             this.createTable = this.createTable.bind(this)
     }
 
     getAssetNames = () => {
         let assetNames = []
-        if(this.props.assets.length > 0) {
+        if(this.props.coin.length > 0 && this.props.assets.length > 0) {
             for (let i = 0; i < this.props.assets.length; i++) {
                 let asset = (this.props.assets[i].name)
                 let assetExist = this.props.coin.find(coin => coin.id === asset)
+                console.log(this.props.coin)
                 if((this.props.assets[i].balance * assetExist['current_price']) > 0.01) {
                 assetNames.push(asset)
                 }

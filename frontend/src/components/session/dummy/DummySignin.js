@@ -8,8 +8,10 @@ class DummySignin extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            email: 'test@test.com',
+            password: 'password',
             show: false,
-            usdAmount: '',
+            errors: ''
         };
         this.handleShow = this.handleShow.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,12 +26,10 @@ class DummySignin extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         let user = {
-            email: 'test@test.com',
-            password: 'password'
-            };
-
+            email: this.state.email,
+            password: this.state.password
+        };
         this.props.signin(user)
-            .then(() => this.props.history.push('/dashboard'))
     }
 
     render() {
@@ -40,7 +40,7 @@ class DummySignin extends Component {
             </Button>        
 
             <Modal show={this.state.show} onHide={this.handleShow}>
-                <Form onSubmit={this.handleSubmit}>
+            <Form>
                 <Modal.Header>
                     <Modal.Title>Quick start</Modal.Title>
                 </Modal.Header>
@@ -52,15 +52,15 @@ class DummySignin extends Component {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button type="submit" variant="primary">
+                    <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>
                         Sign in with demo account
-                    </Button>   
+                    </button>   
 
                     <Button variant="secondary" onClick={this.handleShow}>
                         Cancel
                     </Button> 
                 </Modal.Footer>
-                </Form>           
+            </Form>           
             </Modal>
             </>
         )
