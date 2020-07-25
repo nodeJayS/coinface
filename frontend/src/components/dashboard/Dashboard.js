@@ -8,8 +8,8 @@ import Assets from '../assets/AssetsCont'
 
 class Dashboard extends Component {
 
-    componentDidMount() {
-        this.props.fetchCoinData()
+    async componentDidMount() {
+        await this.props.fetchCoinData()
         this.props.assetData()
         this.props.watchlist()
         this.props.getAllTx()
@@ -24,7 +24,7 @@ class Dashboard extends Component {
                         <Watchlist />
                     <div className='row'>
                         <div className='col'>
-                            <Assets />
+                            <Assets/>
                         </div>
                         <div className='col'>
                             <Tx/>

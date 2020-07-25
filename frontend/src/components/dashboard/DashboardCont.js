@@ -15,10 +15,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        watchlist: () => dispatch(watchlist()),
+        fetchCoinData: () => dispatch(fetchCoinData()),
         assetData: () => dispatch(assetData()),
+        watchlist: () => dispatch(watchlist()),
         getAllTx: () => dispatch(getAllTx()),
-        fetchCoinData: coin => dispatch(fetchCoinData(coin))
     }
 }
 

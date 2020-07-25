@@ -8,15 +8,14 @@ class CoinListHome extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            coinIds: 'bitcoin,ethereum,chainlink,basic-attention-token',
             marketData: [],
-            coinid: '',
         }
     }
 
     componentDidMount() {
-        this.props.fetchCoinData(this.props.coinIds)
+        this.props.fetchCoinData(this.state.coinIds)
             .then(res => this.setState({marketData: res.coin}))
-        this.props.watchlist()
     }
 
     render() {

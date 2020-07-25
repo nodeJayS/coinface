@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { signin } from '../../../actions/sessionActions';
+import { fetchCoinData } from '../../../actions/coinActions'
 import DummySignin from './DummySignin';
 
 const mapStateToProps = (state) => {
@@ -11,6 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        fetchCoinData: () => dispatch(fetchCoinData()),
         signin: user => dispatch(signin(user))
     }
 }

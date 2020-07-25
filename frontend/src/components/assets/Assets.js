@@ -9,21 +9,19 @@ import Button from 'react-bootstrap/Button'
 class Assets extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+        }
             this.getAssetData = this.getAssetData.bind(this)
             this.createTable = this.createTable.bind(this)
     }
 
     getAssetNames = () => {
         let assetNames = []
-        if(this.props.coin.length > 0 && this.props.assets.length > 0) {
-            for (let i = 0; i < this.props.assets.length; i++) {
-                let asset = (this.props.assets[i].name)
-                let assetExist = this.props.coin.find(coin => coin.id === asset)
-                console.log(this.props.coin)
-                if((this.props.assets[i].balance * assetExist['current_price']) > 0.01) {
+        for (let i = 0; i < this.props.assets.length; i++) {
+            let asset = (this.props.assets[i].name)
+            let assetExist = this.props.coin.find(coin => coin.id === asset)
+            if((this.props.assets[i].balance * assetExist['current_price']) > 0.01) {
                 assetNames.push(asset)
-                }
             }
         }
         return assetNames
@@ -96,7 +94,7 @@ class Assets extends Component {
         </Table>
     }
     render() {
-        if (this.props.usd && this.props.assets && this.props.coin) {
+        if (this.props.watchlist) {
             return (
             <div className='container assets'>
                 <div className='assetsTitle'>Your assets</div>

@@ -29,6 +29,7 @@ class DummySignin extends Component {
             email: this.state.email,
             password: this.state.password
         };
+        this.props.fetchCoinData()
         this.props.signin(user)
     }
 

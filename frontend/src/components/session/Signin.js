@@ -30,7 +30,7 @@ class Signin extends Component {
             email: this.state.email,
             password: this.state.password
         };
-        
+        this.props.fetchCoinData()
         this.props.signin(user)
             .then((res) => {
                 if(res) {

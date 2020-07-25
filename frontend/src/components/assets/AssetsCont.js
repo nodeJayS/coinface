@@ -4,9 +4,9 @@ import Assets from './Assets'
 
 const mapStateToProps = (state) => {
     return {
+        coin: state.coin.coin,
         usd: state.assets.usdBalance,
         watchlist: state.watchlist.watchlist,
-        coin: state.coin.coin,
         assets: state.assets.assets,
     }
 }
