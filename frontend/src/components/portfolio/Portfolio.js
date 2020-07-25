@@ -13,10 +13,10 @@ class Portfolio extends Component {
         this.state = {};
     }
 
-    componentDidMount() {
-        this.props.assetData()
+    async componentDidMount() {
+        await this.props.fetchCoinData()
+        await this.props.assetData()
         this.props.watchlist()
-        this.props.fetchCoinData()
         this.props.getAllTx()
     }
 

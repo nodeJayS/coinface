@@ -10,7 +10,7 @@ class Dashboard extends Component {
 
     async componentDidMount() {
         await this.props.fetchCoinData()
-        this.props.assetData()
+        await this.props.assetData()
         this.props.watchlist()
         this.props.getAllTx()
     }
