@@ -10,9 +10,9 @@ Live site can be visited here - [Coinface](https://agile-stream-24176.herokuapp.
 ## Stack/Tech
 
 Languages: Javascript  
-Frontend: React, Redux, HTML, CSS
-Backend: Express, NodeJS, MongoDB
-External API: CoinGecko
+Frontend: React, Redux, HTML, CSS  
+Backend: Express, NodeJS, MongoDB  
+External API: CoinGecko  
 
 ## Features
 
